@@ -1,5 +1,6 @@
 # ![alt text] (https://github.com/WishCanTaiwan/VocabuLazy/raw/master/app/src/main/res/mipmap-hdpi/launcher_icon.png) VocabuLazy-iOS 
--
+
+
 ### Project Structure
 * **Swallow**
 
