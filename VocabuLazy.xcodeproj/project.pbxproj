@@ -1,0 +1,1282 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0DF49B9275FA3247884DA1A8 /* Pods_VocabuLazy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EBC14351DEFEF2C4348B5E0 /* Pods_VocabuLazy.framework */; };
+		F44EBB12047345975BEC72B8 /* Pods_VocabuLazyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A6FAF6386C1DD24F845A1C1 /* Pods_VocabuLazyTests.framework */; };
+		F60564A31CD2103A00E7993D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F60564A21CD2103A00E7993D /* Images.xcassets */; };
+		F64D3DC01B863AF800E3D671 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64D3DBF1B863AF800E3D671 /* AppDelegate.swift */; };
+		F64D3DC71B863AF800E3D671 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F64D3DC51B863AF800E3D671 /* Main.storyboard */; };
+		F64D3DCC1B863AF800E3D671 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F64D3DCA1B863AF800E3D671 /* LaunchScreen.xib */; };
+		F64D3DD81B863AF900E3D671 /* VocabuLazyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64D3DD71B863AF900E3D671 /* VocabuLazyTests.swift */; };
+		F6FF400C1B95516B006A381D /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FF400B1B95516B006A381D /* StorageManager.swift */; };
+		FC03AE851B87808B00A7A83D /* HuaKangMBlack.TTC in Resources */ = {isa = PBXBuildFile; fileRef = FC03AE841B87808B00A7A83D /* HuaKangMBlack.TTC */; };
+		FC1870D61C4005B800301D9A /* kk.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FC1870D51C4005B800301D9A /* kk.ttf */; };
+		FC19CA0D1DD0D8BE00767B8B /* AnalyticsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC19CA071DD0D8BE00767B8B /* AnalyticsModel.swift */; };
+		FC19CA0E1DD0D8BE00767B8B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FC19CA081DD0D8BE00767B8B /* GoogleService-Info.plist */; };
+		FC19CA0F1DD0D8BE00767B8B /* WCListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC19CA091DD0D8BE00767B8B /* WCListViewModel.swift */; };
+		FC19CA101DD0D8BE00767B8B /* WCSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC19CA0A1DD0D8BE00767B8B /* WCSearchViewModel.swift */; };
+		FC19CA111DD0D8BE00767B8B /* WCSettingContentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC19CA0B1DD0D8BE00767B8B /* WCSettingContentModel.swift */; };
+		FC19CA121DD0D8BE00767B8B /* WCVocabularyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC19CA0C1DD0D8BE00767B8B /* WCVocabularyModel.swift */; };
+		FC19CA231DD0D8DE00767B8B /* WCColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC19CA151DD0D8DE00767B8B /* WCColor.swift */; };
+		FC19CA241DD0D8DE00767B8B /* WCMaterialButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC19CA171DD0D8DE00767B8B /* WCMaterialButton.swift */; };
+		FC19CA251DD0D8DE00767B8B /* WCUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC19CA191DD0D8DE00767B8B /* WCUtility.swift */; };
+		FC19CA261DD0D8DE00767B8B /* WCWordBackgroundHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC19CA1C1DD0D8DE00767B8B /* WCWordBackgroundHandler.swift */; };
+		FC19CA271DD0D8DE00767B8B /* WCWordForegroundHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC19CA1E1DD0D8DE00767B8B /* WCWordForegroundHandler.swift */; };
+		FC19CA281DD0D8DE00767B8B /* WCWordGroundHandlerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC19CA1F1DD0D8DE00767B8B /* WCWordGroundHandlerProtocol.swift */; };
+		FC19CA291DD0D8DE00767B8B /* WCWordSpeechPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC19CA211DD0D8DE00767B8B /* WCWordSpeechPlayer.swift */; };
+		FC19CA2A1DD0D8DE00767B8B /* WCWordSpeechQueuePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC19CA221DD0D8DE00767B8B /* WCWordSpeechQueuePlayer.swift */; };
+		FC19CA411DD0D90900767B8B /* EHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC19CA2D1DD0D90900767B8B /* EHomeViewController.swift */; };
+		FC19CA421DD0D90900767B8B /* EListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC19CA2E1DD0D90900767B8B /* EListTableViewController.swift */; };
+		FC19CA431DD0D90900767B8B /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC19CA2F1DD0D90900767B8B /* ResultViewController.swift */; };
+		FC19CA441DD0D90900767B8B /* WCExamChooseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC19CA301DD0D90900767B8B /* WCExamChooseViewController.swift */; };
+		FC19CA451DD0D90900767B8B /* WCExamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC19CA311DD0D90900767B8B /* WCExamViewController.swift */; };
+		FC19CA461DD0D90900767B8B /* WCFlipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC19CA321DD0D90900767B8B /* WCFlipViewController.swift */; };
+		FC19CA471DD0D90900767B8B /* WCQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC19CA331DD0D90900767B8B /* WCQuestionViewController.swift */; };
+		FC19CA481DD0D90900767B8B /* WCMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC19CA351DD0D90900767B8B /* WCMainViewController.swift */; };
+		FC19CA491DD0D90900767B8B /* WCInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC19CA371DD0D90900767B8B /* WCInformationViewController.swift */; };
+		FC19CA4A1DD0D90900767B8B /* WCIntroduceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC19CA381DD0D90900767B8B /* WCIntroduceViewController.swift */; };
+		FC19CA4B1DD0D90900767B8B /* WCListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC19CA3A1DD0D90900767B8B /* WCListViewController.swift */; };
+		FC19CA4C1DD0D90900767B8B /* WCWordPlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC19CA3C1DD0D90900767B8B /* WCWordPlayViewController.swift */; };
+		FC19CA4D1DD0D90900767B8B /* WCSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC19CA3E1DD0D90900767B8B /* WCSearchViewController.swift */; };
+		FC19CA4E1DD0D90900767B8B /* WCLessonChooseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC19CA401DD0D90900767B8B /* WCLessonChooseViewController.swift */; };
+		FC19CA8B1DD0D93D00767B8B /* WCExamResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC19CA521DD0D93D00767B8B /* WCExamResultView.swift */; };
+		FC19CA8C1DD0D93D00767B8B /* WCQuestionAnswerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC19CA541DD0D93D00767B8B /* WCQuestionAnswerView.swift */; };
+		FC19CA8D1DD0D93D00767B8B /* WCQuestionCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC19CA561DD0D93D00767B8B /* WCQuestionCollectionView.swift */; };
+		FC19CA8E1DD0D93D00767B8B /* WCQuestionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC19CA571DD0D93D00767B8B /* WCQuestionCollectionViewCell.swift */; };
+		FC19CA8F1DD0D93D00767B8B /* WCQuestionCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC19CA581DD0D93D00767B8B /* WCQuestionCollectionViewFlowLayout.swift */; };
+		FC19CA901DD0D93D00767B8B /* WCQuestionTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC19CA5A1DD0D93D00767B8B /* WCQuestionTitleView.swift */; };
+		FC19CA911DD0D93D00767B8B /* WCIntroduceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC19CA5D1DD0D93D00767B8B /* WCIntroduceCollectionViewCell.swift */; };
+		FC19CA921DD0D93D00767B8B /* WCIntroduceCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC19CA5E1DD0D93D00767B8B /* WCIntroduceCollectionViewFlowLayout.swift */; };
+		FC19CA931DD0D93D00767B8B /* WCListEmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC19CA611DD0D93D00767B8B /* WCListEmptyView.xib */; };
+		FC19CA941DD0D93D00767B8B /* WCAddToListPopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC19CA631DD0D93D00767B8B /* WCAddToListPopView.swift */; };
+		FC19CA951DD0D93D00767B8B /* WCAddToListPopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC19CA641DD0D93D00767B8B /* WCAddToListPopView.xib */; };
+		FC19CA961DD0D93D00767B8B /* WCDeleteListPopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC19CA651DD0D93D00767B8B /* WCDeleteListPopView.swift */; };
+		FC19CA971DD0D93D00767B8B /* WCDeleteListPopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC19CA661DD0D93D00767B8B /* WCDeleteListPopView.xib */; };
+		FC19CA981DD0D93D00767B8B /* WCNewListPopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC19CA671DD0D93D00767B8B /* WCNewListPopView.swift */; };
+		FC19CA991DD0D93D00767B8B /* WCNewListPopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC19CA681DD0D93D00767B8B /* WCNewListPopView.xib */; };
+		FC19CA9A1DD0D93D00767B8B /* WCRenameListPopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC19CA691DD0D93D00767B8B /* WCRenameListPopView.swift */; };
+		FC19CA9B1DD0D93D00767B8B /* WCRenameListPopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC19CA6A1DD0D93D00767B8B /* WCRenameListPopView.xib */; };
+		FC19CA9C1DD0D93D00767B8B /* WCSegmentTapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC19CA6C1DD0D93D00767B8B /* WCSegmentTapView.swift */; };
+		FC19CA9D1DD0D93D00767B8B /* WCWordPlayScrollCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC19CA6F1DD0D93D00767B8B /* WCWordPlayScrollCollectionViewCell.swift */; };
+		FC19CA9E1DD0D93D00767B8B /* WCWordPlayScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC19CA701DD0D93D00767B8B /* WCWordPlayScrollView.swift */; };
+		FC19CA9F1DD0D93D00767B8B /* WCWordPlayScrollViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC19CA711DD0D93D00767B8B /* WCWordPlayScrollViewDataSource.swift */; };
+		FC19CAA01DD0D93D00767B8B /* WCWordPlayScrollViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC19CA721DD0D93D00767B8B /* WCWordPlayScrollViewFlowLayout.swift */; };
+		FC19CAA11DD0D93D00767B8B /* WCSettingContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC19CA741DD0D93D00767B8B /* WCSettingContentView.swift */; };
+		FC19CAA21DD0D93D00767B8B /* WCSettingTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC19CA751DD0D93D00767B8B /* WCSettingTagView.swift */; };
+		FC19CAA31DD0D93D00767B8B /* WCWordPlaySettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC19CA761DD0D93D00767B8B /* WCWordPlaySettingView.swift */; };
+		FC19CAA41DD0D93D00767B8B /* WCWordPlayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC19CA781DD0D93D00767B8B /* WCWordPlayCollectionViewCell.swift */; };
+		FC19CAA51DD0D93D00767B8B /* WCWordPlayCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC19CA791DD0D93D00767B8B /* WCWordPlayCollectionViewFlowLayout.swift */; };
+		FC19CAA61DD0D93D00767B8B /* WCWordPlayCollectionViewLayoutAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC19CA7A1DD0D93D00767B8B /* WCWordPlayCollectionViewLayoutAttributes.swift */; };
+		FC19CAA71DD0D93D00767B8B /* WCWordPlaySentenceContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC19CA7B1DD0D93D00767B8B /* WCWordPlaySentenceContentView.swift */; };
+		FC19CAA81DD0D93D00767B8B /* WCWordPlaySentenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC19CA7C1DD0D93D00767B8B /* WCWordPlaySentenceView.swift */; };
+		FC19CAA91DD0D93D00767B8B /* WCWordPlayTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC19CA7D1DD0D93D00767B8B /* WCWordPlayTableView.swift */; };
+		FC19CAAA1DD0D93D00767B8B /* WCWordPlayTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC19CA7E1DD0D93D00767B8B /* WCWordPlayTableViewDataSource.swift */; };
+		FC19CAAB1DD0D93D00767B8B /* WCSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC19CA811DD0D93D00767B8B /* WCSearchTableViewCell.swift */; };
+		FC19CAAD1DD0D93D00767B8B /* WCLessonChooseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC19CA861DD0D93D00767B8B /* WCLessonChooseCell.swift */; };
+		FC19CAAE1DD0D93D00767B8B /* WCLessonChooseCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC19CA871DD0D93D00767B8B /* WCLessonChooseCollectionViewFlowLayout.swift */; };
+		FC19CAAF1DD0D93D00767B8B /* WCLessonChooseTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC19CA881DD0D93D00767B8B /* WCLessonChooseTableView.swift */; };
+		FC19CAB01DD0D93D00767B8B /* WCFlipTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC19CA8A1DD0D93D00767B8B /* WCFlipTableView.swift */; };
+		FC321E981D81BBF80026ADD4 /* Vocabulary.json in Resources */ = {isa = PBXBuildFile; fileRef = FC321E971D81BBF80026ADD4 /* Vocabulary.json */; };
+		FC4630CC1BBD9D9600CB0483 /* DFHeiStd-W3.otf in Resources */ = {isa = PBXBuildFile; fileRef = FC3BEB031BB4307A00926847 /* DFHeiStd-W3.otf */; };
+		FC4630CD1BBD9D9600CB0483 /* DFHeiStd-W5.otf in Resources */ = {isa = PBXBuildFile; fileRef = FC3BEB041BB4307A00926847 /* DFHeiStd-W5.otf */; };
+		FC4630CE1BBD9D9600CB0483 /* DFHeiStd-W7.otf in Resources */ = {isa = PBXBuildFile; fileRef = FC3BEB051BB4307A00926847 /* DFHeiStd-W7.otf */; };
+		FC4630CF1BBD9D9600CB0483 /* DFHeiStd-W9.otf in Resources */ = {isa = PBXBuildFile; fileRef = FC3BEB061BB4307A00926847 /* DFHeiStd-W9.otf */; };
+		FC4630D01BBD9D9600CB0483 /* DFHeiStd-W12.otf in Resources */ = {isa = PBXBuildFile; fileRef = FC3BEB071BB4307A00926847 /* DFHeiStd-W12.otf */; };
+		FC4630D11BBD9D9600CB0483 /* Futura.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FC3BEB081BB4308200926847 /* Futura.ttf */; };
+		FC659CED1C341FAC00F10835 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC659CEC1C341FAC00F10835 /* AudioToolbox.framework */; };
+		FCF99FE91BB99D4800B9FA3F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCF99FE81BB99D4800B9FA3F /* AVFoundation.framework */; };
+		FCF99FEB1BB99D5200B9FA3F /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCF99FEA1BB99D5200B9FA3F /* CoreAudio.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F64D3DD21B863AF900E3D671 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F64D3DB21B863AF800E3D671 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F64D3DB91B863AF800E3D671;
+			remoteInfo = Swallow;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		02F2937FD3FCFEE7E9F195D4 /* Pods-VocabuLazy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VocabuLazy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VocabuLazy/Pods-VocabuLazy.debug.xcconfig"; sourceTree = "<group>"; };
+		1DA0621A1DA2C10B007EFF73 /* Swallow-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Swallow-Bridging-Header.h"; sourceTree = "<group>"; };
+		327D75BB416590E68C8B9224 /* Pods-VocabuLazy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VocabuLazy.release.xcconfig"; path = "Pods/Target Support Files/Pods-VocabuLazy/Pods-VocabuLazy.release.xcconfig"; sourceTree = "<group>"; };
+		6A6FAF6386C1DD24F845A1C1 /* Pods_VocabuLazyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VocabuLazyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7EBC14351DEFEF2C4348B5E0 /* Pods_VocabuLazy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VocabuLazy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD6AF82EB605D615FA930E99 /* Pods-VocabuLazyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VocabuLazyTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-VocabuLazyTests/Pods-VocabuLazyTests.release.xcconfig"; sourceTree = "<group>"; };
+		C63E71DBEEE05AC942E2F69A /* Pods-VocabuLazyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VocabuLazyTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VocabuLazyTests/Pods-VocabuLazyTests.debug.xcconfig"; sourceTree = "<group>"; };
+		F60564A21CD2103A00E7993D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		F64D3DBA1B863AF800E3D671 /* VocabuLazy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VocabuLazy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F64D3DBE1B863AF800E3D671 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F64D3DBF1B863AF800E3D671 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F64D3DC61B863AF800E3D671 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F64D3DCB1B863AF800E3D671 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		F64D3DD11B863AF900E3D671 /* VocabuLazyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VocabuLazyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F64D3DD61B863AF900E3D671 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F64D3DD71B863AF900E3D671 /* VocabuLazyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabuLazyTests.swift; sourceTree = "<group>"; };
+		F6FF400B1B95516B006A381D /* StorageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StorageManager.swift; path = VocabuLazy/LocalStorage/StorageManager.swift; sourceTree = "<group>"; };
+		FC03AE811B87802B00A7A83D /* phonetic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = phonetic.ttf; sourceTree = "<group>"; };
+		FC03AE841B87808B00A7A83D /* HuaKangMBlack.TTC */ = {isa = PBXFileReference; lastKnownFileType = file; path = HuaKangMBlack.TTC; sourceTree = "<group>"; };
+		FC1870D51C4005B800301D9A /* kk.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = kk.ttf; sourceTree = "<group>"; };
+		FC19CA071DD0D8BE00767B8B /* AnalyticsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsModel.swift; sourceTree = "<group>"; };
+		FC19CA081DD0D8BE00767B8B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FC19CA091DD0D8BE00767B8B /* WCListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCListViewModel.swift; sourceTree = "<group>"; };
+		FC19CA0A1DD0D8BE00767B8B /* WCSearchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCSearchViewModel.swift; sourceTree = "<group>"; };
+		FC19CA0B1DD0D8BE00767B8B /* WCSettingContentModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCSettingContentModel.swift; sourceTree = "<group>"; };
+		FC19CA0C1DD0D8BE00767B8B /* WCVocabularyModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCVocabularyModel.swift; sourceTree = "<group>"; };
+		FC19CA151DD0D8DE00767B8B /* WCColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCColor.swift; sourceTree = "<group>"; };
+		FC19CA171DD0D8DE00767B8B /* WCMaterialButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCMaterialButton.swift; sourceTree = "<group>"; };
+		FC19CA191DD0D8DE00767B8B /* WCUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCUtility.swift; sourceTree = "<group>"; };
+		FC19CA1C1DD0D8DE00767B8B /* WCWordBackgroundHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCWordBackgroundHandler.swift; sourceTree = "<group>"; };
+		FC19CA1E1DD0D8DE00767B8B /* WCWordForegroundHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCWordForegroundHandler.swift; sourceTree = "<group>"; };
+		FC19CA1F1DD0D8DE00767B8B /* WCWordGroundHandlerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCWordGroundHandlerProtocol.swift; sourceTree = "<group>"; };
+		FC19CA211DD0D8DE00767B8B /* WCWordSpeechPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCWordSpeechPlayer.swift; sourceTree = "<group>"; };
+		FC19CA221DD0D8DE00767B8B /* WCWordSpeechQueuePlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCWordSpeechQueuePlayer.swift; sourceTree = "<group>"; };
+		FC19CA2D1DD0D90900767B8B /* EHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EHomeViewController.swift; sourceTree = "<group>"; };
+		FC19CA2E1DD0D90900767B8B /* EListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EListTableViewController.swift; sourceTree = "<group>"; };
+		FC19CA2F1DD0D90900767B8B /* ResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		FC19CA301DD0D90900767B8B /* WCExamChooseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCExamChooseViewController.swift; sourceTree = "<group>"; };
+		FC19CA311DD0D90900767B8B /* WCExamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCExamViewController.swift; sourceTree = "<group>"; };
+		FC19CA321DD0D90900767B8B /* WCFlipViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCFlipViewController.swift; sourceTree = "<group>"; };
+		FC19CA331DD0D90900767B8B /* WCQuestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCQuestionViewController.swift; sourceTree = "<group>"; };
+		FC19CA351DD0D90900767B8B /* WCMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCMainViewController.swift; sourceTree = "<group>"; };
+		FC19CA371DD0D90900767B8B /* WCInformationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCInformationViewController.swift; sourceTree = "<group>"; };
+		FC19CA381DD0D90900767B8B /* WCIntroduceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCIntroduceViewController.swift; sourceTree = "<group>"; };
+		FC19CA3A1DD0D90900767B8B /* WCListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCListViewController.swift; sourceTree = "<group>"; };
+		FC19CA3C1DD0D90900767B8B /* WCWordPlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCWordPlayViewController.swift; sourceTree = "<group>"; };
+		FC19CA3E1DD0D90900767B8B /* WCSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCSearchViewController.swift; sourceTree = "<group>"; };
+		FC19CA401DD0D90900767B8B /* WCLessonChooseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCLessonChooseViewController.swift; sourceTree = "<group>"; };
+		FC19CA521DD0D93D00767B8B /* WCExamResultView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCExamResultView.swift; sourceTree = "<group>"; };
+		FC19CA541DD0D93D00767B8B /* WCQuestionAnswerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCQuestionAnswerView.swift; sourceTree = "<group>"; };
+		FC19CA561DD0D93D00767B8B /* WCQuestionCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCQuestionCollectionView.swift; sourceTree = "<group>"; };
+		FC19CA571DD0D93D00767B8B /* WCQuestionCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCQuestionCollectionViewCell.swift; sourceTree = "<group>"; };
+		FC19CA581DD0D93D00767B8B /* WCQuestionCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCQuestionCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
+		FC19CA5A1DD0D93D00767B8B /* WCQuestionTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCQuestionTitleView.swift; sourceTree = "<group>"; };
+		FC19CA5D1DD0D93D00767B8B /* WCIntroduceCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCIntroduceCollectionViewCell.swift; sourceTree = "<group>"; };
+		FC19CA5E1DD0D93D00767B8B /* WCIntroduceCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCIntroduceCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
+		FC19CA611DD0D93D00767B8B /* WCListEmptyView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WCListEmptyView.xib; sourceTree = "<group>"; };
+		FC19CA631DD0D93D00767B8B /* WCAddToListPopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCAddToListPopView.swift; sourceTree = "<group>"; };
+		FC19CA641DD0D93D00767B8B /* WCAddToListPopView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WCAddToListPopView.xib; sourceTree = "<group>"; };
+		FC19CA651DD0D93D00767B8B /* WCDeleteListPopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCDeleteListPopView.swift; sourceTree = "<group>"; };
+		FC19CA661DD0D93D00767B8B /* WCDeleteListPopView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WCDeleteListPopView.xib; sourceTree = "<group>"; };
+		FC19CA671DD0D93D00767B8B /* WCNewListPopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCNewListPopView.swift; sourceTree = "<group>"; };
+		FC19CA681DD0D93D00767B8B /* WCNewListPopView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WCNewListPopView.xib; sourceTree = "<group>"; };
+		FC19CA691DD0D93D00767B8B /* WCRenameListPopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCRenameListPopView.swift; sourceTree = "<group>"; };
+		FC19CA6A1DD0D93D00767B8B /* WCRenameListPopView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WCRenameListPopView.xib; sourceTree = "<group>"; };
+		FC19CA6C1DD0D93D00767B8B /* WCSegmentTapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCSegmentTapView.swift; sourceTree = "<group>"; };
+		FC19CA6F1DD0D93D00767B8B /* WCWordPlayScrollCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCWordPlayScrollCollectionViewCell.swift; sourceTree = "<group>"; };
+		FC19CA701DD0D93D00767B8B /* WCWordPlayScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCWordPlayScrollView.swift; sourceTree = "<group>"; };
+		FC19CA711DD0D93D00767B8B /* WCWordPlayScrollViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCWordPlayScrollViewDataSource.swift; sourceTree = "<group>"; };
+		FC19CA721DD0D93D00767B8B /* WCWordPlayScrollViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCWordPlayScrollViewFlowLayout.swift; sourceTree = "<group>"; };
+		FC19CA741DD0D93D00767B8B /* WCSettingContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCSettingContentView.swift; sourceTree = "<group>"; };
+		FC19CA751DD0D93D00767B8B /* WCSettingTagView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCSettingTagView.swift; sourceTree = "<group>"; };
+		FC19CA761DD0D93D00767B8B /* WCWordPlaySettingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCWordPlaySettingView.swift; sourceTree = "<group>"; };
+		FC19CA781DD0D93D00767B8B /* WCWordPlayCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCWordPlayCollectionViewCell.swift; sourceTree = "<group>"; };
+		FC19CA791DD0D93D00767B8B /* WCWordPlayCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCWordPlayCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
+		FC19CA7A1DD0D93D00767B8B /* WCWordPlayCollectionViewLayoutAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCWordPlayCollectionViewLayoutAttributes.swift; sourceTree = "<group>"; };
+		FC19CA7B1DD0D93D00767B8B /* WCWordPlaySentenceContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCWordPlaySentenceContentView.swift; sourceTree = "<group>"; };
+		FC19CA7C1DD0D93D00767B8B /* WCWordPlaySentenceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCWordPlaySentenceView.swift; sourceTree = "<group>"; };
+		FC19CA7D1DD0D93D00767B8B /* WCWordPlayTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCWordPlayTableView.swift; sourceTree = "<group>"; };
+		FC19CA7E1DD0D93D00767B8B /* WCWordPlayTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCWordPlayTableViewDataSource.swift; sourceTree = "<group>"; };
+		FC19CA811DD0D93D00767B8B /* WCSearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCSearchTableViewCell.swift; sourceTree = "<group>"; };
+		FC19CA861DD0D93D00767B8B /* WCLessonChooseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCLessonChooseCell.swift; sourceTree = "<group>"; };
+		FC19CA871DD0D93D00767B8B /* WCLessonChooseCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCLessonChooseCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
+		FC19CA881DD0D93D00767B8B /* WCLessonChooseTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCLessonChooseTableView.swift; sourceTree = "<group>"; };
+		FC19CA8A1DD0D93D00767B8B /* WCFlipTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCFlipTableView.swift; sourceTree = "<group>"; };
+		FC321E971D81BBF80026ADD4 /* Vocabulary.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Vocabulary.json; path = VocabuLazy/LocalStorage/Vocabulary.json; sourceTree = "<group>"; };
+		FC3BEB031BB4307A00926847 /* DFHeiStd-W3.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DFHeiStd-W3.otf"; sourceTree = "<group>"; };
+		FC3BEB041BB4307A00926847 /* DFHeiStd-W5.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DFHeiStd-W5.otf"; sourceTree = "<group>"; };
+		FC3BEB051BB4307A00926847 /* DFHeiStd-W7.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DFHeiStd-W7.otf"; sourceTree = "<group>"; };
+		FC3BEB061BB4307A00926847 /* DFHeiStd-W9.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DFHeiStd-W9.otf"; sourceTree = "<group>"; };
+		FC3BEB071BB4307A00926847 /* DFHeiStd-W12.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DFHeiStd-W12.otf"; sourceTree = "<group>"; };
+		FC3BEB081BB4308200926847 /* Futura.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Futura.ttf; sourceTree = "<group>"; };
+		FC659CEC1C341FAC00F10835 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		FCF99FE81BB99D4800B9FA3F /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		FCF99FEA1BB99D5200B9FA3F /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F64D3DB71B863AF800E3D671 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FC659CED1C341FAC00F10835 /* AudioToolbox.framework in Frameworks */,
+				FCF99FEB1BB99D5200B9FA3F /* CoreAudio.framework in Frameworks */,
+				FCF99FE91BB99D4800B9FA3F /* AVFoundation.framework in Frameworks */,
+				0DF49B9275FA3247884DA1A8 /* Pods_VocabuLazy.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F64D3DCE1B863AF900E3D671 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F44EBB12047345975BEC72B8 /* Pods_VocabuLazyTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D310EB887B6E0860A79F7923 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				02F2937FD3FCFEE7E9F195D4 /* Pods-VocabuLazy.debug.xcconfig */,
+				327D75BB416590E68C8B9224 /* Pods-VocabuLazy.release.xcconfig */,
+				C63E71DBEEE05AC942E2F69A /* Pods-VocabuLazyTests.debug.xcconfig */,
+				BD6AF82EB605D615FA930E99 /* Pods-VocabuLazyTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		F64D3DB11B863AF800E3D671 = {
+			isa = PBXGroup;
+			children = (
+				F64D3DBC1B863AF800E3D671 /* VocabuLazy */,
+				F64D3DD41B863AF900E3D671 /* VocabuLazyTests */,
+				F64D3DBB1B863AF800E3D671 /* Products */,
+				FCF99FE71BB99D1E00B9FA3F /* Frameworks */,
+				D310EB887B6E0860A79F7923 /* Pods */,
+			);
+			sourceTree = "<group>";
+		};
+		F64D3DBB1B863AF800E3D671 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F64D3DBA1B863AF800E3D671 /* VocabuLazy.app */,
+				F64D3DD11B863AF900E3D671 /* VocabuLazyTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F64D3DBC1B863AF800E3D671 /* VocabuLazy */ = {
+			isa = PBXGroup;
+			children = (
+				FC19CA051DD0D8BE00767B8B /* Models */,
+				FC19CA4F1DD0D93D00767B8B /* Views */,
+				FC19CA2B1DD0D90900767B8B /* ViewControllers */,
+				FC19CA131DD0D8DE00767B8B /* CustomLibraries */,
+				F6B6271E1B941BBF0072A40B /* LocalStorage */,
+				FC72572E1B8765B000836719 /* ThirdParties */,
+				F64D3DBF1B863AF800E3D671 /* AppDelegate.swift */,
+				F64D3DC51B863AF800E3D671 /* Main.storyboard */,
+				F64D3DCA1B863AF800E3D671 /* LaunchScreen.xib */,
+				F60564A21CD2103A00E7993D /* Images.xcassets */,
+				F64D3DBD1B863AF800E3D671 /* Supporting Files */,
+			);
+			path = VocabuLazy;
+			sourceTree = "<group>";
+		};
+		F64D3DBD1B863AF800E3D671 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F64D3DBE1B863AF800E3D671 /* Info.plist */,
+				1DA0621A1DA2C10B007EFF73 /* Swallow-Bridging-Header.h */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F64D3DD41B863AF900E3D671 /* VocabuLazyTests */ = {
+			isa = PBXGroup;
+			children = (
+				F64D3DD71B863AF900E3D671 /* VocabuLazyTests.swift */,
+				F64D3DD51B863AF900E3D671 /* Supporting Files */,
+			);
+			path = VocabuLazyTests;
+			sourceTree = "<group>";
+		};
+		F64D3DD51B863AF900E3D671 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F64D3DD61B863AF900E3D671 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F6B6271E1B941BBF0072A40B /* LocalStorage */ = {
+			isa = PBXGroup;
+			children = (
+				F6FF400B1B95516B006A381D /* StorageManager.swift */,
+				FC321E971D81BBF80026ADD4 /* Vocabulary.json */,
+			);
+			name = LocalStorage;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		FC03AE7F1B877C1100A7A83D /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				FC1870D51C4005B800301D9A /* kk.ttf */,
+				FC03AE841B87808B00A7A83D /* HuaKangMBlack.TTC */,
+				FC03AE811B87802B00A7A83D /* phonetic.ttf */,
+				FC3BEB031BB4307A00926847 /* DFHeiStd-W3.otf */,
+				FC3BEB041BB4307A00926847 /* DFHeiStd-W5.otf */,
+				FC3BEB051BB4307A00926847 /* DFHeiStd-W7.otf */,
+				FC3BEB061BB4307A00926847 /* DFHeiStd-W9.otf */,
+				FC3BEB071BB4307A00926847 /* DFHeiStd-W12.otf */,
+				FC3BEB081BB4308200926847 /* Futura.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		FC19CA051DD0D8BE00767B8B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FC19CA061DD0D8BE00767B8B /* Analytics */,
+				FC19CA091DD0D8BE00767B8B /* WCListViewModel.swift */,
+				FC19CA0A1DD0D8BE00767B8B /* WCSearchViewModel.swift */,
+				FC19CA0B1DD0D8BE00767B8B /* WCSettingContentModel.swift */,
+				FC19CA0C1DD0D8BE00767B8B /* WCVocabularyModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		FC19CA061DD0D8BE00767B8B /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				FC19CA071DD0D8BE00767B8B /* AnalyticsModel.swift */,
+				FC19CA081DD0D8BE00767B8B /* GoogleService-Info.plist */,
+			);
+			path = Analytics;
+			sourceTree = "<group>";
+		};
+		FC19CA131DD0D8DE00767B8B /* CustomLibraries */ = {
+			isa = PBXGroup;
+			children = (
+				FC19CA141DD0D8DE00767B8B /* WCColor */,
+				FC19CA161DD0D8DE00767B8B /* WCMaterialButton */,
+				FC19CA181DD0D8DE00767B8B /* WCUtility */,
+				FC19CA1A1DD0D8DE00767B8B /* WCWordGroundHandler */,
+				FC19CA201DD0D8DE00767B8B /* WCWordSpeechPlayer */,
+			);
+			path = CustomLibraries;
+			sourceTree = "<group>";
+		};
+		FC19CA141DD0D8DE00767B8B /* WCColor */ = {
+			isa = PBXGroup;
+			children = (
+				FC19CA151DD0D8DE00767B8B /* WCColor.swift */,
+			);
+			path = WCColor;
+			sourceTree = "<group>";
+		};
+		FC19CA161DD0D8DE00767B8B /* WCMaterialButton */ = {
+			isa = PBXGroup;
+			children = (
+				FC19CA171DD0D8DE00767B8B /* WCMaterialButton.swift */,
+			);
+			path = WCMaterialButton;
+			sourceTree = "<group>";
+		};
+		FC19CA181DD0D8DE00767B8B /* WCUtility */ = {
+			isa = PBXGroup;
+			children = (
+				FC19CA191DD0D8DE00767B8B /* WCUtility.swift */,
+			);
+			path = WCUtility;
+			sourceTree = "<group>";
+		};
+		FC19CA1A1DD0D8DE00767B8B /* WCWordGroundHandler */ = {
+			isa = PBXGroup;
+			children = (
+				FC19CA1B1DD0D8DE00767B8B /* WCWordBackgroundHandler */,
+				FC19CA1D1DD0D8DE00767B8B /* WCWordForegroundHandler */,
+				FC19CA1F1DD0D8DE00767B8B /* WCWordGroundHandlerProtocol.swift */,
+			);
+			path = WCWordGroundHandler;
+			sourceTree = "<group>";
+		};
+		FC19CA1B1DD0D8DE00767B8B /* WCWordBackgroundHandler */ = {
+			isa = PBXGroup;
+			children = (
+				FC19CA1C1DD0D8DE00767B8B /* WCWordBackgroundHandler.swift */,
+			);
+			path = WCWordBackgroundHandler;
+			sourceTree = "<group>";
+		};
+		FC19CA1D1DD0D8DE00767B8B /* WCWordForegroundHandler */ = {
+			isa = PBXGroup;
+			children = (
+				FC19CA1E1DD0D8DE00767B8B /* WCWordForegroundHandler.swift */,
+			);
+			path = WCWordForegroundHandler;
+			sourceTree = "<group>";
+		};
+		FC19CA201DD0D8DE00767B8B /* WCWordSpeechPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				FC19CA211DD0D8DE00767B8B /* WCWordSpeechPlayer.swift */,
+				FC19CA221DD0D8DE00767B8B /* WCWordSpeechQueuePlayer.swift */,
+			);
+			path = WCWordSpeechPlayer;
+			sourceTree = "<group>";
+		};
+		FC19CA2B1DD0D90900767B8B /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				FC19CA2C1DD0D90900767B8B /* EXAM */,
+				FC19CA341DD0D90900767B8B /* HOME */,
+				FC19CA361DD0D90900767B8B /* INFO */,
+				FC19CA391DD0D90900767B8B /* LIST */,
+				FC19CA3B1DD0D90900767B8B /* PLAYLIST */,
+				FC19CA3D1DD0D90900767B8B /* SEARCH */,
+				FC19CA3F1DD0D90900767B8B /* UNIT */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		FC19CA2C1DD0D90900767B8B /* EXAM */ = {
+			isa = PBXGroup;
+			children = (
+				FC19CA2D1DD0D90900767B8B /* EHomeViewController.swift */,
+				FC19CA2E1DD0D90900767B8B /* EListTableViewController.swift */,
+				FC19CA2F1DD0D90900767B8B /* ResultViewController.swift */,
+				FC19CA301DD0D90900767B8B /* WCExamChooseViewController.swift */,
+				FC19CA311DD0D90900767B8B /* WCExamViewController.swift */,
+				FC19CA321DD0D90900767B8B /* WCFlipViewController.swift */,
+				FC19CA331DD0D90900767B8B /* WCQuestionViewController.swift */,
+			);
+			path = EXAM;
+			sourceTree = "<group>";
+		};
+		FC19CA341DD0D90900767B8B /* HOME */ = {
+			isa = PBXGroup;
+			children = (
+				FC19CA351DD0D90900767B8B /* WCMainViewController.swift */,
+			);
+			path = HOME;
+			sourceTree = "<group>";
+		};
+		FC19CA361DD0D90900767B8B /* INFO */ = {
+			isa = PBXGroup;
+			children = (
+				FC19CA371DD0D90900767B8B /* WCInformationViewController.swift */,
+				FC19CA381DD0D90900767B8B /* WCIntroduceViewController.swift */,
+			);
+			path = INFO;
+			sourceTree = "<group>";
+		};
+		FC19CA391DD0D90900767B8B /* LIST */ = {
+			isa = PBXGroup;
+			children = (
+				FC19CA3A1DD0D90900767B8B /* WCListViewController.swift */,
+			);
+			path = LIST;
+			sourceTree = "<group>";
+		};
+		FC19CA3B1DD0D90900767B8B /* PLAYLIST */ = {
+			isa = PBXGroup;
+			children = (
+				FC19CA3C1DD0D90900767B8B /* WCWordPlayViewController.swift */,
+			);
+			path = PLAYLIST;
+			sourceTree = "<group>";
+		};
+		FC19CA3D1DD0D90900767B8B /* SEARCH */ = {
+			isa = PBXGroup;
+			children = (
+				FC19CA3E1DD0D90900767B8B /* WCSearchViewController.swift */,
+			);
+			path = SEARCH;
+			sourceTree = "<group>";
+		};
+		FC19CA3F1DD0D90900767B8B /* UNIT */ = {
+			isa = PBXGroup;
+			children = (
+				FC19CA401DD0D90900767B8B /* WCLessonChooseViewController.swift */,
+			);
+			path = UNIT;
+			sourceTree = "<group>";
+		};
+		FC19CA4F1DD0D93D00767B8B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FC19CA501DD0D93D00767B8B /* EXAM */,
+				FC19CA5B1DD0D93D00767B8B /* INFO */,
+				FC19CA5F1DD0D93D00767B8B /* LIST */,
+				FC19CA6D1DD0D93D00767B8B /* PLAYLIST */,
+				FC19CA7F1DD0D93D00767B8B /* SEARCH */,
+				FC19CA821DD0D93D00767B8B /* UNIT */,
+				FC19CA891DD0D93D00767B8B /* WCFlipTableView */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		FC19CA501DD0D93D00767B8B /* EXAM */ = {
+			isa = PBXGroup;
+			children = (
+				FC19CA511DD0D93D00767B8B /* WCExamResultView */,
+				FC19CA531DD0D93D00767B8B /* WCQuestionAnswerView */,
+				FC19CA551DD0D93D00767B8B /* WCQuestionCollectionView */,
+				FC19CA591DD0D93D00767B8B /* WCQuestionTitleView */,
+			);
+			path = EXAM;
+			sourceTree = "<group>";
+		};
+		FC19CA511DD0D93D00767B8B /* WCExamResultView */ = {
+			isa = PBXGroup;
+			children = (
+				FC19CA521DD0D93D00767B8B /* WCExamResultView.swift */,
+			);
+			path = WCExamResultView;
+			sourceTree = "<group>";
+		};
+		FC19CA531DD0D93D00767B8B /* WCQuestionAnswerView */ = {
+			isa = PBXGroup;
+			children = (
+				FC19CA541DD0D93D00767B8B /* WCQuestionAnswerView.swift */,
+			);
+			path = WCQuestionAnswerView;
+			sourceTree = "<group>";
+		};
+		FC19CA551DD0D93D00767B8B /* WCQuestionCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				FC19CA561DD0D93D00767B8B /* WCQuestionCollectionView.swift */,
+				FC19CA571DD0D93D00767B8B /* WCQuestionCollectionViewCell.swift */,
+				FC19CA581DD0D93D00767B8B /* WCQuestionCollectionViewFlowLayout.swift */,
+			);
+			path = WCQuestionCollectionView;
+			sourceTree = "<group>";
+		};
+		FC19CA591DD0D93D00767B8B /* WCQuestionTitleView */ = {
+			isa = PBXGroup;
+			children = (
+				FC19CA5A1DD0D93D00767B8B /* WCQuestionTitleView.swift */,
+			);
+			path = WCQuestionTitleView;
+			sourceTree = "<group>";
+		};
+		FC19CA5B1DD0D93D00767B8B /* INFO */ = {
+			isa = PBXGroup;
+			children = (
+				FC19CA5C1DD0D93D00767B8B /* WCIntroduceCollectionView */,
+			);
+			path = INFO;
+			sourceTree = "<group>";
+		};
+		FC19CA5C1DD0D93D00767B8B /* WCIntroduceCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				FC19CA5D1DD0D93D00767B8B /* WCIntroduceCollectionViewCell.swift */,
+				FC19CA5E1DD0D93D00767B8B /* WCIntroduceCollectionViewFlowLayout.swift */,
+			);
+			path = WCIntroduceCollectionView;
+			sourceTree = "<group>";
+		};
+		FC19CA5F1DD0D93D00767B8B /* LIST */ = {
+			isa = PBXGroup;
+			children = (
+				FC19CA601DD0D93D00767B8B /* WCListEmptyView */,
+				FC19CA621DD0D93D00767B8B /* WCPopView */,
+				FC19CA6B1DD0D93D00767B8B /* WCSegmentTapView */,
+			);
+			path = LIST;
+			sourceTree = "<group>";
+		};
+		FC19CA601DD0D93D00767B8B /* WCListEmptyView */ = {
+			isa = PBXGroup;
+			children = (
+				FC19CA611DD0D93D00767B8B /* WCListEmptyView.xib */,
+			);
+			path = WCListEmptyView;
+			sourceTree = "<group>";
+		};
+		FC19CA621DD0D93D00767B8B /* WCPopView */ = {
+			isa = PBXGroup;
+			children = (
+				FC19CA631DD0D93D00767B8B /* WCAddToListPopView.swift */,
+				FC19CA641DD0D93D00767B8B /* WCAddToListPopView.xib */,
+				FC19CA651DD0D93D00767B8B /* WCDeleteListPopView.swift */,
+				FC19CA661DD0D93D00767B8B /* WCDeleteListPopView.xib */,
+				FC19CA671DD0D93D00767B8B /* WCNewListPopView.swift */,
+				FC19CA681DD0D93D00767B8B /* WCNewListPopView.xib */,
+				FC19CA691DD0D93D00767B8B /* WCRenameListPopView.swift */,
+				FC19CA6A1DD0D93D00767B8B /* WCRenameListPopView.xib */,
+			);
+			path = WCPopView;
+			sourceTree = "<group>";
+		};
+		FC19CA6B1DD0D93D00767B8B /* WCSegmentTapView */ = {
+			isa = PBXGroup;
+			children = (
+				FC19CA6C1DD0D93D00767B8B /* WCSegmentTapView.swift */,
+			);
+			path = WCSegmentTapView;
+			sourceTree = "<group>";
+		};
+		FC19CA6D1DD0D93D00767B8B /* PLAYLIST */ = {
+			isa = PBXGroup;
+			children = (
+				FC19CA6E1DD0D93D00767B8B /* WCWordPlayScrollView */,
+				FC19CA731DD0D93D00767B8B /* WCWordPlaySettingView */,
+				FC19CA771DD0D93D00767B8B /* WCWordPlayTableView */,
+			);
+			path = PLAYLIST;
+			sourceTree = "<group>";
+		};
+		FC19CA6E1DD0D93D00767B8B /* WCWordPlayScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				FC19CA6F1DD0D93D00767B8B /* WCWordPlayScrollCollectionViewCell.swift */,
+				FC19CA701DD0D93D00767B8B /* WCWordPlayScrollView.swift */,
+				FC19CA711DD0D93D00767B8B /* WCWordPlayScrollViewDataSource.swift */,
+				FC19CA721DD0D93D00767B8B /* WCWordPlayScrollViewFlowLayout.swift */,
+			);
+			path = WCWordPlayScrollView;
+			sourceTree = "<group>";
+		};
+		FC19CA731DD0D93D00767B8B /* WCWordPlaySettingView */ = {
+			isa = PBXGroup;
+			children = (
+				FC19CA741DD0D93D00767B8B /* WCSettingContentView.swift */,
+				FC19CA751DD0D93D00767B8B /* WCSettingTagView.swift */,
+				FC19CA761DD0D93D00767B8B /* WCWordPlaySettingView.swift */,
+			);
+			path = WCWordPlaySettingView;
+			sourceTree = "<group>";
+		};
+		FC19CA771DD0D93D00767B8B /* WCWordPlayTableView */ = {
+			isa = PBXGroup;
+			children = (
+				FC19CA781DD0D93D00767B8B /* WCWordPlayCollectionViewCell.swift */,
+				FC19CA791DD0D93D00767B8B /* WCWordPlayCollectionViewFlowLayout.swift */,
+				FC19CA7A1DD0D93D00767B8B /* WCWordPlayCollectionViewLayoutAttributes.swift */,
+				FC19CA7B1DD0D93D00767B8B /* WCWordPlaySentenceContentView.swift */,
+				FC19CA7C1DD0D93D00767B8B /* WCWordPlaySentenceView.swift */,
+				FC19CA7D1DD0D93D00767B8B /* WCWordPlayTableView.swift */,
+				FC19CA7E1DD0D93D00767B8B /* WCWordPlayTableViewDataSource.swift */,
+			);
+			path = WCWordPlayTableView;
+			sourceTree = "<group>";
+		};
+		FC19CA7F1DD0D93D00767B8B /* SEARCH */ = {
+			isa = PBXGroup;
+			children = (
+				FC19CA801DD0D93D00767B8B /* WCSearchView */,
+			);
+			path = SEARCH;
+			sourceTree = "<group>";
+		};
+		FC19CA801DD0D93D00767B8B /* WCSearchView */ = {
+			isa = PBXGroup;
+			children = (
+				FC19CA811DD0D93D00767B8B /* WCSearchTableViewCell.swift */,
+			);
+			path = WCSearchView;
+			sourceTree = "<group>";
+		};
+		FC19CA821DD0D93D00767B8B /* UNIT */ = {
+			isa = PBXGroup;
+			children = (
+				FC19CA851DD0D93D00767B8B /* WCLessonChooseTalbeView */,
+			);
+			path = UNIT;
+			sourceTree = "<group>";
+		};
+		FC19CA851DD0D93D00767B8B /* WCLessonChooseTalbeView */ = {
+			isa = PBXGroup;
+			children = (
+				FC19CA861DD0D93D00767B8B /* WCLessonChooseCell.swift */,
+				FC19CA871DD0D93D00767B8B /* WCLessonChooseCollectionViewFlowLayout.swift */,
+				FC19CA881DD0D93D00767B8B /* WCLessonChooseTableView.swift */,
+			);
+			path = WCLessonChooseTalbeView;
+			sourceTree = "<group>";
+		};
+		FC19CA891DD0D93D00767B8B /* WCFlipTableView */ = {
+			isa = PBXGroup;
+			children = (
+				FC19CA8A1DD0D93D00767B8B /* WCFlipTableView.swift */,
+			);
+			path = WCFlipTableView;
+			sourceTree = "<group>";
+		};
+		FC72572E1B8765B000836719 /* ThirdParties */ = {
+			isa = PBXGroup;
+			children = (
+				FC03AE7F1B877C1100A7A83D /* Fonts */,
+			);
+			path = ThirdParties;
+			sourceTree = "<group>";
+		};
+		FCF99FE71BB99D1E00B9FA3F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FC659CEC1C341FAC00F10835 /* AudioToolbox.framework */,
+				FCF99FEA1BB99D5200B9FA3F /* CoreAudio.framework */,
+				FCF99FE81BB99D4800B9FA3F /* AVFoundation.framework */,
+				7EBC14351DEFEF2C4348B5E0 /* Pods_VocabuLazy.framework */,
+				6A6FAF6386C1DD24F845A1C1 /* Pods_VocabuLazyTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F64D3DB91B863AF800E3D671 /* VocabuLazy */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F64D3DDB1B863AF900E3D671 /* Build configuration list for PBXNativeTarget "VocabuLazy" */;
+			buildPhases = (
+				AD046230986C485E8D6A4B43 /* [CP] Check Pods Manifest.lock */,
+				FCE5A0191D46541B00C9DCC9 /* ShellScript */,
+				F64D3DB61B863AF800E3D671 /* Sources */,
+				F64D3DB71B863AF800E3D671 /* Frameworks */,
+				F64D3DB81B863AF800E3D671 /* Resources */,
+				1D2679611DB7CBFD00E75D8A /* ShellScript */,
+				63A28BBD4F5345AE3814E974 /* [CP] Embed Pods Frameworks */,
+				698482094699BB97612D9FBC /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = VocabuLazy;
+			productName = Swallow;
+			productReference = F64D3DBA1B863AF800E3D671 /* VocabuLazy.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F64D3DD01B863AF900E3D671 /* VocabuLazyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F64D3DDE1B863AF900E3D671 /* Build configuration list for PBXNativeTarget "VocabuLazyTests" */;
+			buildPhases = (
+				2773B57955575BA7E0CE10BE /* [CP] Check Pods Manifest.lock */,
+				F64D3DCD1B863AF900E3D671 /* Sources */,
+				F64D3DCE1B863AF900E3D671 /* Frameworks */,
+				F64D3DCF1B863AF900E3D671 /* Resources */,
+				0B8C5758F2AD8730E683FEA0 /* [CP] Embed Pods Frameworks */,
+				611FF534626EAFC999B55D0D /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F64D3DD31B863AF900E3D671 /* PBXTargetDependency */,
+			);
+			name = VocabuLazyTests;
+			productName = SwallowTests;
+			productReference = F64D3DD11B863AF900E3D671 /* VocabuLazyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F64D3DB21B863AF800E3D671 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = WC;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = WishCan;
+				TargetAttributes = {
+					F64D3DB91B863AF800E3D671 = {
+						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = FXNKTCHCNE;
+						LastSwiftMigration = 0800;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
+					};
+					F64D3DD01B863AF900E3D671 = {
+						CreatedOnToolsVersion = 6.4;
+						LastSwiftMigration = 0800;
+						TestTargetID = F64D3DB91B863AF800E3D671;
+					};
+				};
+			};
+			buildConfigurationList = F64D3DB51B863AF800E3D671 /* Build configuration list for PBXProject "VocabuLazy" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F64D3DB11B863AF800E3D671;
+			productRefGroup = F64D3DBB1B863AF800E3D671 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F64D3DB91B863AF800E3D671 /* VocabuLazy */,
+				F64D3DD01B863AF900E3D671 /* VocabuLazyTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F64D3DB81B863AF800E3D671 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F64D3DC71B863AF800E3D671 /* Main.storyboard in Resources */,
+				FC1870D61C4005B800301D9A /* kk.ttf in Resources */,
+				FC19CA931DD0D93D00767B8B /* WCListEmptyView.xib in Resources */,
+				FC4630CC1BBD9D9600CB0483 /* DFHeiStd-W3.otf in Resources */,
+				FC321E981D81BBF80026ADD4 /* Vocabulary.json in Resources */,
+				FC4630CD1BBD9D9600CB0483 /* DFHeiStd-W5.otf in Resources */,
+				FC4630CE1BBD9D9600CB0483 /* DFHeiStd-W7.otf in Resources */,
+				FC4630CF1BBD9D9600CB0483 /* DFHeiStd-W9.otf in Resources */,
+				FC4630D01BBD9D9600CB0483 /* DFHeiStd-W12.otf in Resources */,
+				FC4630D11BBD9D9600CB0483 /* Futura.ttf in Resources */,
+				FC19CA0E1DD0D8BE00767B8B /* GoogleService-Info.plist in Resources */,
+				FC19CA971DD0D93D00767B8B /* WCDeleteListPopView.xib in Resources */,
+				FC03AE851B87808B00A7A83D /* HuaKangMBlack.TTC in Resources */,
+				FC19CA991DD0D93D00767B8B /* WCNewListPopView.xib in Resources */,
+				FC19CA9B1DD0D93D00767B8B /* WCRenameListPopView.xib in Resources */,
+				F64D3DCC1B863AF800E3D671 /* LaunchScreen.xib in Resources */,
+				FC19CA951DD0D93D00767B8B /* WCAddToListPopView.xib in Resources */,
+				F60564A31CD2103A00E7993D /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F64D3DCF1B863AF900E3D671 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0B8C5758F2AD8730E683FEA0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VocabuLazyTests/Pods-VocabuLazyTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1D2679611DB7CBFD00E75D8A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 9a4b2afb00f201293cf5fee6915e471be4ddeb81 04e35690854387746d73359d34e2f74a851f5fb5da344d4f2e9536078609d433";
+		};
+		2773B57955575BA7E0CE10BE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		611FF534626EAFC999B55D0D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VocabuLazyTests/Pods-VocabuLazyTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		63A28BBD4F5345AE3814E974 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VocabuLazy/Pods-VocabuLazy-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		698482094699BB97612D9FBC /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VocabuLazy/Pods-VocabuLazy-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AD046230986C485E8D6A4B43 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		FCE5A0191D46541B00C9DCC9 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ $CONFIGURATION == Release ]; then\necho \"Bumping build number...\"\nplist=${PROJECT_DIR}/${INFOPLIST_FILE}\n\n#increment the build number (ie 115 to 116)\nbuildnum=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${plist}\")\nif [[ \"${buildnum}\" == \"\" ]]; then\necho \"No build number in $plist\"\nexit 2\nfi\n\nbuildnum=$(expr $buildnum + 1)\n/usr/libexec/PlistBuddy -c \"Set CFBundleVersion $buildnum\" \"${plist}\"\necho \"Bumped build number to $buildnum\"\n\nelse\necho $CONFIGURATION \" build - Not bumping build number.\"\nfi";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F64D3DB61B863AF800E3D671 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FC19CA251DD0D8DE00767B8B /* WCUtility.swift in Sources */,
+				FC19CAA71DD0D93D00767B8B /* WCWordPlaySentenceContentView.swift in Sources */,
+				FC19CA461DD0D90900767B8B /* WCFlipViewController.swift in Sources */,
+				FC19CA4D1DD0D90900767B8B /* WCSearchViewController.swift in Sources */,
+				FC19CA9E1DD0D93D00767B8B /* WCWordPlayScrollView.swift in Sources */,
+				FC19CA981DD0D93D00767B8B /* WCNewListPopView.swift in Sources */,
+				FC19CAA91DD0D93D00767B8B /* WCWordPlayTableView.swift in Sources */,
+				FC19CAA51DD0D93D00767B8B /* WCWordPlayCollectionViewFlowLayout.swift in Sources */,
+				FC19CA411DD0D90900767B8B /* EHomeViewController.swift in Sources */,
+				FC19CA9A1DD0D93D00767B8B /* WCRenameListPopView.swift in Sources */,
+				FC19CA9C1DD0D93D00767B8B /* WCSegmentTapView.swift in Sources */,
+				FC19CA271DD0D8DE00767B8B /* WCWordForegroundHandler.swift in Sources */,
+				FC19CA291DD0D8DE00767B8B /* WCWordSpeechPlayer.swift in Sources */,
+				FC19CA8B1DD0D93D00767B8B /* WCExamResultView.swift in Sources */,
+				FC19CAA81DD0D93D00767B8B /* WCWordPlaySentenceView.swift in Sources */,
+				FC19CAAF1DD0D93D00767B8B /* WCLessonChooseTableView.swift in Sources */,
+				FC19CA101DD0D8BE00767B8B /* WCSearchViewModel.swift in Sources */,
+				FC19CA8E1DD0D93D00767B8B /* WCQuestionCollectionViewCell.swift in Sources */,
+				FC19CA961DD0D93D00767B8B /* WCDeleteListPopView.swift in Sources */,
+				FC19CA281DD0D8DE00767B8B /* WCWordGroundHandlerProtocol.swift in Sources */,
+				FC19CA0D1DD0D8BE00767B8B /* AnalyticsModel.swift in Sources */,
+				FC19CA4B1DD0D90900767B8B /* WCListViewController.swift in Sources */,
+				FC19CA911DD0D93D00767B8B /* WCIntroduceCollectionViewCell.swift in Sources */,
+				FC19CAAD1DD0D93D00767B8B /* WCLessonChooseCell.swift in Sources */,
+				FC19CA4A1DD0D90900767B8B /* WCIntroduceViewController.swift in Sources */,
+				FC19CA0F1DD0D8BE00767B8B /* WCListViewModel.swift in Sources */,
+				FC19CAA61DD0D93D00767B8B /* WCWordPlayCollectionViewLayoutAttributes.swift in Sources */,
+				FC19CA9D1DD0D93D00767B8B /* WCWordPlayScrollCollectionViewCell.swift in Sources */,
+				FC19CAA01DD0D93D00767B8B /* WCWordPlayScrollViewFlowLayout.swift in Sources */,
+				FC19CAA41DD0D93D00767B8B /* WCWordPlayCollectionViewCell.swift in Sources */,
+				FC19CA491DD0D90900767B8B /* WCInformationViewController.swift in Sources */,
+				FC19CA261DD0D8DE00767B8B /* WCWordBackgroundHandler.swift in Sources */,
+				FC19CA121DD0D8BE00767B8B /* WCVocabularyModel.swift in Sources */,
+				FC19CA231DD0D8DE00767B8B /* WCColor.swift in Sources */,
+				FC19CAAA1DD0D93D00767B8B /* WCWordPlayTableViewDataSource.swift in Sources */,
+				FC19CA941DD0D93D00767B8B /* WCAddToListPopView.swift in Sources */,
+				FC19CA8F1DD0D93D00767B8B /* WCQuestionCollectionViewFlowLayout.swift in Sources */,
+				FC19CA421DD0D90900767B8B /* EListTableViewController.swift in Sources */,
+				FC19CAAB1DD0D93D00767B8B /* WCSearchTableViewCell.swift in Sources */,
+				FC19CA8D1DD0D93D00767B8B /* WCQuestionCollectionView.swift in Sources */,
+				FC19CA2A1DD0D8DE00767B8B /* WCWordSpeechQueuePlayer.swift in Sources */,
+				FC19CAA11DD0D93D00767B8B /* WCSettingContentView.swift in Sources */,
+				FC19CAA21DD0D93D00767B8B /* WCSettingTagView.swift in Sources */,
+				FC19CAAE1DD0D93D00767B8B /* WCLessonChooseCollectionViewFlowLayout.swift in Sources */,
+				FC19CAA31DD0D93D00767B8B /* WCWordPlaySettingView.swift in Sources */,
+				FC19CA451DD0D90900767B8B /* WCExamViewController.swift in Sources */,
+				FC19CA4C1DD0D90900767B8B /* WCWordPlayViewController.swift in Sources */,
+				FC19CA901DD0D93D00767B8B /* WCQuestionTitleView.swift in Sources */,
+				FC19CA8C1DD0D93D00767B8B /* WCQuestionAnswerView.swift in Sources */,
+				FC19CA4E1DD0D90900767B8B /* WCLessonChooseViewController.swift in Sources */,
+				FC19CA241DD0D8DE00767B8B /* WCMaterialButton.swift in Sources */,
+				FC19CA441DD0D90900767B8B /* WCExamChooseViewController.swift in Sources */,
+				FC19CA111DD0D8BE00767B8B /* WCSettingContentModel.swift in Sources */,
+				FC19CA481DD0D90900767B8B /* WCMainViewController.swift in Sources */,
+				FC19CA9F1DD0D93D00767B8B /* WCWordPlayScrollViewDataSource.swift in Sources */,
+				FC19CA921DD0D93D00767B8B /* WCIntroduceCollectionViewFlowLayout.swift in Sources */,
+				F64D3DC01B863AF800E3D671 /* AppDelegate.swift in Sources */,
+				F6FF400C1B95516B006A381D /* StorageManager.swift in Sources */,
+				FC19CA471DD0D90900767B8B /* WCQuestionViewController.swift in Sources */,
+				FC19CAB01DD0D93D00767B8B /* WCFlipTableView.swift in Sources */,
+				FC19CA431DD0D90900767B8B /* ResultViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F64D3DCD1B863AF900E3D671 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F64D3DD81B863AF900E3D671 /* VocabuLazyTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F64D3DD31B863AF900E3D671 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F64D3DB91B863AF800E3D671 /* VocabuLazy */;
+			targetProxy = F64D3DD21B863AF900E3D671 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F64D3DC51B863AF800E3D671 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F64D3DC61B863AF800E3D671 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		F64D3DCA1B863AF800E3D671 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F64D3DCB1B863AF800E3D671 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F64D3DD91B863AF900E3D671 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = "";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "";
+			};
+			name = Debug;
+		};
+		F64D3DDA1B863AF900E3D671 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = "";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "";
+			};
+			name = Release;
+		};
+		F64D3DDC1B863AF900E3D671 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 02F2937FD3FCFEE7E9F195D4 /* Pods-VocabuLazy.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = "";
+				DEVELOPMENT_TEAM = FXNKTCHCNE;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = NO;
+				EXECUTABLE_PREFIX = "";
+				INFOPLIST_FILE = VocabuLazy/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "-D DEBUG";
+				PRODUCT_BUNDLE_IDENTIFIER = www.wishcan.com.tw;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "VocabuLazy/VocabuLazy-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+				VERSIONING_SYSTEM = "";
+			};
+			name = Debug;
+		};
+		F64D3DDD1B863AF900E3D671 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 327D75BB416590E68C8B9224 /* Pods-VocabuLazy.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = "";
+				DEVELOPMENT_TEAM = FXNKTCHCNE;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = NO;
+				EXECUTABLE_PREFIX = "";
+				INFOPLIST_FILE = VocabuLazy/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "-D RELEASE";
+				PRODUCT_BUNDLE_IDENTIFIER = www.wishcan.com.tw;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "VocabuLazy/VocabuLazy-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+				VERSIONING_SYSTEM = "";
+			};
+			name = Release;
+		};
+		F64D3DDF1B863AF900E3D671 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C63E71DBEEE05AC942E2F69A /* Pods-VocabuLazyTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = VocabuLazyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "www.wishcan.com.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VocabuLazy.app/VocabuLazy";
+			};
+			name = Debug;
+		};
+		F64D3DE01B863AF900E3D671 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BD6AF82EB605D615FA930E99 /* Pods-VocabuLazyTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = VocabuLazyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "www.wishcan.com.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VocabuLazy.app/VocabuLazy";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F64D3DB51B863AF800E3D671 /* Build configuration list for PBXProject "VocabuLazy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F64D3DD91B863AF900E3D671 /* Debug */,
+				F64D3DDA1B863AF900E3D671 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F64D3DDB1B863AF900E3D671 /* Build configuration list for PBXNativeTarget "VocabuLazy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F64D3DDC1B863AF900E3D671 /* Debug */,
+				F64D3DDD1B863AF900E3D671 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F64D3DDE1B863AF900E3D671 /* Build configuration list for PBXNativeTarget "VocabuLazyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F64D3DDF1B863AF900E3D671 /* Debug */,
+				F64D3DE01B863AF900E3D671 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F64D3DB21B863AF800E3D671 /* Project object */;
+}
