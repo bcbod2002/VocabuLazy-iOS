@@ -8,8 +8,10 @@
 
 import UIKit
 
-class WCQuestionViewController: UIViewController
-{
+class WCQuestionViewController: UIViewController {
+    
+    // ---------------------------------------------------------------------------------------------
+    // MARK: - Variables
     var vocabularyArray: [WCVocabularyModel]!
     
     var questionView : WCMaterialButton?;
@@ -24,8 +26,12 @@ class WCQuestionViewController: UIViewController
     var questionIndex = 0
     var correctAnswerNumber = 0
     
+    // IBOutlet
     @IBOutlet weak var questionNumberLabel: UILabel!
     
+    
+    // ---------------------------------------------------------------------------------------------
+    // MARK: - View controller life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -45,6 +51,8 @@ class WCQuestionViewController: UIViewController
         drawView()
     }
     
+    // ---------------------------------------------------------------------------------------------
+    // MARK: - Draw all view
     fileprivate func drawView() {
         drawLineView()
         drawQuestionView()
@@ -53,6 +61,70 @@ class WCQuestionViewController: UIViewController
         questionNumberLabel.text = "\(questionIndex + 1)/\(vocabularyArray.count)"
     }
     
+    /// Draw the line
+    fileprivate func drawLineView() {
+        let WC_Green_Color = UIColor (red: 72.0 / 255.0, green: 207.0 / 255.0, blue: 174.0 / 255.0, alpha: 1.0);
+        let buttonLeftInset = screenSize.width * Button_Left_Inset_Ratio;
+        let height = CGFloat(19)
+        
+        let leftlineView = UIView(frame: CGRect(x: buttonLeftInset, y: height, width: self.view.frame.width * 0.3, height: 5))
+        leftlineView.backgroundColor = WC_Green_Color
+        self.view.addSubview(leftlineView)
+        
+        let rightlineView = UIView(frame: CGRect(x: self.view.frame.width - buttonLeftInset - self.view.frame.width * 0.3, y: height, width: self.view.frame.width * 0.3, height: 5))
+        rightlineView.backgroundColor = WC_Green_Color
+        self.view.addSubview(rightlineView)
+    }
+    
+    
+    /// Draw the question
+    fileprivate func drawQuestionView() {
+        let buttonLeftInset = screenSize.width * Button_Left_Inset_Ratio;
+        let buttonHeight = screenSize.height * r
+        
+        questionView = WCMaterialButton(frame: CGRect(x: screenSize.width / 2, y: questionViewTopInset + (buttonHeight / 2), width: 0, height: 0), cornerRadious: 10)
+        let WC_Green_Color = UIColor (red: 72.0 / 255.0, green: 207.0 / 255.0, blue: 174.0 / 255.0, alpha: 1.0);
+        self.questionView!.backgroundColor = WC_Green_Color
+        self.view.addSubview(self.questionView!)
+        
+        UIView.animate(withDuration: 1, delay: 0, options: UIViewAnimationOptions() , animations: {
+            self.questionView?.frame = CGRect(x: buttonLeftInset, y: self.questionViewTopInset, width: self.screenSize.width - buttonLeftInset * 2, height: buttonHeight)
+        }, completion: { _ in
+            self.questionView?.setTitle(self.question, for: UIControlState())
+        })
+    }
+    
+    
+    /// Draw the answer
+    fileprivate func drawAnswerButton() {
+        let buttonGap = CGFloat(10)
+        let buttonTopInset = questionViewTopInset + questionView!.frame.size.height + buttonGap
+        let buttonLeftInset = screenSize.width * Button_Left_Inset_Ratio;
+        let height = (questionView?.frame.size.height)! * 0.2
+        var delayTime : Double
+        
+        for i in 0...3 {
+            var answerButton : WCMaterialButton?;
+            answerButton = WCMaterialButton(frame: CGRect(x: screenSize.width / 2, y: buttonTopInset + (height + buttonGap) * CGFloat(i) + (height / 2) ,width: 0, height: 0), cornerRadious: 10)
+            answerButton?.backgroundColor = UIColor(red:219/255, green:220/255, blue:220/255, alpha:1.0)
+            self.view.addSubview(answerButton!)
+            
+            answerButton?.tag = 2
+            answerButton?.addTarget(self, action: #selector(answerButtonTouchDown(_:)), for: .touchDown)
+            answerButton?.addTarget(self, action: #selector(answerButtonTouchUp(_:)), for: .touchUpInside)
+            
+            delayTime = questionIndex == 0 ? (0.5 * Double(i + 1)) : 0
+            UIView.animate(withDuration: 1, delay:delayTime, options:UIViewAnimationOptions() , animations: {
+                answerButton?.frame = CGRect(x: buttonLeftInset, y: buttonTopInset + (height + buttonGap) * CGFloat(i) , width: self.screenSize.width - buttonLeftInset * 2, height: height)
+            }, completion: { _ in
+                answerButton?.setTitle(self.answer[i], for: UIControlState())
+            })
+        }
+    }
+    
+    
+    // ---------------------------------------------------------------------------------------------
+    // MARK: - Move to next question
     fileprivate func nextQuestion() {
         questionIndex += 1
         loadData(questionIndex)
@@ -69,6 +141,9 @@ class WCQuestionViewController: UIViewController
         }
     }
     
+    
+    // ---------------------------------------------------------------------------------------------
+    // MARK: - Create answers
     fileprivate func loadData(_ lessonNumber: NSInteger) {
         answer = ["", "", "", ""]
         
@@ -93,71 +168,33 @@ class WCQuestionViewController: UIViewController
         }
     }
     
-    fileprivate func drawLineView() {
-        let WC_Green_Color = UIColor (red: 72.0 / 255.0, green: 207.0 / 255.0, blue: 174.0 / 255.0, alpha: 1.0);
-        let buttonLeftInset = screenSize.width * Button_Left_Inset_Ratio;
-        let height = CGFloat(19)
+    
+    /// Draw the next button
+    fileprivate func drawNextButton() {
+        var nextButton : WCMaterialButton?;
+        let x = screenSize.width - 126 - screenSize.width * Button_Left_Inset_Ratio
+        let y = screenSize.height * r * 9/5 + 40 + 10 * 4 + 13
+        nextButton = WCMaterialButton(frame: CGRect(x: x, y: y, width: 126, height: 40), cornerRadious: 20)
+        nextButton?.setTitle("NEXT", for: UIControlState())
+        nextButton?.backgroundColor = UIColor(red:219/255, green:220/255, blue:220/255, alpha:1.0)
+        nextButton?.alpha = 0
+        view.addSubview(nextButton!)
         
-        let leftlineView = UIView(frame: CGRect(x: buttonLeftInset, y: height, width: self.view.frame.width * 0.3, height: 5))
-        leftlineView.backgroundColor = WC_Green_Color
-        self.view.addSubview(leftlineView)
-        
-        let rightlineView = UIView(frame: CGRect(x: self.view.frame.width - buttonLeftInset - self.view.frame.width * 0.3, y: height, width: self.view.frame.width * 0.3, height: 5))
-        rightlineView.backgroundColor = WC_Green_Color
-        self.view.addSubview(rightlineView)
+        nextButton?.addTarget(self, action: #selector(nextButtonClick(_:)), for: .touchUpInside)
     }
     
-    fileprivate func drawQuestionView() {
-        let buttonLeftInset = screenSize.width * Button_Left_Inset_Ratio;
-        let buttonHeight = screenSize.height * r
-        
-        questionView = WCMaterialButton(frame: CGRect(x: screenSize.width / 2, y: questionViewTopInset + (buttonHeight / 2), width: 0, height: 0), cornerRadious: 10)
-        let WC_Green_Color = UIColor (red: 72.0 / 255.0, green: 207.0 / 255.0, blue: 174.0 / 255.0, alpha: 1.0);
-        self.questionView!.backgroundColor = WC_Green_Color
-        self.view.addSubview(self.questionView!)
-        
-        UIView.animate(withDuration: 1, delay: 0, options: UIViewAnimationOptions() , animations: {
-            self.questionView?.frame = CGRect(x: buttonLeftInset, y: self.questionViewTopInset, width: self.screenSize.width - buttonLeftInset * 2, height: buttonHeight)
-            }, completion: { _ in
-                self.questionView?.setTitle(self.question, for: UIControlState())
-        })
-    }
     
-    fileprivate func drawAnswerButton() {
-        let buttonGap = CGFloat(10)
-        let buttonTopInset = questionViewTopInset + questionView!.frame.size.height + buttonGap
-        let buttonLeftInset = screenSize.width * Button_Left_Inset_Ratio;
-        let height = (questionView?.frame.size.height)! * 0.2
-        var delayTime : Double
-        
-        for i in 0...3 {
-            var answerButton : WCMaterialButton?;
-            answerButton = WCMaterialButton(frame: CGRect(x: screenSize.width / 2, y: buttonTopInset + (height + buttonGap) * CGFloat(i) + (height / 2) ,width: 0, height: 0), cornerRadious: 10)
-            answerButton?.backgroundColor = UIColor(red:219/255, green:220/255, blue:220/255, alpha:1.0)
-            self.view.addSubview(answerButton!)
-            
-            answerButton?.tag = 2
-            answerButton?.addTarget(self, action: #selector(answerButtonTouchDown(_:)), for: .touchDown)
-            answerButton?.addTarget(self, action: #selector(answerButtonTouchUp(_:)), for: .touchUpInside)
-            
-            delayTime = questionIndex == 0 ? (0.5 * Double(i + 1)) : 0
-            UIView.animate(withDuration: 1, delay:delayTime, options:UIViewAnimationOptions() , animations: {
-                answerButton?.frame = CGRect(x: buttonLeftInset, y: buttonTopInset + (height + buttonGap) * CGFloat(i) , width: self.screenSize.width - buttonLeftInset * 2, height: height)
-                }, completion: { _ in
-                    answerButton?.setTitle(self.answer[i], for: UIControlState())
-            })
+    // ---------------------------------------------------------------------------------------------
+    // MARK: - Material button action
+    @objc fileprivate func nextButtonClick(_ sender: UIButton) {
+        if questionIndex == vocabularyArray.count - 1 {
+            let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: "Result") as! ResultViewController;
+            nextViewController.totalQuestion = vocabularyArray.count
+            nextViewController.rightAnswer = correctAnswerNumber
+            self.navigationController?.pushViewController(nextViewController, animated: true)
+        } else {
+            nextQuestion()
         }
-    }
-    
-    @objc fileprivate func answerButtonTouchDown(_ sender: UIButton) {
-        for v in view.subviews {
-            if v.tag == 2 {
-                v.backgroundColor = UIColor(red:0.40, green:0.42, blue:0.47, alpha:1.0)
-            }
-        }
-        
-        sender.bounds.size.height = sender.bounds.size.height * 0.93
-        sender.bounds.size.width = sender.bounds.size.width * 0.93
     }
     
     @objc fileprivate func answerButtonTouchUp(_ sender: UIButton) {
@@ -201,27 +238,14 @@ class WCQuestionViewController: UIViewController
         sender.addSubview(imageView)
     }
     
-    fileprivate func drawNextButton() {
-        var nextButton : WCMaterialButton?;
-        let x = screenSize.width - 126 - screenSize.width * Button_Left_Inset_Ratio
-        let y = screenSize.height * r * 9/5 + 40 + 10 * 4 + 13
-        nextButton = WCMaterialButton(frame: CGRect(x: x, y: y, width: 126, height: 40), cornerRadious: 20)
-        nextButton?.setTitle("NEXT", for: UIControlState())
-        nextButton?.backgroundColor = UIColor(red:219/255, green:220/255, blue:220/255, alpha:1.0)
-        nextButton?.alpha = 0
-        view.addSubview(nextButton!)
-        
-        nextButton?.addTarget(self, action: #selector(nextButtonClick(_:)), for: .touchUpInside)
-    }
-    
-    @objc fileprivate func nextButtonClick(_ sender: UIButton) {
-        if questionIndex == vocabularyArray.count - 1 {
-            let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: "Result") as! ResultViewController;
-            nextViewController.totalQuestion = vocabularyArray.count
-            nextViewController.rightAnswer = correctAnswerNumber
-            self.navigationController?.pushViewController(nextViewController, animated: true)
-        } else {
-            nextQuestion()
+    @objc fileprivate func answerButtonTouchDown(_ sender: UIButton) {
+        for v in view.subviews {
+            if v.tag == 2 {
+                v.backgroundColor = UIColor(red:0.40, green:0.42, blue:0.47, alpha:1.0)
+            }
         }
+        
+        sender.bounds.size.height = sender.bounds.size.height * 0.93
+        sender.bounds.size.width = sender.bounds.size.width * 0.93
     }
 }
