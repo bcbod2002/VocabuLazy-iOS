@@ -2,7 +2,7 @@
 
 
 ### Project Structure
-* **VocabuLazy**
+* **VocabuLazy-iOS**
 
 	>* __*VocabuLazy*__
 		* __*Models*__
