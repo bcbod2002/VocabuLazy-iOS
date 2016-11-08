@@ -119,7 +119,7 @@ class WCQuestionViewController: UIViewController
         UIView.animate(withDuration: 1, delay: 0, options: UIViewAnimationOptions() , animations: {
             self.questionView?.frame = CGRect(x: buttonLeftInset, y: self.questionViewTopInset, width: self.screenSize.width - buttonLeftInset * 2, height: buttonHeight)
             }, completion: { _ in
-                [self.questionView?.setTitle(self.question, for: UIControlState())]
+                self.questionView?.setTitle(self.question, for: UIControlState())
         })
     }
     
@@ -144,7 +144,7 @@ class WCQuestionViewController: UIViewController
             UIView.animate(withDuration: 1, delay:delayTime, options:UIViewAnimationOptions() , animations: {
                 answerButton?.frame = CGRect(x: buttonLeftInset, y: buttonTopInset + (height + buttonGap) * CGFloat(i) , width: self.screenSize.width - buttonLeftInset * 2, height: height)
                 }, completion: { _ in
-                    [answerButton?.setTitle(self.answer[i], for: UIControlState())]
+                    answerButton?.setTitle(self.answer[i], for: UIControlState())
             })
         }
     }
