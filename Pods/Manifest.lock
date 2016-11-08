@@ -1,0 +1,19 @@
+PODS:
+  - Crashlytics (3.8.3):
+    - Fabric (~> 1.6.3)
+  - Fabric (1.6.9)
+  - Flurry-iOS-SDK/FlurrySDK (7.6.6)
+
+DEPENDENCIES:
+  - Crashlytics
+  - Fabric
+  - Flurry-iOS-SDK/FlurrySDK
+
+SPEC CHECKSUMS:
+  Crashlytics: 2b6dbe138a42395577cfa73dfa1aa7248cadf39e
+  Fabric: bc5bec42cef4bcf1ee3ce0e218fc518e4b44dfbb
+  Flurry-iOS-SDK: 97bbeec09cca666c2f1772f6e161c4f8ccff611e
+
+PODFILE CHECKSUM: dc5066b0e6b1ac318cc15852965e1ac2cf9d9a63
+
+COCOAPODS: 1.1.1
