@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import AVFoundation
 
-class WCQuestionViewController: UIViewController {
+class WCQuestionViewController: UIViewController, AVSpeechSynthesizerDelegate {
     
     // ---------------------------------------------------------------------------------------------
     // MARK: - Variables
@@ -25,6 +26,8 @@ class WCQuestionViewController: UIViewController {
     var correctIndex = 0
     var questionIndex = 0
     var correctAnswerNumber = 0
+    
+    var wordSpeechPlayer: WCWordSpeechPlayer?
     
     // IBOutlet
     @IBOutlet weak var questionNumberLabel: UILabel!
@@ -49,6 +52,15 @@ class WCQuestionViewController: UIViewController {
         questionIndex = 0
         loadData(questionIndex)
         drawView()
+        
+        initialWordSpeechPlayer()
+    }
+    
+    
+    // ---------------------------------------------------------------------------------------------
+    // MARK: - Initial WCWordSpeechPlayer
+    fileprivate func initialWordSpeechPlayer() {
+        wordSpeechPlayer = WCWordSpeechPlayer(withDelegate: self)
     }
     
     // ---------------------------------------------------------------------------------------------
@@ -82,15 +94,25 @@ class WCQuestionViewController: UIViewController {
         let buttonLeftInset = screenSize.width * Button_Left_Inset_Ratio;
         let buttonHeight = screenSize.height * r
         
+        // QuestionButton
         questionView = WCMaterialButton(frame: CGRect(x: screenSize.width / 2, y: questionViewTopInset + (buttonHeight / 2), width: 0, height: 0), cornerRadious: 10)
+        questionView?.addTarget(self, action: #selector(questionButtonTouchDown(_:)), for: .touchUpInside)
         let WC_Green_Color = UIColor (red: 72.0 / 255.0, green: 207.0 / 255.0, blue: 174.0 / 255.0, alpha: 1.0);
         self.questionView!.backgroundColor = WC_Green_Color
         self.view.addSubview(self.questionView!)
         
+        
+        
+        // Animation
         UIView.animate(withDuration: 1, delay: 0, options: UIViewAnimationOptions() , animations: {
             self.questionView?.frame = CGRect(x: buttonLeftInset, y: self.questionViewTopInset, width: self.screenSize.width - buttonLeftInset * 2, height: buttonHeight)
         }, completion: { _ in
             self.questionView?.setTitle(self.question, for: UIControlState())
+            
+            // Add audio image view
+            let audioImageView = UIImageView(image: UIImage(named: "ExamAudio"))
+            audioImageView.frame = CGRect(x: ((self.questionView?.bounds.width)! - 60) / 2, y: (self.questionView?.bounds.height)! - 60 - 10, width: 60, height: 60)
+            self.questionView?.addSubview(audioImageView)
         })
     }
     
@@ -247,5 +269,10 @@ class WCQuestionViewController: UIViewController {
         
         sender.bounds.size.height = sender.bounds.size.height * 0.93
         sender.bounds.size.width = sender.bounds.size.width * 0.93
+    }
+    
+    @objc fileprivate func questionButtonTouchDown(_ sender: UIButton) {
+        let speechString = sender.titleLabel?.text
+        wordSpeechPlayer?.startSpeech(speechString: speechString!, language: .English)
     }
 }
