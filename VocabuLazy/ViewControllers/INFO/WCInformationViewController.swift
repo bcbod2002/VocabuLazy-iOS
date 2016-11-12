@@ -51,7 +51,7 @@ class WCInformationViewController: UIViewController, UIWebViewDelegate {
     }
     
     @IBAction func replyQuestionButtonAction(_ sender: AnyObject) {
-        let replyViewContoller = self.storyboard?.instantiateViewController(withIdentifier: "ReplyPage")
+        let replyViewContoller = self.storyboard?.instantiateViewController(withIdentifier: "ReportPage")
         self.navigationController?.pushViewController(replyViewContoller!, animated: true)
     }
     
