@@ -515,7 +515,7 @@ class WCWordPlayViewController: UIViewController, AVSpeechSynthesizerDelegate, W
         popAddToListPopView()
     }
     
-    func popAddToListPopView() {
+    fileprivate func popAddToListPopView() {
         let oneLessonVocabularyModelArray = allLessonsArray![(foregroundHandler?.lessonNumber)!]
         let playingVocabularyModel = oneLessonVocabularyModelArray[(foregroundHandler?.playingNumber)!]
         popView = WCAddToListPopView(
