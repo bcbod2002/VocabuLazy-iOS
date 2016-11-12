@@ -83,6 +83,7 @@
 		FC19CAAF1DD0D93D00767B8B /* WCLessonChooseTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC19CA881DD0D93D00767B8B /* WCLessonChooseTableView.swift */; };
 		FC19CAB01DD0D93D00767B8B /* WCFlipTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC19CA8A1DD0D93D00767B8B /* WCFlipTableView.swift */; };
 		FC321E981D81BBF80026ADD4 /* Vocabulary.json in Resources */ = {isa = PBXBuildFile; fileRef = FC321E971D81BBF80026ADD4 /* Vocabulary.json */; };
+		FC435EB31DD6E94D000F61EB /* WCReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC435EB21DD6E94D000F61EB /* WCReportViewController.swift */; };
 		FC4630CC1BBD9D9600CB0483 /* DFHeiStd-W3.otf in Resources */ = {isa = PBXBuildFile; fileRef = FC3BEB031BB4307A00926847 /* DFHeiStd-W3.otf */; };
 		FC4630CD1BBD9D9600CB0483 /* DFHeiStd-W5.otf in Resources */ = {isa = PBXBuildFile; fileRef = FC3BEB041BB4307A00926847 /* DFHeiStd-W5.otf */; };
 		FC4630CE1BBD9D9600CB0483 /* DFHeiStd-W7.otf in Resources */ = {isa = PBXBuildFile; fileRef = FC3BEB051BB4307A00926847 /* DFHeiStd-W7.otf */; };
@@ -197,6 +198,7 @@
 		FC3BEB061BB4307A00926847 /* DFHeiStd-W9.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DFHeiStd-W9.otf"; sourceTree = "<group>"; };
 		FC3BEB071BB4307A00926847 /* DFHeiStd-W12.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DFHeiStd-W12.otf"; sourceTree = "<group>"; };
 		FC3BEB081BB4308200926847 /* Futura.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Futura.ttf; sourceTree = "<group>"; };
+		FC435EB21DD6E94D000F61EB /* WCReportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCReportViewController.swift; sourceTree = "<group>"; };
 		FC659CEC1C341FAC00F10835 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		FCF99FE81BB99D4800B9FA3F /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		FCF99FEA1BB99D5200B9FA3F /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
@@ -459,6 +461,7 @@
 			children = (
 				FC19CA371DD0D90900767B8B /* WCInformationViewController.swift */,
 				FC19CA381DD0D90900767B8B /* WCIntroduceViewController.swift */,
+				FC435EB21DD6E94D000F61EB /* WCReportViewController.swift */,
 			);
 			path = INFO;
 			sourceTree = "<group>";
@@ -1006,6 +1009,7 @@
 				FC19CA231DD0D8DE00767B8B /* WCColor.swift in Sources */,
 				FC19CAAA1DD0D93D00767B8B /* WCWordPlayTableViewDataSource.swift in Sources */,
 				FC19CA941DD0D93D00767B8B /* WCAddToListPopView.swift in Sources */,
+				FC435EB31DD6E94D000F61EB /* WCReportViewController.swift in Sources */,
 				FC19CA8F1DD0D93D00767B8B /* WCQuestionCollectionViewFlowLayout.swift in Sources */,
 				FC19CA421DD0D90900767B8B /* EListTableViewController.swift in Sources */,
 				FC19CAAB1DD0D93D00767B8B /* WCSearchTableViewCell.swift in Sources */,
