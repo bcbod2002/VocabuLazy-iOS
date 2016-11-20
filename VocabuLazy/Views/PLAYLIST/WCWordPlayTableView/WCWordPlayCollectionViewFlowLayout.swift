@@ -121,20 +121,18 @@ class WCWordPlayCollectionViewFlowLayout: UICollectionViewFlowLayout {
     }
 
     // 此 function override 之後可以做到吸附效果，類似 AppStore 中的
-//    override func targetContentOffsetForProposedContentOffset(proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
-//        var offsetAdjustment = MAXFLOAT
-//        let verticalCenter = proposedContentOffset.y + (CGRectGetHeight(self.collectionView!.bounds) / 2.0)
-//        let targetRect = CGRectMake(0.0, proposedContentOffset.y, self.collectionView!.bounds.size.width, self.collectionView!.bounds.size.height)
-//        let array = super.layoutAttributesForElementsInRect(targetRect)
-//        for layoutAttributes : UICollectionViewLayoutAttributes in array! {
-//            layoutAttributes.frame = CGRectMake(layoutAttributes.frame.origin.x, layoutAttributes.frame.origin.y + self.collectionView!.frame.size.height / 2, layoutAttributes.size.width, layoutAttributes.size.height)
-//            let itemVertiaclCenter = layoutAttributes.center.x
-//
-//            if abs(itemVertiaclCenter - verticalCenter) < CGFloat(abs(offsetAdjustment)) {
-//                offsetAdjustment = Float(itemVertiaclCenter - verticalCenter)
-//            }
-//        }
-//
-//        return CGPointMake(proposedContentOffset.x, proposedContentOffset.y + CGFloat(offsetAdjustment))
-//    }
+    override func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
+        let contentFrame = CGRect(origin: proposedContentOffset, size: (self.collectionView?.frame.size)!)
+        let attributeArray = self.layoutAttributesForElements(in: contentFrame)!
+        
+        var minCenterY = CGFloat.greatestFiniteMagnitude
+        let collectionViewCenterY = proposedContentOffset.y + (self.collectionView?.frame.size.height)! * 0.5
+        for attributes in attributeArray {
+            if abs(attributes.center.y - collectionViewCenterY) < abs(minCenterY) {
+                minCenterY = attributes.center.y - collectionViewCenterY
+            }
+        }
+        
+        return CGPoint(x: proposedContentOffset.x, y: proposedContentOffset.y + minCenterY)
+    }
 }

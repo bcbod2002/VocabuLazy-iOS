@@ -418,7 +418,6 @@ class WCWordPlayViewController: UIViewController, AVSpeechSynthesizerDelegate, W
     }
     
     func tableView(_ tableView: WCWordPlayTableView, didScrolltoItem itemNumber: Int) {
-        tableView.tableViewScrolltoItem(itemNumber, animated: true, callDelegate: false)
         presentVocabularyType = SpeechType.english
         playAudio(itemNumber, and: vocabularyTupleArray)
         isAllowPlayAudio = true
