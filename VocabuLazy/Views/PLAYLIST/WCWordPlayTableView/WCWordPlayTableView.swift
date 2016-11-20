@@ -349,13 +349,6 @@ class WCWordPlayTableView: UIView, UICollectionViewDelegate, UICollectionViewDat
         delegate?.tableViewBeginScrollWithFinger?(self)
     }
     
-    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        if velocity.y == 0.0 && scrollLock == false {
-            scrollLock = true
-            scrollViewDidEndAllScrollingAnimation(scrollView)
-        }
-    }
-    
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         if scrollLock == false {
             scrollLock = true
