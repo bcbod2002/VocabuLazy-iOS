@@ -91,6 +91,10 @@
 		FC4630D01BBD9D9600CB0483 /* DFHeiStd-W12.otf in Resources */ = {isa = PBXBuildFile; fileRef = FC3BEB071BB4307A00926847 /* DFHeiStd-W12.otf */; };
 		FC4630D11BBD9D9600CB0483 /* Futura.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FC3BEB081BB4308200926847 /* Futura.ttf */; };
 		FC659CED1C341FAC00F10835 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC659CEC1C341FAC00F10835 /* AudioToolbox.framework */; };
+		FC6761D31DE481E200E8B1BF /* WCToeicToeflCategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6761D21DE481E200E8B1BF /* WCToeicToeflCategoryModel.swift */; };
+		FCAED6631DE2DFE50061C986 /* TOEFL_final.json in Resources */ = {isa = PBXBuildFile; fileRef = FCAED6601DE2DFE50061C986 /* TOEFL_final.json */; };
+		FCAED6641DE2DFE50061C986 /* TOEIC_TOEFL_textbook.json in Resources */ = {isa = PBXBuildFile; fileRef = FCAED6611DE2DFE50061C986 /* TOEIC_TOEFL_textbook.json */; };
+		FCAED6651DE2DFE50061C986 /* TOEIC_final.json in Resources */ = {isa = PBXBuildFile; fileRef = FCAED6621DE2DFE50061C986 /* TOEIC_final.json */; };
 		FCF99FE91BB99D4800B9FA3F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCF99FE81BB99D4800B9FA3F /* AVFoundation.framework */; };
 		FCF99FEB1BB99D5200B9FA3F /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCF99FEA1BB99D5200B9FA3F /* CoreAudio.framework */; };
 /* End PBXBuildFile section */
@@ -200,6 +204,10 @@
 		FC3BEB081BB4308200926847 /* Futura.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Futura.ttf; sourceTree = "<group>"; };
 		FC435EB21DD6E94D000F61EB /* WCReportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCReportViewController.swift; sourceTree = "<group>"; };
 		FC659CEC1C341FAC00F10835 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		FC6761D21DE481E200E8B1BF /* WCToeicToeflCategoryModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCToeicToeflCategoryModel.swift; sourceTree = "<group>"; };
+		FCAED6601DE2DFE50061C986 /* TOEFL_final.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TOEFL_final.json; sourceTree = "<group>"; };
+		FCAED6611DE2DFE50061C986 /* TOEIC_TOEFL_textbook.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TOEIC_TOEFL_textbook.json; sourceTree = "<group>"; };
+		FCAED6621DE2DFE50061C986 /* TOEIC_final.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TOEIC_final.json; sourceTree = "<group>"; };
 		FCF99FE81BB99D4800B9FA3F /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		FCF99FEA1BB99D5200B9FA3F /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -305,6 +313,7 @@
 		F6B6271E1B941BBF0072A40B /* LocalStorage */ = {
 			isa = PBXGroup;
 			children = (
+				FCAED65F1DE2DFE50061C986 /* ToeicToefl */,
 				F6FF400B1B95516B006A381D /* StorageManager.swift */,
 				FC321E971D81BBF80026ADD4 /* Vocabulary.json */,
 			);
@@ -336,6 +345,7 @@
 				FC19CA0A1DD0D8BE00767B8B /* WCSearchViewModel.swift */,
 				FC19CA0B1DD0D8BE00767B8B /* WCSettingContentModel.swift */,
 				FC19CA0C1DD0D8BE00767B8B /* WCVocabularyModel.swift */,
+				FC6761D21DE481E200E8B1BF /* WCToeicToeflCategoryModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -710,6 +720,17 @@
 			path = ThirdParties;
 			sourceTree = "<group>";
 		};
+		FCAED65F1DE2DFE50061C986 /* ToeicToefl */ = {
+			isa = PBXGroup;
+			children = (
+				FCAED6601DE2DFE50061C986 /* TOEFL_final.json */,
+				FCAED6611DE2DFE50061C986 /* TOEIC_TOEFL_textbook.json */,
+				FCAED6621DE2DFE50061C986 /* TOEIC_final.json */,
+			);
+			name = ToeicToefl;
+			path = VocabuLazy/LocalStorage/ToeicToefl;
+			sourceTree = "<group>";
+		};
 		FCF99FE71BB99D1E00B9FA3F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -820,6 +841,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F64D3DC71B863AF800E3D671 /* Main.storyboard in Resources */,
+				FCAED6651DE2DFE50061C986 /* TOEIC_final.json in Resources */,
 				FC1870D61C4005B800301D9A /* kk.ttf in Resources */,
 				FC19CA931DD0D93D00767B8B /* WCListEmptyView.xib in Resources */,
 				FC4630CC1BBD9D9600CB0483 /* DFHeiStd-W3.otf in Resources */,
@@ -830,11 +852,13 @@
 				FC4630D01BBD9D9600CB0483 /* DFHeiStd-W12.otf in Resources */,
 				FC4630D11BBD9D9600CB0483 /* Futura.ttf in Resources */,
 				FC19CA0E1DD0D8BE00767B8B /* GoogleService-Info.plist in Resources */,
+				FCAED6631DE2DFE50061C986 /* TOEFL_final.json in Resources */,
 				FC19CA971DD0D93D00767B8B /* WCDeleteListPopView.xib in Resources */,
 				FC03AE851B87808B00A7A83D /* HuaKangMBlack.TTC in Resources */,
 				FC19CA991DD0D93D00767B8B /* WCNewListPopView.xib in Resources */,
 				FC19CA9B1DD0D93D00767B8B /* WCRenameListPopView.xib in Resources */,
 				F64D3DCC1B863AF800E3D671 /* LaunchScreen.xib in Resources */,
+				FCAED6641DE2DFE50061C986 /* TOEIC_TOEFL_textbook.json in Resources */,
 				FC19CA951DD0D93D00767B8B /* WCAddToListPopView.xib in Resources */,
 				F60564A31CD2103A00E7993D /* Images.xcassets in Resources */,
 			);
@@ -1018,6 +1042,7 @@
 				FC19CAA11DD0D93D00767B8B /* WCSettingContentView.swift in Sources */,
 				FC19CAA21DD0D93D00767B8B /* WCSettingTagView.swift in Sources */,
 				FC19CAAE1DD0D93D00767B8B /* WCLessonChooseCollectionViewFlowLayout.swift in Sources */,
+				FC6761D31DE481E200E8B1BF /* WCToeicToeflCategoryModel.swift in Sources */,
 				FC19CAA31DD0D93D00767B8B /* WCWordPlaySettingView.swift in Sources */,
 				FC19CA451DD0D90900767B8B /* WCExamViewController.swift in Sources */,
 				FC19CA4C1DD0D90900767B8B /* WCWordPlayViewController.swift in Sources */,
