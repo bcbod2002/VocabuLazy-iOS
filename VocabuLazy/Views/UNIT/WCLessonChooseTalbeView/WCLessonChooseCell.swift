@@ -45,7 +45,7 @@ class WCLessonChooseCell: UICollectionViewCell
         buttonView.layer.shadowOpacity = 1.0;
 
         // Button label
-        buttonLabel = UILabel (frame: CGRect(x: center.x - (buttonSize.width / 2), y: center.y - (buttonSize.height * 7 / 10), width: buttonSize.width / 2, height: buttonSize.height / 2));
+        buttonLabel = UILabel (frame: CGRect(x: center.x - (buttonSize.width / 2), y: center.y - (buttonSize.height * 7 / 12), width: buttonSize.width / 2, height: buttonSize.height / 2));
         buttonLabel.text = "1";
         buttonLabel.textColor = UIColor.white;
         buttonLabel.textAlignment = NSTextAlignment.center;

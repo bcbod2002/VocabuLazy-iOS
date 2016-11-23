@@ -28,6 +28,45 @@ class StorageManager {
         }
     }
     
+    class func getToeicDataFromFileWithSuccess(_ success: @escaping ((_ data: Data) -> Void)) {
+        DispatchQueue.main.async { () -> Void in
+            let filePath = Bundle.main.path(forResource: "TOEIC_final", ofType: "json")
+            do {
+                let data = try Data (contentsOf: URL(fileURLWithPath: filePath!), options: NSData.ReadingOptions.uncached)
+                success(data)
+            }
+            catch let error as NSError {
+                NSLog("error = %@", error.description)
+            }
+        }
+    }
+    
+    class func getToeflDataFromFileWithSuccess(_ success: @escaping ((_ data: Data) -> Void)) {
+        DispatchQueue.main.async { () -> Void in
+            let filePath = Bundle.main.path(forResource: "TOEFL_final", ofType: "json")
+            do {
+                let data = try Data (contentsOf: URL(fileURLWithPath: filePath!), options: NSData.ReadingOptions.uncached)
+                success(data)
+            }
+            catch let error as NSError {
+                NSLog("error = %@", error.description)
+            }
+        }
+    }
+    
+    class func getToeic_ToeflCategoryWithSuccess(_ success: @escaping ((_ data: Data) -> Void)) {
+        DispatchQueue.main.async { () -> Void in
+            let filePath = Bundle.main.path(forResource: "TOEIC_TOEFL_textbook", ofType: "json")
+            do {
+                let data = try Data (contentsOf: URL(fileURLWithPath: filePath!), options: NSData.ReadingOptions.uncached)
+                success(data)
+            }
+            catch let error as NSError {
+                NSLog("error = %@", error.description)
+            }
+        }
+    }
+    
     class func readListDataFromFileWithSuccess(_ success: @escaping ((_ data: [WCListViewModel]) -> Void)) {
         DispatchQueue.main.async { () -> Void in
             if let dir : NSString = NSSearchPathForDirectoriesInDomains(

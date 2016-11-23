@@ -13,8 +13,14 @@ class WCLessonChooseViewController: UIViewController, WCLessonChooseTableViewDel
     let screenSize : CGSize = UIScreen.main.bounds.size;
     let statusBarHeight = UIApplication.shared.statusBarFrame.size.height;
     var levelString: String = ""
+    
+    // Senior high school vocabularies
     var lessonsVocabularyArray = [WCVocabularyModel]()
     var oneLevelVocabularyArray = [[WCVocabularyModel]]()
+    
+    // Toeic and Toefl vocabularies
+    var toeicOrToeflData = [WCVocabularyModel]()
+    var toeicOrToeflCategory = WCToeicToeflCategoryModel()
 
     var lessonChooseTableView: WCLessonChooseTableView!;
 
@@ -32,9 +38,19 @@ class WCLessonChooseViewController: UIViewController, WCLessonChooseTableViewDel
         let nillBackButtonItem = UIBarButtonItem()
         nillBackButtonItem.title = ""
         self.navigationItem.backBarButtonItem = nillBackButtonItem
-        oneLevelVocabularyArray = rearrangeArrayDimension(lessonsVocabularyArray, partition: 40)!
         
-        lessonChooseTableView = WCLessonChooseTableView(frame: CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.height), totalItemNumber: oneLevelVocabularyArray.count);
+        // NavigationBar height
+        let navigationBarHeight = self.navigationController?.navigationBar.frame.height
+        let statusBarHeight = UIApplication.shared.statusBarFrame.height
+        
+        if lessonsVocabularyArray.count > 0 {
+            oneLevelVocabularyArray = rearrangeArrayDimension(lessonsVocabularyArray, partition: 40)!
+        }
+        else {
+            oneLevelVocabularyArray = mapToeic_ToeflDimension()!
+        }
+        
+        lessonChooseTableView = WCLessonChooseTableView(frame: CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.height - navigationBarHeight! - statusBarHeight), totalItemNumber: oneLevelVocabularyArray.count);
         lessonChooseTableView.delegate = self;
         self.navigationController?.setNavigationBarHidden(false, animated: true);
 
@@ -63,6 +79,26 @@ class WCLessonChooseViewController: UIViewController, WCLessonChooseTableViewDel
                 oneDimensionBucket.removeAll()
                 boundary = 0
             }
+        }
+        
+        return twoDimensionBucket
+    }
+    
+    fileprivate func mapToeic_ToeflDimension() -> [[WCVocabularyModel]]? {
+        guard toeicOrToeflData.count > 0 else {
+            return nil
+        }
+        var twoDimensionBucket = [[WCVocabularyModel]]()
+        for category in toeicOrToeflCategory.textbookContent {
+            var oneDimensionBucket = [WCVocabularyModel]()
+            for content in category.lessonContent {
+                for vocabulary in toeicOrToeflData {
+                    if content == vocabulary.identity {
+                        oneDimensionBucket.append(vocabulary)
+                    }
+                }
+            }
+            twoDimensionBucket.append(oneDimensionBucket)
         }
         
         return twoDimensionBucket
