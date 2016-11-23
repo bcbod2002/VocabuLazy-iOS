@@ -28,6 +28,10 @@ class WCMainViewController: UIViewController {
     // Public variable
     var levelsArray = [[WCVocabularyModel]]()
     var rawData = [WCVocabularyModel]()
+    
+    var toeic_toeflCategory = [WCToeicToeflCategoryModel]()
+    var toeicData = [WCVocabularyModel]()
+    var toeflData = [WCVocabularyModel]()
     var levelTitleString = [String]()
     
     dynamic var isViewAppear = true
@@ -47,7 +51,11 @@ class WCMainViewController: UIViewController {
         nillBackButtonItem.title = ""
         self.navigationItem.backBarButtonItem = nillBackButtonItem
         
+        readToeic_ToeflCategory()
+        
         readVocabularyFromStorage()
+        readToeicVocabularyFromStorage()
+        readToeflVocabularyFromStorage()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -99,6 +107,49 @@ class WCMainViewController: UIViewController {
         };
     }
     
+    fileprivate func readToeicVocabularyFromStorage() {
+        StorageManager.getToeicDataFromFileWithSuccess { (data) in
+            do {
+                let toeicArray: [NSDictionary] = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableLeaves) as! [NSDictionary]
+                for jsonData in toeicArray {
+                    self.toeicData.append(WCVocabularyModel(vocabularyNSDictionary: jsonData))
+                }
+            }
+            catch let error as NSError {
+                printLog("error = %@", error.description)
+            }
+        }
+    }
+    
+    fileprivate func readToeflVocabularyFromStorage() {
+        StorageManager.getToeflDataFromFileWithSuccess { (data) in
+            do {
+                let toeicArray: [NSDictionary] = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableLeaves) as! [NSDictionary]
+                for jsonData in toeicArray {
+                    self.toeflData.append(WCVocabularyModel(vocabularyNSDictionary: jsonData))
+                }
+            }
+            catch let error as NSError {
+                printLog("error = %@", error.description)
+            }
+        }
+    }
+    
+    fileprivate func readToeic_ToeflCategory() {
+        StorageManager.getToeic_ToeflCategoryWithSuccess { (data) in
+            do {
+                let categoryArray: [NSDictionary] = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableLeaves) as! [NSDictionary]
+                for jsonData in categoryArray {
+                    self.toeic_toeflCategory.append(WCToeicToeflCategoryModel(toeicToeflCatrgoryNSDictionary: jsonData))
+                }
+            }
+            catch let error as NSError {
+                printLog("error = %@", error.description)
+            }
+        }
+    }
+    
+    
     
     // ---------------------------------------------------------------------------------------------
     // MARK: - Set UI
@@ -126,8 +177,14 @@ class WCMainViewController: UIViewController {
             levelStringArray.append(levelString)
         }
         
-        let buttonItemHeight = buttonTopInset + (buttonSize.height + (buttonButtomInset / 2))
-        backgroundScrollView.contentSize = CGSize(width: self.view.frame.size.width, height: buttonItemHeight * CGFloat(levelStringArray.count / 2))
+        // Toeic and Toefl vocabulaires
+        for toeicToeflNumber in toeic_toeflCategory {
+            levelStringArray.append(toeicToeflNumber.textbookType)
+        }
+        
+//        let buttonItemHeight = buttonTopInset + (buttonSize.height + (buttonButtomInset / 2))
+        let buttonItemHeight = buttonTopInset + buttonSize.height + buttonButtomInset
+        backgroundScrollView.contentSize = CGSize(width: self.view.frame.size.width, height: buttonItemHeight * (CGFloat(levelStringArray.count / 2)))
         
         // 排列 button 位置
         for i in 0..<levelStringArray.count {
@@ -199,8 +256,23 @@ class WCMainViewController: UIViewController {
 
         // Navigation controller push view controller
         let lessonChooseViewController : WCLessonChooseViewController = (self.storyboard!.instantiateViewController(withIdentifier: "LessonChoosePage") as! WCLessonChooseViewController)
-        lessonChooseViewController.levelString = levelTitleString[sender.tag].replacingOccurrences(of: "\n", with: "")
-        lessonChooseViewController.lessonsVocabularyArray = levelsArray[sender.tag]
+
+        if sender.tag < 9 {
+            // Senior high school vocabularies
+            lessonChooseViewController.levelString = levelTitleString[sender.tag].replacingOccurrences(of: "\n", with: "")
+            lessonChooseViewController.lessonsVocabularyArray = levelsArray[sender.tag]
+        }
+        else {
+            // Toeic and Toefl vocabularies
+            if sender.tag - 10 > 0 {
+                lessonChooseViewController.toeicOrToeflData = toeflData
+            }
+            else {
+                lessonChooseViewController.toeicOrToeflData = toeicData
+            }
+            lessonChooseViewController.toeicOrToeflCategory = toeic_toeflCategory[sender.tag - 10]
+        }
+        
         self.navigationController!.pushViewController(lessonChooseViewController, animated: true)
         
         isViewAppear = false
