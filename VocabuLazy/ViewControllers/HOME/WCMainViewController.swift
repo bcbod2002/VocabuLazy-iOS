@@ -263,6 +263,7 @@ class WCMainViewController: UIViewController {
             lessonChooseViewController.lessonsVocabularyArray = levelsArray[sender.tag]
         }
         else {
+            lessonChooseViewController.levelString = levelTitleString[sender.tag]
             // Toeic and Toefl vocabularies
             if sender.tag - 10 > 0 {
                 lessonChooseViewController.toeicOrToeflData = toeflData
