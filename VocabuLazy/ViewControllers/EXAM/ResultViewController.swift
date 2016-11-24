@@ -69,7 +69,7 @@ class ResultViewController: UIViewController {
         let viewControllers = self.navigationController?.viewControllers
         for view in viewControllers! {
             if view.isKind(of: WCQuestionViewController.self) {
-                self.navigationController?.popToViewController(view, animated: true)
+                let _ = self.navigationController?.popToViewController(view, animated: true)
             }
         }
     }
@@ -78,7 +78,7 @@ class ResultViewController: UIViewController {
         let viewControllers = self.navigationController?.viewControllers
         for view in viewControllers! {
             if view.isKind(of: WCExamChooseViewController.self) || view.isKind(of: EListTableViewController.self) {
-                self.navigationController?.popToViewController(view, animated: true)
+                let _ = self.navigationController?.popToViewController(view, animated: true)
             }
         }
     }

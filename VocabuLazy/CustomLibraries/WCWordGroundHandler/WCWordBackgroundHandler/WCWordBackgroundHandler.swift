@@ -335,7 +335,7 @@ class WCWordBackgroundHandler: NSObject, WCWordGroundHandlerProtocol
     {
         if vocabularyTupleArray != nil
         {
-            for index in 1 ... vocabularyTupleArray!.count
+            for _ in 1 ... vocabularyTupleArray!.count
             {
                 //                playedItemArray[index] = false
             }

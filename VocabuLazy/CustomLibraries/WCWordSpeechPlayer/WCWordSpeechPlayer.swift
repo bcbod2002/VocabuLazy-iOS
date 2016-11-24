@@ -42,7 +42,7 @@ class WCWordSpeechPlayer: NSObject {
         enableReceivingRemoteControlEvents(true)
         speechSynthesizer.delegate = delegate
         
-        judgeString("qqq")
+//        judgeString("qqq")
     }
     
     
@@ -160,19 +160,19 @@ class WCWordSpeechPlayer: NSObject {
     }
     
     //TODO: 這邊還需要修改，將來要改成能夠根據 speechString 來判斷現在要撥出什麼語系
-    fileprivate func judgeString(_ speechString: String) -> WCWordSpeechLanguage {
-        let japaneseString = "はいけません"
-        let chhineseString = "不回家"
-        let length = speechString.characters.count
-        
-        NSLinguisticTagSchemeLanguage
-        
-        printLog("japaneseString = ", japaneseString.characters)
-        printLog("chhineseString = ", chhineseString.characters)
-        
-        
-        return WCWordSpeechLanguage.Chinese
-    }
+//    fileprivate func judgeString(_ speechString: String) -> WCWordSpeechLanguage {
+//        let japaneseString = "はいけません"
+//        let chhineseString = "不回家"
+//        let length = speechString.characters.count
+//        
+//        NSLinguisticTagSchemeLanguage
+//        
+//        printLog("japaneseString = ", japaneseString.characters)
+//        printLog("chhineseString = ", chhineseString.characters)
+//        
+//        
+//        return WCWordSpeechLanguage.Chinese
+//    }
     
     deinit {
         enableReceivingRemoteControlEvents(false)
