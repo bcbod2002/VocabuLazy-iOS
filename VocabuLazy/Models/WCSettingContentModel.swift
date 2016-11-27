@@ -74,6 +74,7 @@ class WCSettingContentModel: NSObject, NSCoding
     {
         super.init();
         
+        NSKeyedUnarchiver.setClass(WCSettingContentModel.self, forClassName: "Swallow.WCSettingContentModel")
         playPattern = PatternType(rawValue: UInt(aDecoder.decodeInteger(forKey: "playPattern")));
         setPlay = SetPlayType(rawValue: UInt(aDecoder.decodeInteger(forKey: "setPlay")));
         setCycle = SetCycleType(rawValue: UInt(aDecoder.decodeInteger(forKey: "setCycle")));
