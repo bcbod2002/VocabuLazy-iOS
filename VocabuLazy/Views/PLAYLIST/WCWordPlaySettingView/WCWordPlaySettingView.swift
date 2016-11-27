@@ -284,6 +284,7 @@ class WCWordPlaySettingView: UIView, UIScrollViewDelegate, WCSettingContentViewD
     
     // Set information to ContentView
     fileprivate func setContentViewFromSetDictionary(_ contentView: WCSettingContentView, setDictionary: NSDictionary) {
+        NSKeyedUnarchiver.setClass(WCSettingContentModel.self, forClassName: "Swallow.WCSettingContentModel")
         let contentViewModel = NSKeyedUnarchiver.unarchiveObject(with: setDictionary.object(forKey: "settingContentModel") as! Data) as! WCSettingContentModel
         contentView.setSettingContentModal(contentViewModel)
         if((setDictionary.object(forKey: "isSelected") as! NSNumber).boolValue) {
@@ -335,6 +336,7 @@ class WCWordPlaySettingView: UIView, UIScrollViewDelegate, WCSettingContentViewD
     }
     
     fileprivate func packageContentViewSetting(_ contentview: WCSettingContentView, isSelected: Bool) -> NSDictionary {
+        NSKeyedArchiver.setClassName("Swallow.WCSettingContentModel", for: WCSettingContentModel.self)
         let contentViewContentModel = NSKeyedArchiver.archivedData(withRootObject: contentview.settingContentModel!)
         let contentSetting = NSDictionary(objects: [contentViewContentModel, NSNumber(value: isSelected as Bool)], forKeys: ["settingContentModel" as NSCopying, "isSelected" as NSCopying])
         
