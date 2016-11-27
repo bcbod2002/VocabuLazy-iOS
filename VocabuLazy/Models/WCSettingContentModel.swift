@@ -44,7 +44,7 @@ enum DetailAdjustType : Int
     case timeAdjust
 }
 
-class WCSettingContentModel: NSObject
+class WCSettingContentModel: NSObject, NSCoding
 {
     var playPattern : PatternType!;
     var setPlay : SetPlayType!;
@@ -113,7 +113,7 @@ class WCSettingContentModel: NSObject
         self.playTimeDetailAdjust = playTime ?? 1;
     }
     
-     func encodeWithCoder(_ aEnCoder: NSCoder)
+     func encode(with aEnCoder: NSCoder)
     {
         aEnCoder.encode(Int(playPattern.rawValue), forKey: "playPattern");
         aEnCoder.encode(Int(setPlay.rawValue), forKey: "setPlay");
