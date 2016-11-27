@@ -164,6 +164,11 @@ class WCMainViewController: UIViewController {
         let buttonSize = CGSize(width: screenSize.height * Button_Size_Ratio, height: screenSize.height * Button_Size_Ratio)
         
         var levelStringArray: [String] = [String]()
+        
+        for toeicToeflNumber in toeic_toeflCategory {
+            levelStringArray.append(toeicToeflNumber.textbookType)
+        }
+        
         for lessonNumber in 1 ... levelsArray.count {
             var levelString: String
             if lessonNumber < 7 {
@@ -178,10 +183,6 @@ class WCMainViewController: UIViewController {
         }
         
         // Toeic and Toefl vocabulaires
-        for toeicToeflNumber in toeic_toeflCategory {
-            levelStringArray.append(toeicToeflNumber.textbookType)
-        }
-        
 //        let buttonItemHeight = buttonTopInset + (buttonSize.height + (buttonButtomInset / 2))
         let buttonItemHeight = buttonTopInset + buttonSize.height + buttonButtomInset
         backgroundScrollView.contentSize = CGSize(width: self.view.frame.size.width, height: buttonItemHeight * (CGFloat(levelStringArray.count / 2)))
@@ -256,22 +257,20 @@ class WCMainViewController: UIViewController {
 
         // Navigation controller push view controller
         let lessonChooseViewController : WCLessonChooseViewController = (self.storyboard!.instantiateViewController(withIdentifier: "LessonChoosePage") as! WCLessonChooseViewController)
-
-        if sender.tag < 9 {
-            // Senior high school vocabularies
-            lessonChooseViewController.levelString = levelTitleString[sender.tag].replacingOccurrences(of: "\n", with: "")
-            lessonChooseViewController.lessonsVocabularyArray = levelsArray[sender.tag]
-        }
-        else {
+        
+        if sender.tag < 3 {
             lessonChooseViewController.levelString = levelTitleString[sender.tag]
-            // Toeic and Toefl vocabularies
-            if sender.tag - 10 > 0 {
-                lessonChooseViewController.toeicOrToeflData = toeflData
-            }
-            else {
+            if sender.tag == 0 {
                 lessonChooseViewController.toeicOrToeflData = toeicData
             }
-            lessonChooseViewController.toeicOrToeflCategory = toeic_toeflCategory[sender.tag - 10]
+            else {
+                lessonChooseViewController.toeicOrToeflData = toeflData
+            }
+            lessonChooseViewController.toeicOrToeflCategory = toeic_toeflCategory[sender.tag]
+        }
+        else {
+            lessonChooseViewController.levelString = levelTitleString[sender.tag].replacingOccurrences(of: "\n", with: "")
+            lessonChooseViewController.lessonsVocabularyArray = levelsArray[sender.tag]
         }
         
         self.navigationController!.pushViewController(lessonChooseViewController, animated: true)
