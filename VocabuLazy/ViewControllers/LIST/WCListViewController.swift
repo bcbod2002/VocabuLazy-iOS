@@ -34,6 +34,8 @@ class WCListViewController: UIViewController, UITableViewDelegate, UITableViewDa
         super.viewDidLoad()
         offset = navigationController!.navigationBar.frame.height
         getRawData()
+        readToeflVocabularyFromStorage()
+        readToeicVocabularyFromStorage()
         
         initialSuspensionAddButton()
     }
@@ -249,6 +251,34 @@ class WCListViewController: UIViewController, UITableViewDelegate, UITableViewDa
             do {
                 let vocabularyArray = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableLeaves) as! [NSDictionary]
                 for jsonData in vocabularyArray {
+                    self.rawData.append(WCVocabularyModel(vocabularyNSDictionary: jsonData))
+                }
+            }
+            catch let error as NSError {
+                printLog("error = %@", error.description)
+            }
+        }
+    }
+    
+    fileprivate func readToeicVocabularyFromStorage() {
+        StorageManager.getToeicDataFromFileWithSuccess { (data) in
+            do {
+                let toeicArray: [NSDictionary] = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableLeaves) as! [NSDictionary]
+                for jsonData in toeicArray {
+                    self.rawData.append(WCVocabularyModel(vocabularyNSDictionary: jsonData))
+                }
+            }
+            catch let error as NSError {
+                printLog("error = %@", error.description)
+            }
+        }
+    }
+    
+    fileprivate func readToeflVocabularyFromStorage() {
+        StorageManager.getToeflDataFromFileWithSuccess { (data) in
+            do {
+                let toeicArray: [NSDictionary] = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableLeaves) as! [NSDictionary]
+                for jsonData in toeicArray {
                     self.rawData.append(WCVocabularyModel(vocabularyNSDictionary: jsonData))
                 }
             }
