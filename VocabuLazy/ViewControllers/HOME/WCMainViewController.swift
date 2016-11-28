@@ -266,7 +266,7 @@ class WCMainViewController: UIViewController {
         }
         else {
             lessonChooseViewController.levelString = levelTitleString[sender.tag].replacingOccurrences(of: "\n", with: "")
-            lessonChooseViewController.lessonsVocabularyArray = levelsArray[sender.tag]
+            lessonChooseViewController.lessonsVocabularyArray = levelsArray[sender.tag - 3]
         }
         
         self.navigationController!.pushViewController(lessonChooseViewController, animated: true)
