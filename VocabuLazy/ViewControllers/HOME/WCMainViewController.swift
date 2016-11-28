@@ -184,21 +184,17 @@ class WCMainViewController: UIViewController {
         
         // Toeic and Toefl vocabulaires
 //        let buttonItemHeight = buttonTopInset + (buttonSize.height + (buttonButtomInset / 2))
+        let tabBarHeight = self.tabBarController?.tabBar.frame.height
         let buttonItemHeight = buttonTopInset + buttonSize.height + buttonButtomInset
-        backgroundScrollView.contentSize = CGSize(width: self.view.frame.size.width, height: buttonItemHeight * (CGFloat(levelStringArray.count / 2)))
+        backgroundScrollView.contentSize = CGSize(width: self.view.frame.size.width, height: buttonItemHeight * (CGFloat(levelStringArray.count / 2)) + tabBarHeight!)
         
         // 排列 button 位置
         for i in 0..<levelStringArray.count {
             var levelButton : WCMaterialButton!
             let row = i / 2
             
-            if (i % 2 != 0) {
-                levelButton = WCMaterialButton (frame: CGRect(x: screenSize.width - buttonRightInset - buttonSize.width, y: buttonTopInset + (buttonButtomInset + buttonSize.height) * CGFloat(row), width: buttonSize.width, height: buttonSize.height))
-                
-            }
-            else {
-                levelButton = WCMaterialButton (frame: CGRect(x: buttonLeftInset, y: buttonTopInset + (buttonButtomInset + buttonSize.height) * CGFloat(row), width: buttonSize.width, height: buttonSize.height))
-            }
+            let y = buttonTopInset + (buttonButtomInset + buttonSize.height) * CGFloat(row)
+            levelButton = WCMaterialButton(frame: (i % 2 == 0) ? CGRect(x: buttonLeftInset, y: y, width: buttonSize.width, height: buttonSize.height) : CGRect(x: screenSize.width - buttonRightInset - buttonSize.width, y: y, width: buttonSize.width, height: buttonSize.height))
             
             if (row % 2 != 0) {
                 levelButton.backgroundColor = WC_Yellow_Color
