@@ -266,7 +266,7 @@ class WCWordPlayViewController: UIViewController, AVSpeechSynthesizerDelegate, W
         
         title = levelString + " - Lesson " + String((backgroundHandler?.lessonNumber)! + 1)
         
-        DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async {
+        DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
             Thread.sleep(forTimeInterval: 0.5)
             DispatchQueue.main.async(execute: {
                 self.foregroundHandler?.setGroundHandler(with: self.backgroundHandler!)
@@ -284,9 +284,9 @@ class WCWordPlayViewController: UIViewController, AVSpeechSynthesizerDelegate, W
         if backgroundHandler?.lessonNumber != foregroundHandler?.lessonNumber {
             backgroundScrollView.scroll(toItem: lessonNumber, animated: false)
         }
-        DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async { 
+        DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
             Thread.sleep(forTimeInterval: 0.1)
-            DispatchQueue.main.async(execute: { 
+            DispatchQueue.main.async(execute: {
                 self.wordPlayTableView.tableViewScrolltoItem(vocabularyNumber, animated: false, callDelegate: false)
             })
         }

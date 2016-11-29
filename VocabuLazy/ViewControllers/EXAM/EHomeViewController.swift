@@ -11,6 +11,11 @@ import UIKit
 class EHomeViewController: UIViewController {
     var levelsArray = [[WCVocabularyModel]]()
     var rawData = [WCVocabularyModel]()
+    
+    var toeic_toeflCategory = [WCToeicToeflCategoryModel]()
+    var toeicData = [WCVocabularyModel]()
+    var toeflData = [WCVocabularyModel]()
+    
     var levelTitleString = [String]()
     
     override func viewDidLoad() {
@@ -18,7 +23,11 @@ class EHomeViewController: UIViewController {
 
         self.title = "單元練習"
         
+        readToeic_ToeflCategory()
+        
         loadData()
+        readToeicVocabularyFromStorage()
+        readToeflVocabularyFromStorage()
         
         let backButton = UIBarButtonItem.init(title: "", style: .plain, target: nil, action: nil)
         self.navigationItem.backBarButtonItem = backButton;
@@ -43,7 +52,28 @@ class EHomeViewController: UIViewController {
         let WC_Green_Color = UIColor (red: 72.0 / 255.0, green: 207.0 / 255.0, blue: 174.0 / 255.0, alpha: 1.0);
         let WC_Yellow_Color = UIColor (red: 254.0 / 255.0, green: 206.0 / 255.0, blue: 85.0 / 255.0, alpha: 1.0);
         
-        let c = levelsArray.count
+        // 設定按鈕
+        var levelStringArray: [String] = [String]()
+        
+        for toeicToeflNumber in toeic_toeflCategory {
+            levelStringArray.append(toeicToeflNumber.textbookType)
+        }
+        
+        for lessonNumber in 1 ... levelsArray.count {
+            var levelString: String
+            if lessonNumber < 7 {
+                // 必考 7000 單字
+                levelString = "必考7000單字\n Level " + String(lessonNumber)
+            }
+            else {
+                // 高職單字
+                levelString = "高職單字\n Level " + String(lessonNumber - 6)
+            }
+            levelStringArray.append(levelString)
+        }
+        
+//        let c = levelsArray.count
+        let c = levelStringArray.count
         let scrollView = UIScrollView.init()
         scrollView.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height)
         scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: buttonItemHeight * CGFloat((c+1) / 2) + buttonTopInset + buttonButtomInset * 2)
@@ -54,7 +84,10 @@ class EHomeViewController: UIViewController {
             
             // 區分 必考7000單字 與 高職單字
             var levelString: String
-            if i < 6 {
+            if i < 3 {
+                levelString = levelStringArray[i]
+            }
+            else if i < 6 {
                 levelString = "必考7000單字\n Level " + String(i + 1)
             }
             else {
@@ -78,10 +111,25 @@ class EHomeViewController: UIViewController {
     @IBAction func buttonClick(_ sender: UIButton) {
         let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: "Unit") as! WCExamChooseViewController
         nextViewController.levelNumber = UInt(sender.tag)
-        nextViewController.lessonsVocabularyArray = levelsArray[sender.tag]
+        
+        if sender.tag < 3 {
+            if sender.tag == 0 {
+                nextViewController.toeicOrToeflData = toeicData
+            }
+            else {
+                nextViewController.toeicOrToeflData = toeflData
+            }
+            nextViewController.toeicOrToeflCategory = toeic_toeflCategory[sender.tag]
+        }
+        else {
+            nextViewController.lessonsVocabularyArray = levelsArray[sender.tag]
+        }
+        
         self.navigationController?.pushViewController(nextViewController, animated: true)
     }
     
+    // ---------------------------------------------------------------------------------------------
+    // MARK: - Read vocabularies from Vocabulary.json
     fileprivate func loadData() {
         StorageManager.getVocabularyDataFromFileWithSuccess { (data) -> Void in
             do {
@@ -100,6 +148,49 @@ class EHomeViewController: UIViewController {
             }
             catch let error as NSError {
                 printLog("error = ", error)
+            }
+        }
+    }
+    
+    // Toeuc and Toefl Vocabularies
+    fileprivate func readToeicVocabularyFromStorage() {
+        StorageManager.getToeicDataFromFileWithSuccess { (data) in
+            do {
+                let toeicArray: [NSDictionary] = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableLeaves) as! [NSDictionary]
+                for jsonData in toeicArray {
+                    self.toeicData.append(WCVocabularyModel(vocabularyNSDictionary: jsonData))
+                }
+            }
+            catch let error as NSError {
+                printLog("error = %@", error.description)
+            }
+        }
+    }
+    
+    fileprivate func readToeflVocabularyFromStorage() {
+        StorageManager.getToeflDataFromFileWithSuccess { (data) in
+            do {
+                let toeicArray: [NSDictionary] = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableLeaves) as! [NSDictionary]
+                for jsonData in toeicArray {
+                    self.toeflData.append(WCVocabularyModel(vocabularyNSDictionary: jsonData))
+                }
+            }
+            catch let error as NSError {
+                printLog("error = %@", error.description)
+            }
+        }
+    }
+    
+    fileprivate func readToeic_ToeflCategory() {
+        StorageManager.getToeic_ToeflCategoryWithSuccess { (data) in
+            do {
+                let categoryArray: [NSDictionary] = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableLeaves) as! [NSDictionary]
+                for jsonData in categoryArray {
+                    self.toeic_toeflCategory.append(WCToeicToeflCategoryModel(toeicToeflCatrgoryNSDictionary: jsonData))
+                }
+            }
+            catch let error as NSError {
+                printLog("error = %@", error.description)
             }
         }
     }

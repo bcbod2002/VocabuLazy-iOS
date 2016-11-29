@@ -20,6 +20,10 @@ class WCExamChooseViewController: UIViewController, WCLessonChooseTableViewDeleg
     var lessonsVocabularyArray = [WCVocabularyModel]()    
     var oneLevelVocabularyArray = [[WCVocabularyModel]]()
     
+    // Toeic and Toefl vocabularies
+    var toeicOrToeflData = [WCVocabularyModel]()
+    var toeicOrToeflCategory = WCToeicToeflCategoryModel()
+    
     // Private variable
     fileprivate var examChooseTableView: WCLessonChooseTableView?;
     fileprivate let screenSize: CGSize = UIScreen.main.bounds.size;
@@ -33,10 +37,18 @@ class WCExamChooseViewController: UIViewController, WCLessonChooseTableViewDeleg
     {
         super.viewDidLoad()
         
-        oneLevelVocabularyArray = rearrangeArrayDimension(lessonsVocabularyArray, partition: 40)!
+        let navigationBarHeight = self.navigationController?.navigationBar.frame.height
+        let statusBarHeight = UIApplication.shared.statusBarFrame.height
+        
+        if lessonsVocabularyArray.count > 0 {
+            oneLevelVocabularyArray = rearrangeArrayDimension(lessonsVocabularyArray, partition: 40)!
+        }
+        else {
+            oneLevelVocabularyArray = mapToeic_ToeflDimension()!
+        }
         
         self.title = "選擇冊次";
-        examChooseTableView = WCLessonChooseTableView(frame: CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.height), totalItemNumber: oneLevelVocabularyArray.count);
+        examChooseTableView = WCLessonChooseTableView(frame: CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.height - navigationBarHeight! - statusBarHeight), totalItemNumber: oneLevelVocabularyArray.count);
         examChooseTableView?.delegate = self;
         self.navigationController?.setNavigationBarHidden(false, animated: true);
         self.view.addSubview(examChooseTableView!);
@@ -67,6 +79,26 @@ class WCExamChooseViewController: UIViewController, WCLessonChooseTableViewDeleg
                 oneDimensionBucket.removeAll()
                 boundary = 0
             }
+        }
+        
+        return twoDimensionBucket
+    }
+    
+    fileprivate func mapToeic_ToeflDimension() -> [[WCVocabularyModel]]? {
+        guard toeicOrToeflData.count > 0 else {
+            return nil
+        }
+        var twoDimensionBucket = [[WCVocabularyModel]]()
+        for category in toeicOrToeflCategory.textbookContent {
+            var oneDimensionBucket = [WCVocabularyModel]()
+            for content in category.lessonContent {
+                for vocabulary in toeicOrToeflData {
+                    if content == vocabulary.identity {
+                        oneDimensionBucket.append(vocabulary)
+                    }
+                }
+            }
+            twoDimensionBucket.append(oneDimensionBucket)
         }
         
         return twoDimensionBucket
