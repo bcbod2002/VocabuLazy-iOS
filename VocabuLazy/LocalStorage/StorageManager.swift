@@ -75,6 +75,7 @@ class StorageManager {
                 if (FileManager.default.fileExists(atPath: path)) {
                     do {
                         let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .uncached)
+                        NSKeyedUnarchiver.setClass(WCListViewModel.self, forClassName: "Swallow.WCListViewModel")
                         success(NSKeyedUnarchiver.unarchiveObject(with: data) as! [WCListViewModel])
                     }
                     catch let error as NSError {
@@ -90,6 +91,7 @@ class StorageManager {
             if let dir : NSString = NSSearchPathForDirectoriesInDomains(
                 .documentDirectory, .allDomainsMask, true).first as NSString? {
                 let path = dir.appendingPathComponent("List.json")
+                NSKeyedArchiver.setClassName("Swallow.WCListViewModel", for: WCListViewModel.self)
                 try? NSKeyedArchiver.archivedData(withRootObject: data).write(to: URL(fileURLWithPath: path) , options: [])
             }
         }
