@@ -11,6 +11,7 @@
 			* WCSearchViewModel.swift
 			* WCSettingContentModel.swift
 			* WCVocabularyModel.swift
+			* WCToeicToeflCategoryModel.swift
 		* __*Views*__
 			* __*EXAM*__
 			* __*INFO*__
@@ -21,17 +22,19 @@
 		* __*ViewControllers*__
 			* __*EXAM*__
 				* WCExamViewController.swift
+				* WCExamChooseViewController.swift
+				* WCQuestionViewController.swift
+				* ResultViewController.swift
 				* __*UnitExam*__
 					* EHomeViewController.swift
-					* WCExamChooseViewController.swift
 				* __*ListExam*__
 					* EListTableViewController.swift
-					* WCExamChooseViewController.swift
 			* __*HOME*__
 				* WCMainViewController.swift
 			* __*INFO*__
 				* WCInformationViewController.swift 
 				* WCIntroduceViewController.swift
+				* WCReportViewController.swift
 			* __*LIST*__
 				* WCListViewController.swift
 			* __*PLAYLIST*__
@@ -49,6 +52,10 @@
 		* __*LocalStorage*__
 			* StorageManager.swift
 			* Vocabulary.json
+			* __*ToeicToefl*__
+				* TOEFL_final.json
+				* TOEIC_final.json
+				* TOEIC_TOEFL_textbook.json
 		* __*ThirdParties*__
 			* __*Fonts*__
 		* AppDelegate.swift
