@@ -205,6 +205,7 @@ class WCWordPlaySettingView: UIView, UIScrollViewDelegate, WCSettingContentViewD
     // Initial UserDefaults
     fileprivate func initWordPlaySettingUserDefaults() -> [String : Any] {
 
+        NSKeyedArchiver.setClassName("Swallow.WCSettingContentModel", for: WCSettingContentModel.self)
         // CustomSetting
         let customSettingModel = WCSettingContentModel(pattern: PatternType.customPattern, play: SetPlayType.sequential, cycle: SetCycleType.once, sentence: SetSentenceType.noneSentence, second: 0, frequency: 1, speed: 1, playTime: 10)
         let customModelData = NSKeyedArchiver.archivedData(withRootObject: customSettingModel)
