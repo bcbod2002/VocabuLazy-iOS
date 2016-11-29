@@ -94,9 +94,12 @@ class WCWordBackgroundHandler: NSObject, WCWordGroundHandlerProtocol
         sentenceTupleArray = sentenceArray
         
         playedItemArray.removeAll()
-        for _ in 1...vocabularyArray.count
-        {
-            playedItemArray.append(false)
+        
+        if vocabularyArray.count > 0 {
+            for _ in 1...vocabularyArray.count
+            {
+                playedItemArray.append(false)
+            }
         }
     }
     
@@ -335,7 +338,7 @@ class WCWordBackgroundHandler: NSObject, WCWordGroundHandlerProtocol
     {
         if vocabularyTupleArray != nil
         {
-            for index in 1 ... vocabularyTupleArray!.count
+            for _ in 1 ... vocabularyTupleArray!.count
             {
                 //                playedItemArray[index] = false
             }

@@ -164,6 +164,11 @@ class WCMainViewController: UIViewController {
         let buttonSize = CGSize(width: screenSize.height * Button_Size_Ratio, height: screenSize.height * Button_Size_Ratio)
         
         var levelStringArray: [String] = [String]()
+        
+        for toeicToeflNumber in toeic_toeflCategory {
+            levelStringArray.append(toeicToeflNumber.textbookType)
+        }
+        
         for lessonNumber in 1 ... levelsArray.count {
             var levelString: String
             if lessonNumber < 7 {
@@ -178,26 +183,18 @@ class WCMainViewController: UIViewController {
         }
         
         // Toeic and Toefl vocabulaires
-        for toeicToeflNumber in toeic_toeflCategory {
-            levelStringArray.append(toeicToeflNumber.textbookType)
-        }
-        
 //        let buttonItemHeight = buttonTopInset + (buttonSize.height + (buttonButtomInset / 2))
+        let tabBarHeight = self.tabBarController?.tabBar.frame.height
         let buttonItemHeight = buttonTopInset + buttonSize.height + buttonButtomInset
-        backgroundScrollView.contentSize = CGSize(width: self.view.frame.size.width, height: buttonItemHeight * (CGFloat(levelStringArray.count / 2)))
+        backgroundScrollView.contentSize = CGSize(width: self.view.frame.size.width, height: buttonItemHeight * (CGFloat(levelStringArray.count / 2)) + tabBarHeight!)
         
         // 排列 button 位置
         for i in 0..<levelStringArray.count {
             var levelButton : WCMaterialButton!
             let row = i / 2
             
-            if (i % 2 != 0) {
-                levelButton = WCMaterialButton (frame: CGRect(x: screenSize.width - buttonRightInset - buttonSize.width, y: buttonTopInset + (buttonButtomInset + buttonSize.height) * CGFloat(row), width: buttonSize.width, height: buttonSize.height))
-                
-            }
-            else {
-                levelButton = WCMaterialButton (frame: CGRect(x: buttonLeftInset, y: buttonTopInset + (buttonButtomInset + buttonSize.height) * CGFloat(row), width: buttonSize.width, height: buttonSize.height))
-            }
+            let y = buttonTopInset + (buttonButtomInset + buttonSize.height) * CGFloat(row)
+            levelButton = WCMaterialButton(frame: (i % 2 == 0) ? CGRect(x: buttonLeftInset, y: y, width: buttonSize.width, height: buttonSize.height) : CGRect(x: screenSize.width - buttonRightInset - buttonSize.width, y: y, width: buttonSize.width, height: buttonSize.height))
             
             if (row % 2 != 0) {
                 levelButton.backgroundColor = WC_Yellow_Color
@@ -256,22 +253,20 @@ class WCMainViewController: UIViewController {
 
         // Navigation controller push view controller
         let lessonChooseViewController : WCLessonChooseViewController = (self.storyboard!.instantiateViewController(withIdentifier: "LessonChoosePage") as! WCLessonChooseViewController)
-
-        if sender.tag < 9 {
-            // Senior high school vocabularies
-            lessonChooseViewController.levelString = levelTitleString[sender.tag].replacingOccurrences(of: "\n", with: "")
-            lessonChooseViewController.lessonsVocabularyArray = levelsArray[sender.tag]
-        }
-        else {
+        
+        if sender.tag < 3 {
             lessonChooseViewController.levelString = levelTitleString[sender.tag]
-            // Toeic and Toefl vocabularies
-            if sender.tag - 10 > 0 {
-                lessonChooseViewController.toeicOrToeflData = toeflData
-            }
-            else {
+            if sender.tag == 0 {
                 lessonChooseViewController.toeicOrToeflData = toeicData
             }
-            lessonChooseViewController.toeicOrToeflCategory = toeic_toeflCategory[sender.tag - 10]
+            else {
+                lessonChooseViewController.toeicOrToeflData = toeflData
+            }
+            lessonChooseViewController.toeicOrToeflCategory = toeic_toeflCategory[sender.tag]
+        }
+        else {
+            lessonChooseViewController.levelString = levelTitleString[sender.tag].replacingOccurrences(of: "\n", with: "")
+            lessonChooseViewController.lessonsVocabularyArray = levelsArray[sender.tag - 3]
         }
         
         self.navigationController!.pushViewController(lessonChooseViewController, animated: true)

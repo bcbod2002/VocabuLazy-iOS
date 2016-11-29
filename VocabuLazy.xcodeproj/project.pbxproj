@@ -111,7 +111,7 @@
 
 /* Begin PBXFileReference section */
 		02F2937FD3FCFEE7E9F195D4 /* Pods-VocabuLazy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VocabuLazy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VocabuLazy/Pods-VocabuLazy.debug.xcconfig"; sourceTree = "<group>"; };
-		1DA0621A1DA2C10B007EFF73 /* Swallow-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Swallow-Bridging-Header.h"; sourceTree = "<group>"; };
+		1DA0621A1DA2C10B007EFF73 /* VocabuLazy-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VocabuLazy-Bridging-Header.h"; sourceTree = "<group>"; };
 		327D75BB416590E68C8B9224 /* Pods-VocabuLazy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VocabuLazy.release.xcconfig"; path = "Pods/Target Support Files/Pods-VocabuLazy/Pods-VocabuLazy.release.xcconfig"; sourceTree = "<group>"; };
 		6A6FAF6386C1DD24F845A1C1 /* Pods_VocabuLazyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VocabuLazyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EBC14351DEFEF2C4348B5E0 /* Pods_VocabuLazy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VocabuLazy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -288,7 +288,7 @@
 			isa = PBXGroup;
 			children = (
 				F64D3DBE1B863AF800E3D671 /* Info.plist */,
-				1DA0621A1DA2C10B007EFF73 /* Swallow-Bridging-Header.h */,
+				1DA0621A1DA2C10B007EFF73 /* VocabuLazy-Bridging-Header.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
