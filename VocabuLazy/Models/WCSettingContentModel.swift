@@ -8,21 +8,39 @@
 
 import UIKit
 
-enum PatternType : UInt
-{
+// ---------------------------------------------------------------------------------------------
+// MARK: - Enumerate
+
+/// <#Description#>
+///
+/// - customPattern: <#customPattern description#>
+/// - sleepPattern: <#sleepPattern description#>
+/// - commutingPattern: <#commutingPattern description#>
+enum PatternType : UInt {
     case customPattern = 0
     case sleepPattern
     case commutingPattern
 }
 
-enum SetPlayType : UInt
-{
+
+/// <#Description#>
+///
+/// - random: <#random description#>
+/// - sequential: <#sequential description#>
+enum SetPlayType : UInt {
     case random = 0
     case sequential
 }
 
-enum SetCycleType : UInt
-{
+
+/// <#Description#>
+///
+/// - infinity: <#infinity description#>
+/// - once: <#once description#>
+/// - twice: <#twice description#>
+/// - thrice: <#thrice description#>
+/// - fourTimes: <#fourTimes description#>
+enum SetCycleType : UInt {
     case infinity = 0
     case once
     case twice
@@ -30,48 +48,48 @@ enum SetCycleType : UInt
     case fourTimes
 }
 
-enum SetSentenceType : UInt
-{
+
+/// <#Description#>
+///
+/// - noneSentence: <#noneSentence description#>
+/// - englishSentence: <#englishSentence description#>
+enum SetSentenceType : UInt {
     case noneSentence = 0
     case englishSentence
 }
 
-enum DetailAdjustType : Int
-{
+/// <#Description#>
+///
+/// - secondAdjust: <#secondAdjust description#>
+/// - frequencyAdjust: <#frequencyAdjust description#>
+/// - speedAdjust: <#speedAdjust description#>
+/// - timeAdjust: <#timeAdjust description#>
+enum DetailAdjustType : Int {
     case secondAdjust = 0;
     case frequencyAdjust
     case speedAdjust
     case timeAdjust
 }
 
-class WCSettingContentModel: NSObject, NSCoding
-{
+
+class WCSettingContentModel: NSObject, NSCoding {
+    
+    // ---------------------------------------------------------------------------------------------
+    // MARK: - Variables
     var playPattern : PatternType!;
     var setPlay : SetPlayType!;
     var setCycle : SetCycleType!;
     var setSentence : SetSentenceType!;
-    
+    //-------------------------
     var secondDetailAdjust : UInt!;
     var frequencyDetailAdjiust : UInt!;
     var speedDetailAdjust : UInt!;
     var playTimeDetailAdjust : UInt!;
     
-    override var description : String
-    {
-        let descriptionString = "PatternType = " + String(describing: playPattern.rawValue) + "\n" +
-                                "SetPlayType = " + String(setPlay.rawValue) + "\n" +
-                                "SetCycleType = " + String(setCycle.rawValue) + "\n" +
-                                "SetSentenceType = " + String(setSentence.rawValue) + "\n" +
-                                "SecondDetailAdjust = " + String(secondDetailAdjust) + "\n" +
-                                "FrequencyDetailAdjiust = " + String(frequencyDetailAdjiust) + "\n" +
-                                "SpeedDetailAdjust = " + String(speedDetailAdjust) + "\n" +
-                                "PlayTimeDetailAdjust = " + String(playTimeDetailAdjust);
-        
-        return descriptionString;
-    }
     
-    required init?(coder aDecoder: NSCoder)
-    {
+    // ---------------------------------------------------------------------------------------------
+    // MARK: - Initial    
+    required init?(coder aDecoder: NSCoder) {
         super.init();
         
         NSKeyedUnarchiver.setClass(WCSettingContentModel.self, forClassName: "Swallow.WCSettingContentModel")
@@ -100,8 +118,7 @@ class WCSettingContentModel: NSObject, NSCoding
      
      - returns: WCSettingContentModel
      */
-    init(pattern: PatternType?, play: SetPlayType?, cycle: SetCycleType?, sentence: SetSentenceType?, second: UInt?, frequency: UInt?, speed: UInt?, playTime: UInt?)
-    {
+    init(pattern: PatternType?, play: SetPlayType?, cycle: SetCycleType?, sentence: SetSentenceType?, second: UInt?, frequency: UInt?, speed: UInt?, playTime: UInt?) {
         
         self.playPattern = pattern ?? PatternType.customPattern;
         self.setPlay = play ?? SetPlayType.sequential;
@@ -114,8 +131,10 @@ class WCSettingContentModel: NSObject, NSCoding
         self.playTimeDetailAdjust = playTime ?? 1;
     }
     
-     func encode(with aEnCoder: NSCoder)
-    {
+    
+    // ---------------------------------------------------------------------------------------------
+    // MARK - NSCoding protocol
+    func encode(with aEnCoder: NSCoder) {
         aEnCoder.encode(Int(playPattern.rawValue), forKey: "playPattern");
         aEnCoder.encode(Int(setPlay.rawValue), forKey: "setPlay");
         aEnCoder.encode(Int(setCycle.rawValue), forKey: "setCycle");
@@ -127,8 +146,7 @@ class WCSettingContentModel: NSObject, NSCoding
         aEnCoder.encode(Int(playTimeDetailAdjust), forKey: "playTimeDetailAdjust");
     }
     
-    func decodeWithCoder(_ aDecoder: NSCoder)
-    {
+    func decodeWithCoder(_ aDecoder: NSCoder) {
         playPattern = PatternType(rawValue: UInt(aDecoder.decodeInteger(forKey: "playPattern")));
         setPlay = SetPlayType(rawValue: UInt(aDecoder.decodeInteger(forKey: "setPlay")));
         setCycle = SetCycleType(rawValue: UInt(aDecoder.decodeInteger(forKey: "setCycle")));
@@ -138,5 +156,21 @@ class WCSettingContentModel: NSObject, NSCoding
         frequencyDetailAdjiust = UInt(aDecoder.decodeInteger(forKey: "frequencyDetailAdjiust"));
         speedDetailAdjust = UInt(aDecoder.decodeInteger(forKey: "speedDetailAdjust"));
         playTimeDetailAdjust = UInt(aDecoder.decodeInteger(forKey: "playTimeDetailAdjust"));
+    }
+    
+    
+    // ---------------------------------------------------------------------------------------------
+    // MARK: - Override other methods
+    override var description : String {
+        let descriptionString = "PatternType = " + String(describing: playPattern.rawValue) + "\n" +
+            "SetPlayType = " + String(setPlay.rawValue) + "\n" +
+            "SetCycleType = " + String(setCycle.rawValue) + "\n" +
+            "SetSentenceType = " + String(setSentence.rawValue) + "\n" +
+            "SecondDetailAdjust = " + String(secondDetailAdjust) + "\n" +
+            "FrequencyDetailAdjiust = " + String(frequencyDetailAdjiust) + "\n" +
+            "SpeedDetailAdjust = " + String(speedDetailAdjust) + "\n" +
+            "PlayTimeDetailAdjust = " + String(playTimeDetailAdjust);
+        
+        return descriptionString;
     }
 }

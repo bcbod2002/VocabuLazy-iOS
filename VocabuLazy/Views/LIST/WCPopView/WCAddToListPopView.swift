@@ -23,14 +23,14 @@ class WCAddToListPopView : UIView, UITableViewDelegate, UITableViewDataSource, W
     // MARK: - Variables
     // WCAddToListPopView data
     var listData = [WCListViewModel]()
-    var selectedWord : UInt!
+    var selectedWord: UInt!
     
     // View setting
-    var view : UIView!
-    var offset : CGFloat = 0
-    var size : CGRect = CGRect(x: 0, y: 0, width: 0, height: 0)
-    var superView : UIView!
-    var innerPopView : WCNewListPopView!
+    var view: UIView!
+    var offset: CGFloat = 0
+    var size: CGRect = CGRect(x: 0, y: 0, width: 0, height: 0)
+    var superView: UIView!
+    var innerPopView: WCNewListPopView!
     
     // WCAddToListPopViewDelegate
     var delegate: WCAddToListPopViewDelegate?

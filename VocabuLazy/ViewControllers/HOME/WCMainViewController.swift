@@ -84,15 +84,20 @@ class WCMainViewController: UIViewController {
     // ---------------------------------------------------------------------------------------------
     // MARK: - Read vocabularies from Vocabulary.json
     fileprivate func readVocabularyFromStorage() {
+        NSLog("start read vocabulary from storage")
         StorageManager.getVocabularyDataFromFileWithSuccess { (data) -> Void in
             do {
+                NSLog("Step 1")
                 let vocabularyArray : NSArray = try JSONSerialization.jsonObject(with: data as Data, options: JSONSerialization.ReadingOptions.mutableLeaves) as! NSArray;
+                NSLog("Step 2")
                 for vocabulary in vocabularyArray {
                     self.rawData.append(
                         WCVocabularyModel(vocabularyNSDictionary: vocabulary as! NSDictionary)
                     )
                 }
+                NSLog("Step 3")
                 self.levelsArray = self.classifyVocabularies()
+                NSLog("Step 4")
                 
                 // 新增高職單字的 Level
                 for levelNumber in 0 ... 3 {
