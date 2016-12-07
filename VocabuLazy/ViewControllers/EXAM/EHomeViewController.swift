@@ -72,7 +72,6 @@ class EHomeViewController: UIViewController {
             levelStringArray.append(levelString)
         }
         
-//        let c = levelsArray.count
         let c = levelStringArray.count
         let scrollView = UIScrollView.init()
         scrollView.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height)
@@ -83,16 +82,7 @@ class EHomeViewController: UIViewController {
         for i in 0...(c - 1) {
             
             // 區分 必考7000單字 與 高職單字
-            var levelString: String
-            if i < 3 {
-                levelString = levelStringArray[i]
-            }
-            else if i < 6 {
-                levelString = "必考7000單字\n Level " + String(i + 1)
-            }
-            else {
-                levelString = "高職單字\n Level " + String(i - 5)
-            }
+            let levelString = levelStringArray[i]
             
             let row = i / 2;
             let y = buttonTopInset + (buttonButtomInset + buttonSize.height) * CGFloat(row)
@@ -122,7 +112,7 @@ class EHomeViewController: UIViewController {
             nextViewController.toeicOrToeflCategory = toeic_toeflCategory[sender.tag]
         }
         else {
-            nextViewController.lessonsVocabularyArray = levelsArray[sender.tag]
+            nextViewController.lessonsVocabularyArray = levelsArray[sender.tag - 3]
         }
         
         self.navigationController?.pushViewController(nextViewController, animated: true)
