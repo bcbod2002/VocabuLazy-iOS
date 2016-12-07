@@ -44,9 +44,7 @@ class WCLessonChooseViewController: UIViewController, WCLessonChooseTableViewDel
         let statusBarHeight = UIApplication.shared.statusBarFrame.height
         
         if lessonsVocabularyArray.count > 0 {
-            NSLog("Start to rearrange")
             oneLevelVocabularyArray = rearrangeArrayDimension(lessonsVocabularyArray, partition: 40)!
-            NSLog("Finish to rearrange")
         }
         else {
             oneLevelVocabularyArray = mapToeic_ToeflDimension()!

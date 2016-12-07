@@ -181,7 +181,6 @@ class WCListViewController: UIViewController, UITableViewDelegate, UITableViewDa
             return Int(vocabularyModel.identity)
         }.sorted()
         
-        NSLog("Start Search")
         for contentIdentity in listDataContent {
             let mappedNumber = fibonacciSearch(searchArray: rawDataIdentity, find: Int(contentIdentity))
             if (mappedNumber != nil) {
@@ -189,7 +188,6 @@ class WCListViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 listVocabularyModelArray.append(vocabularyModel)
             }
         }
-        NSLog("End Search")
         return listVocabularyModelArray
     }
     
