@@ -66,7 +66,7 @@ class WCSearchViewController: UIViewController, UITableViewDelegate, UITableView
         StorageManager.getVocabularyDataFromFileWithSuccess { (data) -> Void in
             do
             {
-                let vocabularyArray : NSArray = try JSONSerialization.jsonObject(with: data as Data, options: JSONSerialization.ReadingOptions.mutableLeaves) as! NSArray;
+                let vocabularyArray : NSArray = try JSONSerialization.jsonObject(with: data as Data, options: JSONSerialization.ReadingOptions.mutableLeaves) as! NSArray
                 for jsonData in vocabularyArray
                 {
                     self.rawData.append(

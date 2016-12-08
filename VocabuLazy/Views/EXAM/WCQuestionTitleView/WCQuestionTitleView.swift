@@ -8,8 +8,9 @@
 
 import UIKit
 
-// Define Color
-private let WC_Green_Color = UIColor (red: 72.0 / 255.0, green: 207.0 / 255.0, blue: 174.0 / 255.0, alpha: 1.0);
+// ---------------------------------------------------------------------------------------------
+// MARK: - Define Color
+private let WC_Green_Color = UIColor (red: 72.0 / 255.0, green: 207.0 / 255.0, blue: 174.0 / 255.0, alpha: 1.0)
 
 class WCQuestionTitleView: UIView {
     
@@ -58,6 +59,8 @@ class WCQuestionTitleView: UIView {
         self.addSubview(titleLabel!)
     }
     
+    
+    // ---------------------------------------------------------------------------------------------
     /**
      設定 Title 的字串
      

@@ -53,7 +53,7 @@ class WCLessonChooseViewController: UIViewController, WCLessonChooseTableViewDel
         }
         
         lessonChooseTableView = WCLessonChooseTableView(frame: CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.height - navigationBarHeight! - statusBarHeight), totalItemNumber: oneLevelVocabularyArray.count)
-        lessonChooseTableView.delegate = self;
+        lessonChooseTableView.delegate = self
         self.navigationController?.setNavigationBarHidden(false, animated: true)
 
         self.view.addSubview(lessonChooseTableView)

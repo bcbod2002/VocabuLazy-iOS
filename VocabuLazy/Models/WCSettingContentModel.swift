@@ -11,11 +11,11 @@ import UIKit
 // ---------------------------------------------------------------------------------------------
 // MARK: - Enumerate
 
-/// <#Description#>
+/// PatternType
 ///
-/// - customPattern: <#customPattern description#>
-/// - sleepPattern: <#sleepPattern description#>
-/// - commutingPattern: <#commutingPattern description#>
+/// - customPattern: Custom pattern
+/// - sleepPattern: Sleep pattern
+/// - commutingPattern: Commuting pattern
 enum PatternType : UInt {
     case customPattern = 0
     case sleepPattern
@@ -23,23 +23,23 @@ enum PatternType : UInt {
 }
 
 
-/// <#Description#>
+/// SetPlayType
 ///
-/// - random: <#random description#>
-/// - sequential: <#sequential description#>
+/// - random: Random mode
+/// - sequential: Sequential mode
 enum SetPlayType : UInt {
     case random = 0
     case sequential
 }
 
 
-/// <#Description#>
+/// SetCycleType
 ///
-/// - infinity: <#infinity description#>
-/// - once: <#once description#>
-/// - twice: <#twice description#>
-/// - thrice: <#thrice description#>
-/// - fourTimes: <#fourTimes description#>
+/// - infinity: Cycle with infinity
+/// - once: Cycle with Once
+/// - twice: Cycle with Twice
+/// - thrice: Cycle with Thrice
+/// - fourTimes: Cycle with Four times
 enum SetCycleType : UInt {
     case infinity = 0
     case once
@@ -49,23 +49,23 @@ enum SetCycleType : UInt {
 }
 
 
-/// <#Description#>
+/// SetSentenceType
 ///
-/// - noneSentence: <#noneSentence description#>
-/// - englishSentence: <#englishSentence description#>
+/// - noneSentence: Nonsentence mode
+/// - englishSentence: English sentence mode
 enum SetSentenceType : UInt {
     case noneSentence = 0
     case englishSentence
 }
 
-/// <#Description#>
+/// DetailAdjustType
 ///
-/// - secondAdjust: <#secondAdjust description#>
-/// - frequencyAdjust: <#frequencyAdjust description#>
-/// - speedAdjust: <#speedAdjust description#>
-/// - timeAdjust: <#timeAdjust description#>
+/// - secondAdjust: Second adjust
+/// - frequencyAdjust: Frequency adjust
+/// - speedAdjust: Speed adjust
+/// - timeAdjust: Time adjust
 enum DetailAdjustType : Int {
-    case secondAdjust = 0;
+    case secondAdjust = 0
     case frequencyAdjust
     case speedAdjust
     case timeAdjust
@@ -76,32 +76,32 @@ class WCSettingContentModel: NSObject, NSCoding {
     
     // ---------------------------------------------------------------------------------------------
     // MARK: - Variables
-    var playPattern : PatternType!;
-    var setPlay : SetPlayType!;
-    var setCycle : SetCycleType!;
-    var setSentence : SetSentenceType!;
+    var playPattern : PatternType!
+    var setPlay : SetPlayType!
+    var setCycle : SetCycleType!
+    var setSentence : SetSentenceType!
     //-------------------------
-    var secondDetailAdjust : UInt!;
-    var frequencyDetailAdjiust : UInt!;
-    var speedDetailAdjust : UInt!;
-    var playTimeDetailAdjust : UInt!;
+    var secondDetailAdjust : UInt!
+    var frequencyDetailAdjiust : UInt!
+    var speedDetailAdjust : UInt!
+    var playTimeDetailAdjust : UInt!
     
     
     // ---------------------------------------------------------------------------------------------
     // MARK: - Initial    
     required init?(coder aDecoder: NSCoder) {
-        super.init();
+        super.init()
         
         NSKeyedUnarchiver.setClass(WCSettingContentModel.self, forClassName: "Swallow.WCSettingContentModel")
-        playPattern = PatternType(rawValue: UInt(aDecoder.decodeInteger(forKey: "playPattern")));
-        setPlay = SetPlayType(rawValue: UInt(aDecoder.decodeInteger(forKey: "setPlay")));
-        setCycle = SetCycleType(rawValue: UInt(aDecoder.decodeInteger(forKey: "setCycle")));
-        setSentence = SetSentenceType(rawValue: UInt(aDecoder.decodeInteger(forKey: "setSentence")));
+        playPattern = PatternType(rawValue: UInt(aDecoder.decodeInteger(forKey: "playPattern")))
+        setPlay = SetPlayType(rawValue: UInt(aDecoder.decodeInteger(forKey: "setPlay")))
+        setCycle = SetCycleType(rawValue: UInt(aDecoder.decodeInteger(forKey: "setCycle")))
+        setSentence = SetSentenceType(rawValue: UInt(aDecoder.decodeInteger(forKey: "setSentence")))
         
-        secondDetailAdjust = UInt(aDecoder.decodeInteger(forKey: "secondDetailAdjust"));
-        frequencyDetailAdjiust = UInt(aDecoder.decodeInteger(forKey: "frequencyDetailAdjiust"));
-        speedDetailAdjust = UInt(aDecoder.decodeInteger(forKey: "speedDetailAdjust"));
-        playTimeDetailAdjust = UInt(aDecoder.decodeInteger(forKey: "playTimeDetailAdjust"));
+        secondDetailAdjust = UInt(aDecoder.decodeInteger(forKey: "secondDetailAdjust"))
+        frequencyDetailAdjiust = UInt(aDecoder.decodeInteger(forKey: "frequencyDetailAdjiust"))
+        speedDetailAdjust = UInt(aDecoder.decodeInteger(forKey: "speedDetailAdjust"))
+        playTimeDetailAdjust = UInt(aDecoder.decodeInteger(forKey: "playTimeDetailAdjust"))
     }
     
     /**
@@ -120,42 +120,42 @@ class WCSettingContentModel: NSObject, NSCoding {
      */
     init(pattern: PatternType?, play: SetPlayType?, cycle: SetCycleType?, sentence: SetSentenceType?, second: UInt?, frequency: UInt?, speed: UInt?, playTime: UInt?) {
         
-        self.playPattern = pattern ?? PatternType.customPattern;
-        self.setPlay = play ?? SetPlayType.sequential;
-        self.setCycle = cycle ?? SetCycleType.once;
-        self.setSentence = sentence ?? SetSentenceType.noneSentence;
+        self.playPattern = pattern ?? PatternType.customPattern
+        self.setPlay = play ?? SetPlayType.sequential
+        self.setCycle = cycle ?? SetCycleType.once
+        self.setSentence = sentence ?? SetSentenceType.noneSentence
         
-        self.secondDetailAdjust = second ?? 1;
-        self.frequencyDetailAdjiust = frequency ?? 1;
-        self.speedDetailAdjust = speed ?? 1;
-        self.playTimeDetailAdjust = playTime ?? 1;
+        self.secondDetailAdjust = second ?? 1
+        self.frequencyDetailAdjiust = frequency ?? 1
+        self.speedDetailAdjust = speed ?? 1
+        self.playTimeDetailAdjust = playTime ?? 1
     }
     
     
     // ---------------------------------------------------------------------------------------------
     // MARK - NSCoding protocol
     func encode(with aEnCoder: NSCoder) {
-        aEnCoder.encode(Int(playPattern.rawValue), forKey: "playPattern");
-        aEnCoder.encode(Int(setPlay.rawValue), forKey: "setPlay");
-        aEnCoder.encode(Int(setCycle.rawValue), forKey: "setCycle");
-        aEnCoder.encode(Int(setSentence.rawValue), forKey: "setSentence");
+        aEnCoder.encode(Int(playPattern.rawValue), forKey: "playPattern")
+        aEnCoder.encode(Int(setPlay.rawValue), forKey: "setPlay")
+        aEnCoder.encode(Int(setCycle.rawValue), forKey: "setCycle")
+        aEnCoder.encode(Int(setSentence.rawValue), forKey: "setSentence")
         
-        aEnCoder.encode(Int(secondDetailAdjust), forKey: "secondDetailAdjust");
-        aEnCoder.encode(Int(frequencyDetailAdjiust), forKey: "frequencyDetailAdjiust");
-        aEnCoder.encode(Int(speedDetailAdjust), forKey: "speedDetailAdjust");
-        aEnCoder.encode(Int(playTimeDetailAdjust), forKey: "playTimeDetailAdjust");
+        aEnCoder.encode(Int(secondDetailAdjust), forKey: "secondDetailAdjust")
+        aEnCoder.encode(Int(frequencyDetailAdjiust), forKey: "frequencyDetailAdjiust")
+        aEnCoder.encode(Int(speedDetailAdjust), forKey: "speedDetailAdjust")
+        aEnCoder.encode(Int(playTimeDetailAdjust), forKey: "playTimeDetailAdjust")
     }
     
     func decodeWithCoder(_ aDecoder: NSCoder) {
-        playPattern = PatternType(rawValue: UInt(aDecoder.decodeInteger(forKey: "playPattern")));
-        setPlay = SetPlayType(rawValue: UInt(aDecoder.decodeInteger(forKey: "setPlay")));
-        setCycle = SetCycleType(rawValue: UInt(aDecoder.decodeInteger(forKey: "setCycle")));
-        setSentence = SetSentenceType(rawValue: UInt(aDecoder.decodeInteger(forKey: "setSentence")));
+        playPattern = PatternType(rawValue: UInt(aDecoder.decodeInteger(forKey: "playPattern")))
+        setPlay = SetPlayType(rawValue: UInt(aDecoder.decodeInteger(forKey: "setPlay")))
+        setCycle = SetCycleType(rawValue: UInt(aDecoder.decodeInteger(forKey: "setCycle")))
+        setSentence = SetSentenceType(rawValue: UInt(aDecoder.decodeInteger(forKey: "setSentence")))
         
-        secondDetailAdjust = UInt(aDecoder.decodeInteger(forKey: "secondDetailAdjust"));
-        frequencyDetailAdjiust = UInt(aDecoder.decodeInteger(forKey: "frequencyDetailAdjiust"));
-        speedDetailAdjust = UInt(aDecoder.decodeInteger(forKey: "speedDetailAdjust"));
-        playTimeDetailAdjust = UInt(aDecoder.decodeInteger(forKey: "playTimeDetailAdjust"));
+        secondDetailAdjust = UInt(aDecoder.decodeInteger(forKey: "secondDetailAdjust"))
+        frequencyDetailAdjiust = UInt(aDecoder.decodeInteger(forKey: "frequencyDetailAdjiust"))
+        speedDetailAdjust = UInt(aDecoder.decodeInteger(forKey: "speedDetailAdjust"))
+        playTimeDetailAdjust = UInt(aDecoder.decodeInteger(forKey: "playTimeDetailAdjust"))
     }
     
     
@@ -169,8 +169,8 @@ class WCSettingContentModel: NSObject, NSCoding {
             "SecondDetailAdjust = " + String(secondDetailAdjust) + "\n" +
             "FrequencyDetailAdjiust = " + String(frequencyDetailAdjiust) + "\n" +
             "SpeedDetailAdjust = " + String(speedDetailAdjust) + "\n" +
-            "PlayTimeDetailAdjust = " + String(playTimeDetailAdjust);
+            "PlayTimeDetailAdjust = " + String(playTimeDetailAdjust)
         
-        return descriptionString;
+        return descriptionString
     }
 }

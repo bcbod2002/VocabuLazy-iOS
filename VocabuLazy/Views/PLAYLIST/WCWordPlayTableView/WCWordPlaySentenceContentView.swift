@@ -25,6 +25,7 @@ private let Sentence_TitleSize : CGFloat = 60.0 / 2 * 0.9
 private let Sentence_TextSize : CGFloat = 40.0 / 2 * 0.7
 
 class WCWordPlaySentenceContentView: UIView {
+    
     // -------------------------------------------------------------------------------------------------
     // MARK: - Variables
     // UI components
@@ -45,7 +46,7 @@ class WCWordPlaySentenceContentView: UIView {
         super.init(frame: frame)
         
         let seperateLine = CALayer()
-        seperateLine.frame = CGRect(x: 5, y: frame.height / 2, width: frame.width - 10, height: 1.0);
+        seperateLine.frame = CGRect(x: 5, y: frame.height / 2, width: frame.width - 10, height: 1.0)
         seperateLine.backgroundColor = Sentence_Background_Color.cgColor
         self.layer.addSublayer(seperateLine)
         

@@ -86,7 +86,7 @@ class WCMainViewController: UIViewController {
     fileprivate func readVocabularyFromStorage() {
         StorageManager.getVocabularyDataFromFileWithSuccess { (data) -> Void in
             do {
-                let vocabularyArray : NSArray = try JSONSerialization.jsonObject(with: data as Data, options: JSONSerialization.ReadingOptions.mutableLeaves) as! NSArray;
+                let vocabularyArray : NSArray = try JSONSerialization.jsonObject(with: data as Data, options: JSONSerialization.ReadingOptions.mutableLeaves) as! NSArray
                 for vocabulary in vocabularyArray {
                     self.rawData.append(
                         WCVocabularyModel(vocabularyNSDictionary: vocabulary as! NSDictionary)
@@ -104,7 +104,7 @@ class WCMainViewController: UIViewController {
             catch let error as NSError {
                 printLog("error = ", error)
             }
-        };
+        }
     }
     
     fileprivate func readToeicVocabularyFromStorage() {
@@ -201,7 +201,7 @@ class WCMainViewController: UIViewController {
             else {
                 levelButton.backgroundColor = WC_Green_Color
             }
-            levelButton.tag = i;
+            levelButton.tag = i
             levelButton.setTitle(levelStringArray[i], for: UIControlState())
             levelButton.titleLabel?.font = UIFont.systemFont(ofSize: 16)
             levelButton.addTarget(self, action: #selector(WCMainViewController.levelButtonsAction(_:)), for: UIControlEvents.touchUpInside)
