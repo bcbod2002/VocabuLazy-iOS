@@ -8,8 +8,8 @@
 
 import Foundation
 
-protocol WCWordGroundHandlerProtocol
-{
+protocol WCWordGroundHandlerProtocol {
+    
     // ---------------------------------------------------------------------------------------------
     // MARK: - Variables
     var selectedContentModel: WCSettingContentModel? {get set}

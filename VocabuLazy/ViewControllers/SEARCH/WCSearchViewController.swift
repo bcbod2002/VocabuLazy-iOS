@@ -9,14 +9,21 @@
 import UIKit
 
 class WCSearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    // ---------------------------------------------------------------------------------------------
+    // MARK: - Variables
     var rawData = [WCSearchViewModel]()
     var searchResults = [WCSearchViewModel]()
     var popView: WCAddToListPopView!
     let screenSize = UIScreen.main.bounds.size
     
+    // IBOutlet
     @IBOutlet weak var searchTableView: UITableView!
     @IBOutlet weak var searchTextField: UITextField!
     
+    
+    // ---------------------------------------------------------------------------------------------
+    // MARK: - View controller life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         getRawData()
@@ -32,6 +39,9 @@ class WCSearchViewController: UIViewController, UITableViewDelegate, UITableView
         searchTextField.resignFirstResponder()
     }
     
+    
+    // ---------------------------------------------------------------------------------------------
+    // MARK: - IBOutlet Button action
     @IBAction func textFieldEditingChanged(_ sender: AnyObject) {
         if let searchText = searchTextField.text {
             getSearchResultsFromDataBySearchText(searchText)
@@ -47,6 +57,9 @@ class WCSearchViewController: UIViewController, UITableViewDelegate, UITableView
         return true
     }
 
+    
+    // ---------------------------------------------------------------------------------------------
+    // MARK: - Get data from storage
     func getRawData()
     {
         self.rawData.removeAll(keepingCapacity: false)
@@ -79,17 +92,11 @@ class WCSearchViewController: UIViewController, UITableViewDelegate, UITableView
         self.searchTableView.reloadData()
     }
     
+    
+    // ---------------------------------------------------------------------------------------------
+    // MARK: - UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return searchResults.count
-    }
-    
-    @IBAction func addToList(_ sender: UIButton) {
-        searchTextField.resignFirstResponder()
-        popView = WCAddToListPopView(
-            frame: CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.height),
-            selectedWord: searchResults[sender.tag].identity,
-            superView: self.view,
-            offset: navigationController!.navigationBar.frame.height)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -100,8 +107,23 @@ class WCSearchViewController: UIViewController, UITableViewDelegate, UITableView
         return cell
     }
     
+    
+    // ---------------------------------------------------------------------------------------------
+    // MARK: - UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-//        <#code#>
+        //        <#code#>
+    }
+    
+    
+    // ---------------------------------------------------------------------------------------------
+    // MARK: - IBOutlet button action
+    @IBAction func addToList(_ sender: UIButton) {
+        searchTextField.resignFirstResponder()
+        popView = WCAddToListPopView(
+            frame: CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.height),
+            selectedWord: searchResults[sender.tag].identity,
+            superView: self.view,
+            offset: navigationController!.navigationBar.frame.height)
     }
 }

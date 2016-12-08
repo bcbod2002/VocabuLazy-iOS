@@ -183,7 +183,6 @@ class WCMainViewController: UIViewController {
         }
         
         // Toeic and Toefl vocabulaires
-//        let buttonItemHeight = buttonTopInset + (buttonSize.height + (buttonButtomInset / 2))
         let tabBarHeight = self.tabBarController?.tabBar.frame.height
         let buttonItemHeight = buttonTopInset + buttonSize.height + buttonButtomInset
         backgroundScrollView.contentSize = CGSize(width: self.view.frame.size.width, height: buttonItemHeight * (CGFloat(levelStringArray.count / 2)) + tabBarHeight!)

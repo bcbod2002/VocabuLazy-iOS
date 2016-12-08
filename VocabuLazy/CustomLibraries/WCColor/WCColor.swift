@@ -55,6 +55,7 @@ extension UIColor {
         return UIColor(red: 74, green: 74, blue: 74, alpha: 1)
     }
     
+    
     // ---------------------------------------------------------------------------------------------
     // MARK: - Color grey
     class func wcGreyOneColor() -> UIColor {
@@ -80,6 +81,7 @@ extension UIColor {
     class func wcGreySixColor() -> UIColor {
         return UIColor(red: 247, green: 247, blue: 247, alpha: 1)
     }
+    
     
     // ---------------------------------------------------------------------------------------------
     // MARK: - Color white

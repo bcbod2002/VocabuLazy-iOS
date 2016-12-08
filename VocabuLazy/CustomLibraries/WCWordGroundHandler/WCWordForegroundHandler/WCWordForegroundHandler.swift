@@ -7,21 +7,10 @@
 //
 
 import UIKit
-fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (l?, r?):
-    return l < r
-  case (nil, _?):
-    return true
-  default:
-    return false
-  }
-}
 
-
+// ---------------------------------------------------------------------------------------------
 // MARK: - WCWordForegroundHandlerDelegate
-@objc protocol WCWordForegroundHandlerDelegate
-{
+@objc protocol WCWordForegroundHandlerDelegate {
     /**
      Start play vocabulary
      
@@ -106,16 +95,14 @@ class WCWordForegroundHandler: NSObject/*, WCWordGroundHandlerProtocol*/ {
      - parameter vocabularyArray: Vocabulary array
      - parameter sentenceArray:   Sentence array
      */
-    func setAllTupleArray(_ vocabularyArray: [(String, String)], sentenceArray: [[(String, String)]])
-    {
+    func setAllTupleArray(_ vocabularyArray: [(String, String)], sentenceArray: [[(String, String)]]) {
         vocabularyTupleArray = vocabularyArray
         sentenceTupleArray = sentenceArray
         
         playedItemArray.removeAll()
         
         if vocabularyArray.count > 0 {
-            for _ in 1...vocabularyArray.count
-            {
+            for _ in 1...vocabularyArray.count {
                 playedItemArray.append(false)
             }
         }
@@ -196,7 +183,7 @@ class WCWordForegroundHandler: NSObject/*, WCWordGroundHandlerProtocol*/ {
             return
         }
         
-        if vocabularyPlayedCount < selectedContentModel?.frequencyDetailAdjiust! && playedItemArray[playingNumber] == false{
+        if vocabularyPlayedCount < (selectedContentModel?.frequencyDetailAdjiust)! && playedItemArray[playingNumber] == false{
             delegate?.playVocabulary?(with: playingNumber)
             vocabularyPlayedCount += 1
         }
@@ -223,9 +210,9 @@ class WCWordForegroundHandler: NSObject/*, WCWordGroundHandlerProtocol*/ {
         let isItemPlayed = playedItemArray[playingNumber]
         clearAllPlayedSentencesArray()
         
-        if  playingNumber < oneLessonVocabularyCount {
+        if  playingNumber < oneLessonVocabularyCount! {
             if isItemPlayed == false {
-                if vocabularyPlayedCount < selectedContentModel?.frequencyDetailAdjiust! {
+                if vocabularyPlayedCount < (selectedContentModel?.frequencyDetailAdjiust)! {
                     delegate?.playVocabulary?(with: playingNumber)
                     vocabularyPlayedCount += 1
                 }
@@ -283,7 +270,7 @@ class WCWordForegroundHandler: NSObject/*, WCWordGroundHandlerProtocol*/ {
             default:
                 playingNumber = 0
                 let selectedCycleNumber = selectedContentModel?.setCycle.rawValue
-                if cycleNumber < selectedCycleNumber {
+                if cycleNumber < selectedCycleNumber! {
                     cycleNumber += 1
                     delegate?.tableViewScrollAnimation?(playingNumber)
                 }
@@ -316,7 +303,7 @@ class WCWordForegroundHandler: NSObject/*, WCWordGroundHandlerProtocol*/ {
                 clearAllPlayedItemsArray()
                 playingNumber = createRandomNumber()
                 let selectedCycleNumber = selectedContentModel?.setCycle.rawValue
-                if cycleNumber < selectedCycleNumber {
+                if cycleNumber < selectedCycleNumber! {
                     cycleNumber += 1
                     delegate?.tableViewScrollAnimation?(playingNumber)
                 }
