@@ -9,6 +9,9 @@
 import UIKit
 
 class EHomeViewController: UIViewController {
+    
+    // ---------------------------------------------------------------------------------------------
+    // MARK: - Variables
     var levelsArray = [[WCVocabularyModel]]()
     var rawData = [WCVocabularyModel]()
     
@@ -18,6 +21,9 @@ class EHomeViewController: UIViewController {
     
     var levelTitleString = [String]()
     
+    
+    // ---------------------------------------------------------------------------------------------
+    // MARK: - View controller life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -30,27 +36,30 @@ class EHomeViewController: UIViewController {
         readToeflVocabularyFromStorage()
         
         let backButton = UIBarButtonItem.init(title: "", style: .plain, target: nil, action: nil)
-        self.navigationItem.backBarButtonItem = backButton;
+        self.navigationItem.backBarButtonItem = backButton
     }
     
+    
+    // ---------------------------------------------------------------------------------------------
+    // Draw buttons
     fileprivate func drawView() {
-        let Button_Top_Inset_Ratio = CGFloat(30.0 / 960.0);
-        let Button_Left_Inset_Ratio = CGFloat(44.0 / 540.0);
-        let Button_Right_Inset_Ratio = CGFloat(44.0 / 540.0);
-        let Button_Bottom_Inset_Ratio = CGFloat(87.0 / 960.0);
-        let Button_Size_Ratio = CGFloat(203.0 / 960.0);
+        let Button_Top_Inset_Ratio = CGFloat(30.0 / 960.0)
+        let Button_Left_Inset_Ratio = CGFloat(44.0 / 540.0)
+        let Button_Right_Inset_Ratio = CGFloat(44.0 / 540.0)
+        let Button_Bottom_Inset_Ratio = CGFloat(87.0 / 960.0)
+        let Button_Size_Ratio = CGFloat(203.0 / 960.0)
         
-        let screenSize = UIScreen.main.bounds.size;
-        let buttonTopInset = screenSize.height * Button_Top_Inset_Ratio;
-        let buttonLeftInset = screenSize.width * Button_Left_Inset_Ratio;
-        let buttonRightInset = screenSize.width * Button_Right_Inset_Ratio;
-        let buttonButtomInset = screenSize.height * Button_Bottom_Inset_Ratio;
-        let buttonSize = CGSize(width: screenSize.height * Button_Size_Ratio, height: screenSize.height * Button_Size_Ratio);
+        let screenSize = UIScreen.main.bounds.size
+        let buttonTopInset = screenSize.height * Button_Top_Inset_Ratio
+        let buttonLeftInset = screenSize.width * Button_Left_Inset_Ratio
+        let buttonRightInset = screenSize.width * Button_Right_Inset_Ratio
+        let buttonButtomInset = screenSize.height * Button_Bottom_Inset_Ratio
+        let buttonSize = CGSize(width: screenSize.height * Button_Size_Ratio, height: screenSize.height * Button_Size_Ratio)
         
-        let buttonItemHeight = buttonTopInset + (buttonSize.height + (buttonButtomInset / 2));
+        let buttonItemHeight = buttonTopInset + (buttonSize.height + (buttonButtomInset / 2))
         
-        let WC_Green_Color = UIColor (red: 72.0 / 255.0, green: 207.0 / 255.0, blue: 174.0 / 255.0, alpha: 1.0);
-        let WC_Yellow_Color = UIColor (red: 254.0 / 255.0, green: 206.0 / 255.0, blue: 85.0 / 255.0, alpha: 1.0);
+        let WC_Green_Color = UIColor (red: 72.0 / 255.0, green: 207.0 / 255.0, blue: 174.0 / 255.0, alpha: 1.0)
+        let WC_Yellow_Color = UIColor (red: 254.0 / 255.0, green: 206.0 / 255.0, blue: 85.0 / 255.0, alpha: 1.0)
         
         // 設定按鈕
         var levelStringArray: [String] = [String]()
@@ -76,7 +85,7 @@ class EHomeViewController: UIViewController {
         let scrollView = UIScrollView.init()
         scrollView.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height)
         scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: buttonItemHeight * CGFloat((c+1) / 2) + buttonTopInset + buttonButtomInset * 2)
-        self.view.addSubview(scrollView);
+        self.view.addSubview(scrollView)
         
         var button : WCMaterialButton?
         for i in 0...(c - 1) {
@@ -84,20 +93,23 @@ class EHomeViewController: UIViewController {
             // 區分 必考7000單字 與 高職單字
             let levelString = levelStringArray[i]
             
-            let row = i / 2;
+            let row = i / 2
             let y = buttonTopInset + (buttonButtomInset + buttonSize.height) * CGFloat(row)
             
             button = WCMaterialButton(frame: (i % 2 == 0) ? CGRect(x: buttonLeftInset, y: y, width: buttonSize.width, height: buttonSize.height) : CGRect(x: screenSize.width - buttonRightInset - buttonSize.width, y: y, width: buttonSize.width, height: buttonSize.height))
             button?.backgroundColor = (row % 2 == 0) ? WC_Green_Color : WC_Yellow_Color
             button?.setTitle(levelString, for: UIControlState())
             button?.titleLabel?.font = UIFont.systemFont(ofSize: 16)
-            scrollView.addSubview(button!);
+            scrollView.addSubview(button!)
             
             button?.addTarget(self, action: #selector(buttonClick(_:)), for: .touchUpInside)
-            button?.tag = i;
+            button?.tag = i
         }
     }
     
+    
+    // ---------------------------------------------------------------------------------------------
+    // MARK: - IBOutlet button action
     @IBAction func buttonClick(_ sender: UIButton) {
         let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: "Unit") as! WCExamChooseViewController
         nextViewController.levelNumber = UInt(sender.tag)
@@ -123,7 +135,7 @@ class EHomeViewController: UIViewController {
     fileprivate func loadData() {
         StorageManager.getVocabularyDataFromFileWithSuccess { (data) -> Void in
             do {
-                let vocabularyArray : NSArray = try JSONSerialization.jsonObject(with: data as Data, options: JSONSerialization.ReadingOptions.mutableLeaves) as! NSArray;
+                let vocabularyArray : NSArray = try JSONSerialization.jsonObject(with: data as Data, options: JSONSerialization.ReadingOptions.mutableLeaves) as! NSArray
                 for vocabulary in vocabularyArray {
                     self.rawData.append(WCVocabularyModel(vocabularyNSDictionary: vocabulary as! NSDictionary))
                 }
@@ -142,7 +154,7 @@ class EHomeViewController: UIViewController {
         }
     }
     
-    // Toeuc and Toefl Vocabularies
+    // Toeic Vocabularies
     fileprivate func readToeicVocabularyFromStorage() {
         StorageManager.getToeicDataFromFileWithSuccess { (data) in
             do {
@@ -157,6 +169,7 @@ class EHomeViewController: UIViewController {
         }
     }
     
+    // Toefl Vocabularies
     fileprivate func readToeflVocabularyFromStorage() {
         StorageManager.getToeflDataFromFileWithSuccess { (data) in
             do {
@@ -171,6 +184,7 @@ class EHomeViewController: UIViewController {
         }
     }
     
+    // Classify Toeic and Toefl vocabularies
     fileprivate func readToeic_ToeflCategory() {
         StorageManager.getToeic_ToeflCategoryWithSuccess { (data) in
             do {

@@ -17,6 +17,9 @@ class WCSearchViewModel: NSObject{
     var word: String = ""
     var chinese: String = ""
 
+    
+    // ---------------------------------------------------------------------------------------------
+    // MARK: - Initial
     override init() {
         super.init()
     }

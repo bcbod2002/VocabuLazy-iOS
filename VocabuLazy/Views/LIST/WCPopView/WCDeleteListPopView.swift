@@ -8,29 +8,48 @@
 
 import UIKit
 
-protocol WCDeleteListPopViewDelegate
-{
+
+// ---------------------------------------------------------------------------------------------
+// MARK: - WCDeleteListPopViewDelegate
+protocol WCDeleteListPopViewDelegate {
     func deleteList(_ indexPath: IndexPath)
     func lockNavigationBar(_ isLock: Bool)
 }
 
 class WCDeleteListPopView : UIView {
-    var view : UIView!
-    var offset : CGFloat = 0
-    var size : CGRect = CGRect(x: 0, y: 0, width: 0, height: 0)
-    var superView : UIView!
-    var delegate : WCDeleteListPopViewDelegate!
-    var indexPath : IndexPath = IndexPath(row: 0, section: 0)
+    
+    
+    // ---------------------------------------------------------------------------------------------
+    // MARK: - Variables
+    var view: UIView!
+    var offset: CGFloat = 0
+    var size: CGRect = CGRect(x: 0, y: 0, width: 0, height: 0)
+    var superView: UIView!
+    var delegate: WCDeleteListPopViewDelegate!
+    var indexPath: IndexPath = IndexPath(row: 0, section: 0)
     
     @IBOutlet weak var popView: UIView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var noBtn: UIButton!
     @IBOutlet weak var yesBtn: UIButton!
     
+    
+    // ---------------------------------------------------------------------------------------------
+    // MARK: - Initial
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!
     }
     
+    
+    
+    /// Initial mutiple variables
+    ///
+    /// - Parameters:
+    ///   - delegate: WCDeleteListPopViewDelegate
+    ///   - frame: CGRect
+    ///   - superView: UIView
+    ///   - offset: CGFloat
+    ///   - name: String of label
     init(delegate: WCDeleteListPopViewDelegate!,frame: CGRect, superView: UIView, offset: CGFloat, name: String) {
         super.init(frame: frame)
         self.delegate = delegate
@@ -44,6 +63,8 @@ class WCDeleteListPopView : UIView {
         showAnimate()
     }
     
+    
+    /// <#Description#>
     func initMainView() {
         view = UINib(nibName: "WCDeleteListPopView", bundle: nil).instantiate(withOwner: self, options: nil)[0] as! UIView
         view.frame = CGRect(x: 0, y: -offset, width: size.width, height: size.height)
@@ -51,6 +72,8 @@ class WCDeleteListPopView : UIView {
         superView.addSubview(view)
     }
     
+    
+    /// <#Description#>
     func initSubView() {
         let subSize = frame.height / 960
         popView.transform = CGAffineTransform(scaleX: subSize, y: subSize)
@@ -59,6 +82,8 @@ class WCDeleteListPopView : UIView {
         popView.layer.shadowOffset = CGSize(width: 5, height: 5)
     }
     
+    
+    /// <#Description#>
     func showAnimate() {
         view.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
         view.alpha = 0.0
@@ -68,6 +93,8 @@ class WCDeleteListPopView : UIView {
         })
     }
     
+    
+    /// <#Description#>
     func removeAnimate() {
         UIView.animate(withDuration: 0.25, animations: {
             self.view.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
@@ -79,6 +106,9 @@ class WCDeleteListPopView : UIView {
         }})
     }
     
+    
+    // ---------------------------------------------------------------------------------------------
+    // MARK: - UIButton actions
     @IBAction func no() {
         removeAnimate()
     }

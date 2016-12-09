@@ -96,6 +96,7 @@ class WCListViewController: UIViewController, UITableViewDelegate, UITableViewDa
         view.addSubview(addButton!)
     }
     
+    
     // ---------------------------------------------------------------------------------------------
     // MARK: - UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -191,6 +192,7 @@ class WCListViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return listVocabularyModelArray
     }
     
+    
     // ---------------------------------------------------------------------------------------------
     // MARK: - Fibonacci search (logN)
     /**
@@ -239,6 +241,7 @@ class WCListViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         return nil
     }
+    
     
     // ---------------------------------------------------------------------------------------------
     // MARK: - 取得資料
@@ -326,6 +329,7 @@ class WCListViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
         }
     }
+    
     
     // ---------------------------------------------------------------------------------------------
     // MARK: - UIBarButton action

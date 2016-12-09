@@ -418,7 +418,7 @@ class WCWordPlaySettingView: UIView, UIScrollViewDelegate, WCSettingContentViewD
         selectedSettingModal = contentModel
         delegate.didChangeSettingModel()
         
-//        self.printLogTest();
+//        self.printLogTest()
     }
 
     func printLogTest() {

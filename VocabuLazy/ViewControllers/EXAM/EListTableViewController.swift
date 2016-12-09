@@ -9,10 +9,15 @@
 import UIKit
 
 class EListTableViewController: UITableViewController {
+    
+    // ---------------------------------------------------------------------------------------------
+    // MARK: - Variables
     var rawData = [WCVocabularyModel]()
     var listData = [WCListViewModel]()
 
 
+    // ---------------------------------------------------------------------------------------------
+    // MARK: - View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,15 +26,16 @@ class EListTableViewController: UITableViewController {
         getRawData()
         
         let backButton = UIBarButtonItem.init(title: "", style: .plain, target: nil, action: nil)
-        self.navigationItem.backBarButtonItem = backButton;
+        self.navigationItem.backBarButtonItem = backButton
     }
     
     override func viewWillAppear(_ animated: Bool) {
         getListData()
     }
     
-    // MARK: - TableView
-
+    
+    // ---------------------------------------------------------------------------------------------
+    // MARK: - UITableViewDataSource
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return listData.count
     }
@@ -41,23 +47,27 @@ class EListTableViewController: UITableViewController {
         cell.textLabel?.font = UIFont (name: "DFHeiStd-W7", size: 25)
         cell.textLabel?.text = listData[(indexPath as NSIndexPath).row].name
         
-        cell.accessoryType = .disclosureIndicator;
+        cell.accessoryType = .disclosureIndicator
         
         return cell
     }
     
+    
+    // ---------------------------------------------------------------------------------------------
+    // MARK: - UITableViewDelegate
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
         if listDataMapRawData(itemNumber: (indexPath as NSIndexPath).row).count > 3 {
-            let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: "QuestionPage") as! WCQuestionViewController;
+            let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: "QuestionPage") as! WCQuestionViewController
             nextViewController.vocabularyArray = listDataMapRawData(itemNumber: (indexPath as NSIndexPath).row)
-            self.navigationController?.pushViewController(nextViewController, animated: true);
+            self.navigationController?.pushViewController(nextViewController, animated: true)
         }
     }
     
-    // MARK: - DataBase
     
+    // ---------------------------------------------------------------------------------------------
+    // MARK: - DataBase
     func getRawData() {
         self.rawData.removeAll(keepingCapacity: false)
         StorageManager.getVocabularyDataFromFileWithSuccess { (data) -> Void in

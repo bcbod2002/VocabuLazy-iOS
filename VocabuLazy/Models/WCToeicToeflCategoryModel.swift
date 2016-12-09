@@ -9,6 +9,7 @@
 import Foundation
 
 class WCToeicToeflCategoryModel: NSObject {
+    
     // ---------------------------------------------------------------------------------------------
     // MARK: - Variables
     var textbookType = ""
@@ -16,6 +17,8 @@ class WCToeicToeflCategoryModel: NSObject {
     var textbookID: UInt = 0
     var textbookContent = [TextbookContent]()
     
+
+    /// Textbook content record lesson title、lesson ID、lesson content
     struct TextbookContent {
         var lessonTitle = ""
         var lessonId: UInt = 0
@@ -44,6 +47,7 @@ class WCToeicToeflCategoryModel: NSObject {
         }
         
     }
+    
     
     override var description: String {
         return ""

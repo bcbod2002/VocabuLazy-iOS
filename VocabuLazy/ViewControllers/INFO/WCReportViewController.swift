@@ -27,6 +27,7 @@ class WCReportViewController: UIViewController, UITextViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    
     // ---------------------------------------------------------------------------------------------
     // MARK: - UITextViewDelegate
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
@@ -36,6 +37,7 @@ class WCReportViewController: UIViewController, UITextViewDelegate {
         }
         return true
     }
+    
     
     // ---------------------------------------------------------------------------------------------
     // MARK: - Buttons action

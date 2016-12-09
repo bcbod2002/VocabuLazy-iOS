@@ -8,27 +8,26 @@
 
 import UIKit
 
-class WCWordPlayScrollViewFlowLayout: UICollectionViewFlowLayout
-{
-    required init?(coder aDecoder: NSCoder)
-    {
-        super.init(coder: aDecoder)!;
+class WCWordPlayScrollViewFlowLayout: UICollectionViewFlowLayout {
+    
+    // ---------------------------------------------------------------------------------------------
+    // MARK: - Initial
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)!
         fatalError("init(coder:) has not been implemented")
     }
     
-    required override init()
-    {
+    required override init() {
         super.init()
-        self.minimumInteritemSpacing = 0;
-        self.minimumLineSpacing = 0;
-        self.scrollDirection = UICollectionViewScrollDirection.horizontal;
+        self.minimumInteritemSpacing = 0
+        self.minimumLineSpacing = 0
+        self.scrollDirection = UICollectionViewScrollDirection.horizontal
     }
     
-    override func prepare()
-    {
-        super.prepare();
-        self.itemSize = CGSize(width: (self.collectionView?.bounds.width)!, height: (self.collectionView?.bounds.height)!);
-        self.sectionInset = UIEdgeInsets.zero;
+    override func prepare() {
+        super.prepare()
+        self.itemSize = CGSize(width: (self.collectionView?.bounds.width)!, height: (self.collectionView?.bounds.height)!)
+        self.sectionInset = UIEdgeInsets.zero
     }
 
 }

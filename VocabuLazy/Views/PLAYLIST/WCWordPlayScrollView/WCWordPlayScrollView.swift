@@ -8,6 +8,7 @@
 
 import UIKit
 
+// ---------------------------------------------------------------------------------------------
 //MARK: - WCWordPlayScrollViewDelegate
 @objc protocol WCWordPlayScrollViewDelegate {
     
@@ -46,22 +47,24 @@ import UIKit
 }
 
 class WCWordPlayScrollView: UICollectionView, UICollectionViewDelegate, UIScrollViewDelegate {
+    
     // ---------------------------------------------------------------------------------------------
     // MARK: - Variables
-    var scrollViewDelegate: WCWordPlayScrollViewDelegate?;
-    var totalNumber = 0;
+    var scrollViewDelegate: WCWordPlayScrollViewDelegate?
+    var totalNumber = 0
     
-    fileprivate var scrollViewDataSource: WCWordPlayScrollViewDataSource?;
+    fileprivate var scrollViewDataSource: WCWordPlayScrollViewDataSource?
+    
     
     // ---------------------------------------------------------------------------------------------
     // MARK: - Initial
     required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder);
+        super.init(coder: aDecoder)
         fatalError("init(coder:) has not been implemented")
     }
     
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
-        super.init(frame: frame, collectionViewLayout: layout);
+        super.init(frame: frame, collectionViewLayout: layout)
     }
     
     /**
@@ -70,20 +73,18 @@ class WCWordPlayScrollView: UICollectionView, UICollectionViewDelegate, UIScroll
      - parameter frame:         CGRect
      - parameter layout:        UICollectionViewLayout
      - parameter numberOfItems: Int
-     
-     - returns: <#return value description#>
      */
     convenience init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout, numberOfItems: Int) {
-        self.init(frame: frame, collectionViewLayout: layout);
+        self.init(frame: frame, collectionViewLayout: layout)
         
-        let cellIdentifier = "WordPlayScrollCell";
+        let cellIdentifier = "WordPlayScrollCell"
         
-        scrollViewDataSource = WCWordPlayScrollViewDataSource(numberOfItems: numberOfItems, cellIdentifier: cellIdentifier);
-        self.dataSource = scrollViewDataSource;
-        self.delegate = self;
-        self.register(WCWordPlayScrollCollectionViewCell.self, forCellWithReuseIdentifier: cellIdentifier);
-        self.backgroundColor = UIColor.clear;
-        self.isPagingEnabled = true;
+        scrollViewDataSource = WCWordPlayScrollViewDataSource(numberOfItems: numberOfItems, cellIdentifier: cellIdentifier)
+        self.dataSource = scrollViewDataSource
+        self.delegate = self
+        self.register(WCWordPlayScrollCollectionViewCell.self, forCellWithReuseIdentifier: cellIdentifier)
+        self.backgroundColor = UIColor.clear
+        self.isPagingEnabled = true
         if #available(iOS 10.0, *) {
             self.isPrefetchingEnabled = false
         } else {
@@ -95,20 +96,19 @@ class WCWordPlayScrollView: UICollectionView, UICollectionViewDelegate, UIScroll
     // ---------------------------------------------------------------------------------------------
     // MARK: - UICollectionView Delegate
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        let scrollViewCollectionViewCell = (cell as! WCWordPlayScrollCollectionViewCell);
-        scrollViewDelegate?.scrollView?(self, willDisplayCell: scrollViewCollectionViewCell, pageNumber: (indexPath as NSIndexPath).row);
+        let scrollViewCollectionViewCell = (cell as! WCWordPlayScrollCollectionViewCell)
+        scrollViewDelegate?.scrollView?(self, willDisplayCell: scrollViewCollectionViewCell, pageNumber: (indexPath as NSIndexPath).row)
     }
     
     func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        let scrollViewCollectionViewCell = cell as! WCWordPlayScrollCollectionViewCell;
-        scrollViewDelegate?.scrollView?(self, didEndDisplayCell: scrollViewCollectionViewCell, pageNumber: (indexPath as NSIndexPath).row);
+        let scrollViewCollectionViewCell = cell as! WCWordPlayScrollCollectionViewCell
+        scrollViewDelegate?.scrollView?(self, didEndDisplayCell: scrollViewCollectionViewCell, pageNumber: (indexPath as NSIndexPath).row)
     }
     
     func scroll(toItem itemNumber: Int, animated: Bool) {
-        if itemNumber < numberOfItems(inSection: 0)
-        {
-            let itemIndexPath = IndexPath(row: itemNumber, section: 0);
-            scrollToItem(at: itemIndexPath, at: UICollectionViewScrollPosition.centeredHorizontally, animated: animated);
+        if itemNumber < numberOfItems(inSection: 0) {
+            let itemIndexPath = IndexPath(row: itemNumber, section: 0)
+            scrollToItem(at: itemIndexPath, at: UICollectionViewScrollPosition.centeredHorizontally, animated: animated)
         }
     }
     
@@ -124,11 +124,11 @@ class WCWordPlayScrollView: UICollectionView, UICollectionViewDelegate, UIScroll
         // UD2
         // http://qiita.com/kunichiko/items/8fa9494c659d75e3b9a9
         // 原因 : scrollView.contentOffset.x 有一定的機率會出現負數，這樣會導致 UInt(-3)便會溢位
-        scrollViewDelegate?.scrollView?(self, didEndScrollDeceleratingToPage: Int(abs(scrollView.contentOffset.x) / scrollView.bounds.width));
+        scrollViewDelegate?.scrollView?(self, didEndScrollDeceleratingToPage: Int(abs(scrollView.contentOffset.x) / scrollView.bounds.width))
     }
     
     func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
-        scrollViewDelegate?.scrollView?(self, didEndScrollDeceleratingToPage: Int(abs(scrollView.contentOffset.x) / scrollView.bounds.width));
+        scrollViewDelegate?.scrollView?(self, didEndScrollDeceleratingToPage: Int(abs(scrollView.contentOffset.x) / scrollView.bounds.width))
     }
     
     /*
