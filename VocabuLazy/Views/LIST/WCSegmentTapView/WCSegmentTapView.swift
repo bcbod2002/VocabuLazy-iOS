@@ -9,13 +9,16 @@
 import UIKit
 import Foundation
 
-protocol WCSegmentTapViewDelegate
-{
+// ---------------------------------------------------------------------------------------------
+// MARK: - WCSegmentTapViewDelegate
+protocol WCSegmentTapViewDelegate {
     func selectedIndex(_ index: Int)
 }
 
-class WCSegmentTapView : UIView
-{
+class WCSegmentTapView : UIView {
+    
+    // ---------------------------------------------------------------------------------------------
+    // MARK: - Variables
     var dataArray = [AnyObject]()
     var buttonsArray = [UIButton]()
     var lineImageView: UIImageView!
@@ -24,7 +27,10 @@ class WCSegmentTapView : UIView
     var lineColor: UIColor
     var textNormalColor: UIColor
     var textSelectedColor: UIColor
-
+    
+    
+    // ---------------------------------------------------------------------------------------------
+    // MARK: - Initial
     required init?(coder aDecoder: NSCoder) {
         titleFont = CGFloat()
         lineColor = UIColor.red
@@ -33,6 +39,13 @@ class WCSegmentTapView : UIView
         super.init(coder: aDecoder)
     }
     
+    
+    /// Initial with frame, content array, font
+    ///
+    /// - Parameters:
+    ///   - frame: CGRect
+    ///   - contentArray: AnyObject
+    ///   - font: CGFloat
     init(frame: CGRect, contentArray: [AnyObject], font: CGFloat) {
         titleFont = font
         dataArray = contentArray
@@ -51,7 +64,7 @@ class WCSegmentTapView : UIView
             let button = UIButton(frame: CGRect(x: CGFloat(i) * width, y: 0, width: width, height: frame.size.height))
             let source = dataArray[i] as! String
             button.tag = i + 1
-            button.adjustsImageWhenHighlighted = false;
+            button.adjustsImageWhenHighlighted = false
             button.backgroundColor = UIColor.clear
             button.setImage(UIImage(named: source), for: UIControlState())
             button.addTarget(self, action: #selector(WCSegmentTapView.tapAction(_:)), for: .touchUpInside)

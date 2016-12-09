@@ -14,6 +14,7 @@ class WCIntroduceViewController: UIViewController, UICollectionViewDataSource, U
     // MARK : - Variables
     var introduceCollectionView: UICollectionView?
     
+    
     // ---------------------------------------------------------------------------------------------
     // MARK : - ViewController life cycle
     override func viewDidLoad() {
@@ -36,6 +37,7 @@ class WCIntroduceViewController: UIViewController, UICollectionViewDataSource, U
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     
     // ---------------------------------------------------------------------------------------------
     // MARK : - UICollectionViewDataSource

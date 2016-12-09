@@ -8,10 +8,12 @@
 
 import UIKit
 
-class WCLessonChooseViewController: UIViewController, WCLessonChooseTableViewDelegate
-{
-    let screenSize : CGSize = UIScreen.main.bounds.size;
-    let statusBarHeight = UIApplication.shared.statusBarFrame.size.height;
+class WCLessonChooseViewController: UIViewController, WCLessonChooseTableViewDelegate {
+    
+    // ---------------------------------------------------------------------------------------------
+    // MARK: - Variables
+    let screenSize : CGSize = UIScreen.main.bounds.size
+    let statusBarHeight = UIApplication.shared.statusBarFrame.size.height
     var levelString: String = ""
     
     // Senior high school vocabularies
@@ -22,12 +24,12 @@ class WCLessonChooseViewController: UIViewController, WCLessonChooseTableViewDel
     var toeicOrToeflData = [WCVocabularyModel]()
     var toeicOrToeflCategory = WCToeicToeflCategoryModel()
 
-    var lessonChooseTableView: WCLessonChooseTableView!;
+    var lessonChooseTableView: WCLessonChooseTableView!
 
 
+    // ---------------------------------------------------------------------------------------------
     // MARK: - View controller life cycle
-    override func viewDidLoad()
-    {
+    override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
@@ -50,13 +52,16 @@ class WCLessonChooseViewController: UIViewController, WCLessonChooseTableViewDel
             oneLevelVocabularyArray = mapToeic_ToeflDimension()!
         }
         
-        lessonChooseTableView = WCLessonChooseTableView(frame: CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.height - navigationBarHeight! - statusBarHeight), totalItemNumber: oneLevelVocabularyArray.count);
-        lessonChooseTableView.delegate = self;
-        self.navigationController?.setNavigationBarHidden(false, animated: true);
+        lessonChooseTableView = WCLessonChooseTableView(frame: CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.height - navigationBarHeight! - statusBarHeight), totalItemNumber: oneLevelVocabularyArray.count)
+        lessonChooseTableView.delegate = self
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
 
-        self.view.addSubview(lessonChooseTableView);
+        self.view.addSubview(lessonChooseTableView)
     }
     
+    
+    // ---------------------------------------------------------------------------------------------
+    // MARK: - Rearrange dimension
     fileprivate func rearrangeArrayDimension<T>(_ rearrangeArray: [T], partition: Int) -> [[T]]? {
         guard partition > 0 else {
             return nil
@@ -104,15 +109,16 @@ class WCLessonChooseViewController: UIViewController, WCLessonChooseTableViewDel
         return twoDimensionBucket
     }
 
+    
+    // ---------------------------------------------------------------------------------------------
     // MARK: - WCLessonChooseTableView Delegate
-    func tableView(_ tableView: WCLessonChooseTableView, didSelectItemAtIndexPath indexPath: IndexPath)
-    {
-        let lessonNumber = UInt((indexPath as NSIndexPath).section * 5 + (indexPath as NSIndexPath).row);
-        let wordPlayViewController : WCWordPlayViewController = self.storyboard?.instantiateViewController(withIdentifier: "WordPlayPage") as! WCWordPlayViewController;
+    func tableView(_ tableView: WCLessonChooseTableView, didSelectItemAtIndexPath indexPath: IndexPath) {
+        let lessonNumber = UInt((indexPath as NSIndexPath).section * 5 + (indexPath as NSIndexPath).row)
+        let wordPlayViewController : WCWordPlayViewController = self.storyboard?.instantiateViewController(withIdentifier: "WordPlayPage") as! WCWordPlayViewController
 
         wordPlayViewController.levelString = self.levelString
         wordPlayViewController.allLessonsArray = oneLevelVocabularyArray
-        wordPlayViewController.foregroundLessonNumber = lessonNumber;
-        self.navigationController?.pushViewController(wordPlayViewController, animated: true);
+        wordPlayViewController.foregroundLessonNumber = lessonNumber
+        self.navigationController?.pushViewController(wordPlayViewController, animated: true)
     }
 }

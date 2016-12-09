@@ -8,13 +8,18 @@
 
 import UIKit
 
-protocol WCRenameListPopViewDelegate
-{
+// ---------------------------------------------------------------------------------------------
+// MARK: - WCRenameListPopViewDelegate
+protocol WCRenameListPopViewDelegate {
     func renameList(_ indexPath: IndexPath, newName: String)
     func lockNavigationBar(_ isLock: Bool)
 }
 
 class WCRenameListPopView : UIView, UITextFieldDelegate {
+    
+
+    // ---------------------------------------------------------------------------------------------
+    // MARK: - Variables
     var view : UIView!
     var offset : CGFloat = 0
     var size : CGRect = CGRect(x: 0, y: 0, width: 0, height: 0)
@@ -23,15 +28,28 @@ class WCRenameListPopView : UIView, UITextFieldDelegate {
     var indexPath : IndexPath = IndexPath(index: 0)
     var delegate : WCRenameListPopViewDelegate!
     
+    // IBOutlet
     @IBOutlet weak var centerConstraint: NSLayoutConstraint!
     @IBOutlet weak var popView: UIView!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var yesBtn: UIButton!
     
+    
+    // ---------------------------------------------------------------------------------------------
+    // MARK: - Initial
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!
     }
     
+    
+    /// Initial mutiple variables
+    ///
+    /// - Parameters:
+    ///   - delegate: WCRenameListPopViewDelegate
+    ///   - frame: CGRect
+    ///   - superView: UIView
+    ///   - offset: CGFloat
+    ///   - name: String of label
     init(delegate: WCRenameListPopViewDelegate!, frame: CGRect, superView: UIView, offset: CGFloat, name: String) {
         super.init(frame: frame)
         self.delegate = delegate
@@ -69,6 +87,9 @@ class WCRenameListPopView : UIView, UITextFieldDelegate {
         }
     }
     
+    
+    // ---------------------------------------------------------------------------------------------
+    // MARK: - Animations
     func showAnimate() {
         NotificationCenter.default.addObserver(self, selector: #selector(WCRenameListPopView.updatePopViewLocation(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         view.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
@@ -92,17 +113,29 @@ class WCRenameListPopView : UIView, UITextFieldDelegate {
         } })
     }
     
+    
+    /// <#Description#>
+    ///
+    /// - Parameter textField: <#textField description#>
+    /// - Returns: <#return value description#>
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         yes()
         return true
     }
     
+    
+    /// <#Description#>
+    ///
+    /// - Parameter notify: <#notify description#>
     func updatePopViewLocation(_ notify: Notification) {
         let keyboardHeight = ((notify as NSNotification).userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue.size.height
         centerConstraint.constant = -(popView.frame.height - (view.bounds.height / 2 - keyboardHeight)) + offset
         view.layoutIfNeeded()
     }
     
+    
+    // ---------------------------------------------------------------------------------------------
+    // MARK: - UIButton actions
     @IBAction func nameTextFieldEditingChanged() {
         UIView.animate(withDuration: 0.25, animations: {
             self.yesBtn.backgroundColor = self.nameTextField.text!.isEmpty ?

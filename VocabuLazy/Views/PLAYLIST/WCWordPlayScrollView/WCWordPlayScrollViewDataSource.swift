@@ -8,34 +8,36 @@
 
 import UIKit
 
-class WCWordPlayScrollViewDataSource: NSObject , UICollectionViewDataSource
-{
-    var itemOfNumber = 0;
-    var cellOfIdentifier = "";
+class WCWordPlayScrollViewDataSource: NSObject , UICollectionViewDataSource {
     
-    required init(numberOfItems itemNumber: Int, cellIdentifier: String)
-    {
-        super.init();
-        itemOfNumber = itemNumber;
-        cellOfIdentifier = cellIdentifier;
+    // ---------------------------------------------------------------------------------------------
+    // MARK: - Variables
+    var itemOfNumber = 0
+    var cellOfIdentifier = ""
+    
+    
+    // ---------------------------------------------------------------------------------------------
+    // MARK: - Initial
+    required init(numberOfItems itemNumber: Int, cellIdentifier: String) {
+        super.init()
+        itemOfNumber = itemNumber
+        cellOfIdentifier = cellIdentifier
     }
 
     
+    // ---------------------------------------------------------------------------------------------
     // Mark: - WCWordPlayScrollView DataSource
-    func numberOfSections(in collectionView: UICollectionView) -> Int
-    {
-        return 1;
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
-    {
-        return itemOfNumber;
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return itemOfNumber
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
-    {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellOfIdentifier, for: indexPath) as! WCWordPlayScrollCollectionViewCell;
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellOfIdentifier, for: indexPath) as! WCWordPlayScrollCollectionViewCell
         
-        return cell;
+        return cell
     }
 }

@@ -8,26 +8,25 @@
 
 import UIKit
 
-class WCQuestionCollectionViewFlowLayout: UICollectionViewFlowLayout
-{
-    required init?(coder aDecoder: NSCoder)
-    {
-        super.init(coder: aDecoder);
-        fatalError("init(code:) has not been implemented");
+class WCQuestionCollectionViewFlowLayout: UICollectionViewFlowLayout {
+    
+    // ---------------------------------------------------------------------------------------------
+    // MARK: - Initial
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        fatalError("init(code:) has not been implemented")
     }
     
-    required override init()
-    {
-        super.init();
-        self.minimumInteritemSpacing = 0;
-        self.minimumLineSpacing = 0;
-        self.scrollDirection = UICollectionViewScrollDirection.horizontal;
+    required override init() {
+        super.init()
+        self.minimumInteritemSpacing = 0
+        self.minimumLineSpacing = 0
+        self.scrollDirection = UICollectionViewScrollDirection.horizontal
     }
     
-    override func prepare()
-    {
-        super.prepare();
-        self.itemSize = CGSize(width: (self.collectionView?.bounds.width)!, height: (self.collectionView?.bounds.height)!);
-        self.sectionInset = UIEdgeInsets.zero;
+    override func prepare() {
+        super.prepare()
+        self.itemSize = CGSize(width: (self.collectionView?.bounds.width)!, height: (self.collectionView?.bounds.height)!)
+        self.sectionInset = UIEdgeInsets.zero
     }
 }

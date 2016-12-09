@@ -15,6 +15,7 @@ enum AnimationType: UInt {
 }
 
 class WCMaterialButton: UIButton {
+    
     // ---------------------------------------------------------------------------------------------
     // MARK: - Public variables
     var materialAnimation: AnimationType = .materialType

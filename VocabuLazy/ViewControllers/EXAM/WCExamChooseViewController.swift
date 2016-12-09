@@ -8,15 +8,11 @@
 
 import UIKit
 
-enum ExamType: Int
-{
-    case unitExam = 0
-    case listExam
-}
-
-class WCExamChooseViewController: UIViewController, WCLessonChooseTableViewDelegate
-{
-    var levelNumber : UInt = 0;
+class WCExamChooseViewController: UIViewController, WCLessonChooseTableViewDelegate {
+    
+    // ---------------------------------------------------------------------------------------------
+    // MARK: - Variables
+    var levelNumber : UInt = 0
     var lessonsVocabularyArray = [WCVocabularyModel]()    
     var oneLevelVocabularyArray = [[WCVocabularyModel]]()
     
@@ -25,16 +21,13 @@ class WCExamChooseViewController: UIViewController, WCLessonChooseTableViewDeleg
     var toeicOrToeflCategory = WCToeicToeflCategoryModel()
     
     // Private variable
-    fileprivate var examChooseTableView: WCLessonChooseTableView?;
-    fileprivate let screenSize: CGSize = UIScreen.main.bounds.size;
-    
-    // Public variable
-    var examType: ExamType = ExamType(rawValue: 0)!;
+    fileprivate var examChooseTableView: WCLessonChooseTableView?
+    fileprivate let screenSize: CGSize = UIScreen.main.bounds.size
     
     
+    // ---------------------------------------------------------------------------------------------
     // MARK: - View controller life cycle
-    override func viewDidLoad()
-    {
+    override func viewDidLoad() {
         super.viewDidLoad()
         
         let navigationBarHeight = self.navigationController?.navigationBar.frame.height
@@ -47,16 +40,19 @@ class WCExamChooseViewController: UIViewController, WCLessonChooseTableViewDeleg
             oneLevelVocabularyArray = mapToeic_ToeflDimension()!
         }
         
-        self.title = "選擇冊次";
-        examChooseTableView = WCLessonChooseTableView(frame: CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.height - navigationBarHeight! - statusBarHeight), totalItemNumber: oneLevelVocabularyArray.count);
-        examChooseTableView?.delegate = self;
-        self.navigationController?.setNavigationBarHidden(false, animated: true);
-        self.view.addSubview(examChooseTableView!);
+        self.title = "選擇冊次"
+        examChooseTableView = WCLessonChooseTableView(frame: CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.height - navigationBarHeight! - statusBarHeight), totalItemNumber: oneLevelVocabularyArray.count)
+        examChooseTableView?.delegate = self
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        self.view.addSubview(examChooseTableView!)
         
         let backButton = UIBarButtonItem.init(title: "", style: .plain, target: nil, action: nil)
-        self.navigationItem.backBarButtonItem = backButton;
+        self.navigationItem.backBarButtonItem = backButton
     }
     
+    
+    // ---------------------------------------------------------------------------------------------
+    // MARK: - Rearrange vocabularies array dimension
     fileprivate func rearrangeArrayDimension<T>(_ rearrangeArray: [T], partition: Int) -> [[T]]? {
         guard partition > 0 else {
             return nil
@@ -104,7 +100,8 @@ class WCExamChooseViewController: UIViewController, WCLessonChooseTableViewDeleg
         return twoDimensionBucket
     }
 
-    // MARK: - WCLessonChooseTableView Delegate
+    // ---------------------------------------------------------------------------------------------
+    // MARK: - WCLessonChooseTableViewDelegate
     func tableView(_ tableView: WCLessonChooseTableView, didSelectItemAtIndexPath indexPath: IndexPath){
         let questionViewController = storyboard?.instantiateViewController(withIdentifier: "QuestionPage") as! WCQuestionViewController
         questionViewController.vocabularyArray = oneLevelVocabularyArray[(indexPath as NSIndexPath).row]

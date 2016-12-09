@@ -59,8 +59,7 @@ class WCVocabularyModel: NSObject, NSCoding {
      
      - returns: WCVocabularyModel
      */
-    convenience init(level: UInt?, identity: UInt?, english: String?, chinese: String?, engSen: NSArray?, chnSen: NSArray?, phonetic: String?, partOfSpeech: String?)
-    {
+    convenience init(level: UInt?, identity: UInt?, english: String?, chinese: String?, engSen: NSArray?, chnSen: NSArray?, phonetic: String?, partOfSpeech: String?) {
         self.init()
         
         self.level = level ?? UInt()
@@ -80,8 +79,7 @@ class WCVocabularyModel: NSObject, NSCoding {
      
      - returns: WCVocabularyModel
      */
-    convenience init(vocabularyNSDictionary : NSDictionary)
-    {
+    convenience init(vocabularyNSDictionary : NSDictionary) {
         self.init()
         
         level = vocabularyNSDictionary.object(forKey: "level") as? UInt ?? UInt()
@@ -96,11 +94,7 @@ class WCVocabularyModel: NSObject, NSCoding {
     
     
     // ---------------------------------------------------------------------------------------------
-    // MARK: - Override other methods
-    override var description: String {
-        return "\n\(level)\n\(identity)\n\(english)\n\(chinese)\n\(englishSentenceArray)\n\(chineseSentenceArray)\n\(phonetic)\n\(partOfSpeech)"
-    }
-    
+    // MARK - NSCoding protocol
     func encode(with aCoder: NSCoder) {
         aCoder.encode(level, forKey: "level")
         aCoder.encode(identity, forKey: "id")
@@ -110,5 +104,12 @@ class WCVocabularyModel: NSObject, NSCoding {
         aCoder.encode(chineseSentenceArray, forKey: "cnSentence")
         aCoder.encode(phonetic, forKey: "phonetic")
         aCoder.encode(partOfSpeech, forKey: "partOfSpeech")
+    }
+    
+    
+    // ---------------------------------------------------------------------------------------------
+    // MARK: - Override other methods
+    override var description: String {
+        return "\n\(level)\n\(identity)\n\(english)\n\(chinese)\n\(englishSentenceArray)\n\(chineseSentenceArray)\n\(phonetic)\n\(partOfSpeech)"
     }
 }

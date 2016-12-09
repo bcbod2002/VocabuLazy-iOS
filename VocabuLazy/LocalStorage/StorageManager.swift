@@ -9,6 +9,10 @@
 import Foundation
 
 class StorageManager {
+    
+    /// Get vocabulary data from storage
+    ///
+    /// - Parameter success: Success closure
     class func getVocabularyDataFromFileWithSuccess(_ success: @escaping ((_ data: Data) -> Void))
     {
         DispatchQueue.main.async { () -> Void in
@@ -28,6 +32,9 @@ class StorageManager {
         }
     }
     
+    /// Get Toeic data from storage
+    ///
+    /// - Parameter success: Success closure
     class func getToeicDataFromFileWithSuccess(_ success: @escaping ((_ data: Data) -> Void)) {
         DispatchQueue.main.async { () -> Void in
             let filePath = Bundle.main.path(forResource: "TOEIC_final", ofType: "json")
@@ -41,6 +48,10 @@ class StorageManager {
         }
     }
     
+    
+    /// Get toefl data from storage
+    ///
+    /// - Parameter success: Success closure
     class func getToeflDataFromFileWithSuccess(_ success: @escaping ((_ data: Data) -> Void)) {
         DispatchQueue.main.async { () -> Void in
             let filePath = Bundle.main.path(forResource: "TOEFL_final", ofType: "json")
@@ -54,6 +65,9 @@ class StorageManager {
         }
     }
     
+    /// Get Toeic and Toefl category data from storage
+    ///
+    /// - Parameter success: Success closure
     class func getToeic_ToeflCategoryWithSuccess(_ success: @escaping ((_ data: Data) -> Void)) {
         DispatchQueue.main.async { () -> Void in
             let filePath = Bundle.main.path(forResource: "TOEIC_TOEFL_textbook", ofType: "json")
@@ -67,6 +81,9 @@ class StorageManager {
         }
     }
     
+    /// Get List data from storage
+    ///
+    /// - Parameter success: Success closure
     class func readListDataFromFileWithSuccess(_ success: @escaping ((_ data: [WCListViewModel]) -> Void)) {
         DispatchQueue.main.async { () -> Void in
             if let dir : NSString = NSSearchPathForDirectoriesInDomains(
@@ -86,6 +103,9 @@ class StorageManager {
         }
     }
     
+    /// Write List data to storage
+    ///
+    /// - Parameter data: WCListViewModel array
     class func writeListDataToFile(_ data: [WCListViewModel]) {
         DispatchQueue.main.async { () -> Void in
             if let dir : NSString = NSSearchPathForDirectoriesInDomains(
