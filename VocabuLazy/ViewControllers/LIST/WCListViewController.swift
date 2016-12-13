@@ -26,6 +26,7 @@ class WCListViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var addButton: WCMaterialButton?
     
     @IBOutlet weak var listTableView: UITableView!
+    var listEmptyView: UIView?
     
     
     // ---------------------------------------------------------------------------------------------
@@ -62,6 +63,9 @@ class WCListViewController: UIViewController, UITableViewDelegate, UITableViewDa
             if self.listData.count == 0 {
                 self.addEmptyView()
             }
+            else {
+                self.removeEmptyView()
+            }
         }
     }
     
@@ -79,9 +83,17 @@ class WCListViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     fileprivate func addEmptyView() {
-        let listEmptyView = UINib(nibName: "WCListEmptyView", bundle: nil).instantiate(withOwner: self, options: nil)[0] as! UIView
-        listEmptyView.frame = view.bounds
-        view.addSubview(listEmptyView)
+        listEmptyView = UINib(nibName: "WCListEmptyView", bundle: nil).instantiate(withOwner: self, options: nil)[0] as? UIView
+        listEmptyView?.frame = view.bounds
+        
+        listTableView.addSubview(listEmptyView!)
+    }
+    
+    fileprivate func removeEmptyView() {
+        guard listEmptyView != nil else {
+            return
+        }
+        listEmptyView?.removeFromSuperview()
     }
     
     func initialSuspensionAddButton() {
@@ -298,6 +310,7 @@ class WCListViewController: UIViewController, UITableViewDelegate, UITableViewDa
         listData.append(WCListViewModel(name: name, content: [UInt]()))
         listTableView.reloadData()
         StorageManager.writeListDataToFile(listData)
+        getListData()
     }
     
     
@@ -317,6 +330,7 @@ class WCListViewController: UIViewController, UITableViewDelegate, UITableViewDa
         listData.remove(at: (indexPath as NSIndexPath).row)
         listTableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
         StorageManager.writeListDataToFile(listData)
+        getListData()
     }
     
     
