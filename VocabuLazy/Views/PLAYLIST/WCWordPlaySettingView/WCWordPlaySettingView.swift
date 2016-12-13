@@ -207,17 +207,17 @@ class WCWordPlaySettingView: UIView, UIScrollViewDelegate, WCSettingContentViewD
 
         NSKeyedArchiver.setClassName("Swallow.WCSettingContentModel", for: WCSettingContentModel.self)
         // CustomSetting
-        let customSettingModel = WCSettingContentModel(pattern: PatternType.customPattern, play: SetPlayType.sequential, cycle: SetCycleType.once, sentence: SetSentenceType.noneSentence, second: 0, frequency: 1, speed: 1, playTime: 10)
+        let customSettingModel = WCSettingContentModel(pattern: PatternType.customPattern, play: SetPlayType.sequential, cycle: SetCycleType.once, sentence: SetSentenceType.noneSentence, second: 1, frequency: 3, speed: 1, playTime: 10)
         let customModelData = NSKeyedArchiver.archivedData(withRootObject: customSettingModel)
         let customSettingDictionary: [String : Any] = ["settingContentModel" : customModelData, "isSelected" : NSNumber(value: true)]
         
         // SleepSetting
-        let sleepSettingModel = WCSettingContentModel(pattern: PatternType.customPattern, play: SetPlayType.sequential, cycle: SetCycleType.once, sentence: SetSentenceType.noneSentence, second: 0, frequency: 1, speed: 1, playTime: 10)
+        let sleepSettingModel = WCSettingContentModel(pattern: PatternType.customPattern, play: SetPlayType.sequential, cycle: SetCycleType.once, sentence: SetSentenceType.noneSentence, second: 1, frequency: 3, speed: 1, playTime: 10)
         let sleepModelData = NSKeyedArchiver.archivedData(withRootObject: sleepSettingModel)
         let sleepSettingDictionary: [String : Any] = ["settingContentModel" : sleepModelData, "isSelected" : NSNumber(value: false)]
         
         // CommutinSetting
-        let commutingSettingModel = WCSettingContentModel(pattern: PatternType.customPattern, play: SetPlayType.sequential, cycle: SetCycleType.once, sentence: SetSentenceType.noneSentence, second: 0, frequency: 1, speed: 1, playTime: 10)
+        let commutingSettingModel = WCSettingContentModel(pattern: PatternType.customPattern, play: SetPlayType.sequential, cycle: SetCycleType.once, sentence: SetSentenceType.noneSentence, second: 1, frequency: 3, speed: 1, playTime: 10)
         let commutingModelData = NSKeyedArchiver.archivedData(withRootObject: commutingSettingModel)
         let commutingSettingDictionary: [String : Any] = ["settingContentModel" : commutingModelData, "isSelected" : NSNumber(value: false)]
         

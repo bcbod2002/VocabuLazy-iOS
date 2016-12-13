@@ -95,9 +95,8 @@ class WCWordPlayViewController: UIViewController, AVSpeechSynthesizerDelegate, W
         super.viewWillAppear(animated)
         
         isCouldPlayAudio = true
-        
         // Set Title
-        if title?.characters.count == 0 {
+        if title?.characters.count == 0 || (title == nil) {
             title = levelString + " - Lesson " + String(foregroundLessonNumber! + 1)
         }
         
