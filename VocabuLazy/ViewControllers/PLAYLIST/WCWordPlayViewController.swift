@@ -453,8 +453,7 @@ class WCWordPlayViewController: UIViewController, AVSpeechSynthesizerDelegate, W
     
     // ---------------------------------------------------------------------------------------------
     // MARK: - WCWordPlaySettingView Delegate
-    func didChangeSettingModel()
-    {
+    func didChangeSettingModel() {
         readWordPlaySetData()
     }
     
