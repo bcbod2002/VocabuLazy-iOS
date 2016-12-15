@@ -35,7 +35,7 @@ import UIKit
      - parameter scrollView: WCWordPlayScrollView
      - parameter pageNumber: End scroll decelerating to page
      */
-    @objc optional func scrollView(_ scrollView: WCWordPlayScrollView, didEndScrollDeceleratingToPage pageNumber: Int)
+    @objc optional func scrollView(_ scrollView: WCWordPlayScrollView, didEndScrollToPage pageNumber: Int)
     
     /**
      WCWordPlayScrollView begin scroll with finger
@@ -43,6 +43,15 @@ import UIKit
      - parameter scrollView: WCWordPlayScrollView
      */
     @objc optional func scrollViewBeginScrollWithFinger(_ scrollView: WCWordPlayScrollView)
+    
+    
+    /**
+     WCWordPlayScrollView end scroll with finger
+     
+     - parameter scrollView: WCWordPlayScrollView
+     - parameter pageNumber: Did scroll to page
+     */
+    @objc optional func scrollViewEndScrollWithFinger(_ scrollView: WCWordPlayScrollView, pageNumber: Int)
 }
 
 class WCWordPlayScrollView: UICollectionView, UICollectionViewDelegate, UIScrollViewDelegate {
@@ -124,11 +133,11 @@ class WCWordPlayScrollView: UICollectionView, UICollectionViewDelegate, UIScroll
         // UD2
         // http://qiita.com/kunichiko/items/8fa9494c659d75e3b9a9
         // 原因 : scrollView.contentOffset.x 有一定的機率會出現負數，這樣會導致 UInt(-3)便會溢位
-        scrollViewDelegate?.scrollView?(self, didEndScrollDeceleratingToPage: Int(abs(scrollView.contentOffset.x) / scrollView.bounds.width));
+        scrollViewDelegate?.scrollViewEndScrollWithFinger?(self, pageNumber: Int(abs(scrollView.contentOffset.x) / scrollView.bounds.width))
     }
     
     func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
-        scrollViewDelegate?.scrollView?(self, didEndScrollDeceleratingToPage: Int(abs(scrollView.contentOffset.x) / scrollView.bounds.width));
+        scrollViewDelegate?.scrollView?(self, didEndScrollToPage: Int(abs(scrollView.contentOffset.x) / scrollView.bounds.width));
     }
     
     /*

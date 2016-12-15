@@ -42,7 +42,7 @@ import UIKit
     :param: tableView  WCWordPlayTableView
     :param: itemNumber Item number
     */
-    @objc optional func tableView(_ tableView: WCWordPlayTableView, didScrolltoItem itemNumber:Int)
+    @objc optional func tableView(_ tableView: WCWordPlayTableView, didScrolltoItem itemNumber: Int)
 
     /**
     WCWordPlayTableView begin scroll with finger
@@ -50,6 +50,14 @@ import UIKit
     - parameter tableView: WCWordPlayTableView
     */
     @objc optional func tableViewBeginScrollWithFinger(_ tableView: WCWordPlayTableView)
+    
+    /**
+     WCWordPlayTableView end scroll with finger
+     
+     - parameter tableView: WCWordPlayTableView
+     - parameter itemNumber: Item number
+     */
+    @objc optional func tableViewEndScrollWithFinger(_ tableView: WCWordPlayTableView, willScrolltoItem itemNumber: Int)
 
     /**
     WCWordPlayTableView did finish animation cell
@@ -68,7 +76,7 @@ import UIKit
      - parameter cell:         WCWordPlayCollectionViewCell
      - parameter sentenceView: WCWordPlaySentenceView
      */
-    @objc optional func tableView(_ tableView: WCWordPlayTableView, beginScrollWithFinger cell:WCWordPlayCollectionViewCell, sentenceView: WCWordPlaySentenceView)
+    @objc optional func tableView(_ tableView: WCWordPlayTableView, beginScrollWithFinger cell: WCWordPlayCollectionViewCell, sentenceView: WCWordPlaySentenceView)
     
     /**
      WCWordPlayTableViewCell of WCWordTableView sentence scroll to another
@@ -352,21 +360,26 @@ class WCWordPlayTableView: UIView, UICollectionViewDelegate, UICollectionViewDat
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         if scrollLock == false {
             scrollLock = true
-            scrollViewDidEndAllScrollingAnimation(scrollView)
+            scrollViewDidEndAllScrollingAnimation(scrollView, useFinger: true)
         }
     }
     
     func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
         if scrollLock == false {
             scrollLock = true
-            scrollViewDidEndAllScrollingAnimation(scrollView)
+            scrollViewDidEndAllScrollingAnimation(scrollView, useFinger: false)
         }
     }
     
-    fileprivate func scrollViewDidEndAllScrollingAnimation(_ scrollView: UIScrollView) {
+    fileprivate func scrollViewDidEndAllScrollingAnimation(_ scrollView: UIScrollView, useFinger: Bool) {
         let selectedIndexPath = wordPlayFlowLayout.selectedAttribute?.indexPath
         if isDelegateCall == true {
-            delegate?.tableView?(self, didScrolltoItem: ((selectedIndexPath as NSIndexPath?)?.row)!)
+            if useFinger == true {
+                delegate?.tableViewEndScrollWithFinger?(self, willScrolltoItem: (selectedIndexPath?.row)!)
+            }
+            else {
+                delegate?.tableView?(self, didScrolltoItem: ((selectedIndexPath as NSIndexPath?)?.row)!)
+            }
         }
         else {
             isDelegateCall = true

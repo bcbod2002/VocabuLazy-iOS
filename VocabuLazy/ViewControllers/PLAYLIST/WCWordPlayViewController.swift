@@ -66,7 +66,7 @@ class WCWordPlayViewController: UIViewController, AVSpeechSynthesizerDelegate, W
     
     // Other
     fileprivate var appStatusOberver : NotificationCenter?
-    fileprivate var isAllowPlayAudio : Bool = false
+    fileprivate var isAllowPlayAudio : Bool = true
     fileprivate var isForegroundStatus : Bool = true
     fileprivate var stopTimer : Timer?
     fileprivate var presentVocabularyType = SpeechType.english
@@ -361,14 +361,27 @@ class WCWordPlayViewController: UIViewController, AVSpeechSynthesizerDelegate, W
         wordPlayTableView = cellWordPlayTableView
     }
     
-    func scrollView(_ scrollView: WCWordPlayScrollView, didEndScrollDeceleratingToPage pageNumber: Int) {
+    func scrollViewEndScrollWithFinger(_ scrollView: WCWordPlayScrollView, pageNumber: Int) {
         self.title = levelString + " - Lesson " + String(pageNumber + 1)
         
+        readWordPlaySetData()
         readLessonVocabularyData(with: pageNumber)
         presentVocabularyType = .english
         foregroundHandler?.resetAllProperty(pageNumber, vocabularyArray: vocabularyTupleArray, sentenceArray: sentenceTupleArray)
         playAudio(0, and: vocabularyTupleArray)
         isAllowPlayAudio = true
+    }
+    
+    func scrollView(_ scrollView: WCWordPlayScrollView, didEndScrollToPage pageNumber: Int) {
+        self.title = levelString + " - Lesson " + String(pageNumber + 1)
+        
+        readLessonVocabularyData(with: pageNumber)
+        presentVocabularyType = .english
+        foregroundHandler?.resetAllProperty(pageNumber, vocabularyArray: vocabularyTupleArray, sentenceArray: sentenceTupleArray)
+        
+        if isAllowPlayAudio == true {
+            playAudio(0, and: vocabularyTupleArray)
+        }
     }
     
     func scrollViewBeginScrollWithFinger(_ scrollView: WCWordPlayScrollView) {
@@ -413,16 +426,31 @@ class WCWordPlayViewController: UIViewController, AVSpeechSynthesizerDelegate, W
         isAllowPlayAudio = false
 
         stopAudio()
+        readWordPlaySetData()
         foregroundHandler?.clearAllPlayedItemsArray()
         foregroundHandler?.vocabularyPlayedCount = 1
     }
     
-    func tableView(_ tableView: WCWordPlayTableView, didScrolltoItem itemNumber: Int) {
+    func tableViewEndScrollWithFinger(_ tableView: WCWordPlayTableView, willScrolltoItem itemNumber: Int) {
         presentVocabularyType = SpeechType.english
         playAudio(itemNumber, and: vocabularyTupleArray)
         isAllowPlayAudio = true
         foregroundHandler?.playingNumber = itemNumber
     }
+    
+    func tableView(_ tableView: WCWordPlayTableView, didScrolltoItem itemNumber: Int) {
+        if isAllowPlayAudio == true {
+            presentVocabularyType = SpeechType.english
+            playAudio(itemNumber, and: vocabularyTupleArray)
+            foregroundHandler?.playingNumber = itemNumber
+        }
+        else {
+            presentVocabularyType = SpeechType.english
+            foregroundHandler?.playingNumber = itemNumber
+        }
+    }
+    
+    
     
     
     // ---------------------------------------------------------------------------------------------
@@ -453,8 +481,7 @@ class WCWordPlayViewController: UIViewController, AVSpeechSynthesizerDelegate, W
     
     // ---------------------------------------------------------------------------------------------
     // MARK: - WCWordPlaySettingView Delegate
-    func didChangeSettingModel()
-    {
+    func didChangeSettingModel() {
         readWordPlaySetData()
     }
     
@@ -609,6 +636,7 @@ class WCWordPlayViewController: UIViewController, AVSpeechSynthesizerDelegate, W
      */
     fileprivate func stopAudio() {
         wordSpeechPlayer?.stopSpeech()
+        isAllowPlayAudio = false
     }
     
     /**
